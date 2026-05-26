@@ -37,7 +37,7 @@ jobs:
         with:
           args: >
             --no-progress
-            --exclude 'https://api.emailjs.com'
+            --base .
             '*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
