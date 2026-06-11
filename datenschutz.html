@@ -6,29 +6,39 @@
 <title>Datenschutzerkl&auml;rung | Robin Frank</title>
 <meta name="description" content="Datenschutzerklärung der Webseite von Robin Frank." />
 <meta name="robots" content="noindex, follow" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="theme-color" content="#E8ECF1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#050E22" media="(prefers-color-scheme: dark)" />
 
 <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+
+<!-- Theme vor dem ersten Paint setzen (kein Flash); Hash dieses Scripts steht
+     in der CSP im infrastructure/Caddyfile — bei Änderungen dort nachziehen. -->
+<script>(function(){try{var t=localStorage.getItem('pf2-theme');if(t!=='dark'&&t!=='light')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/index.css?v=2026-05-13b" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/index.css?v=2026-06-11" />
 </head>
 <body>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="legal">
-  <header class="legal-head">
-    <a href="/" class="brand-mark" aria-label="Zur Startseite">
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand" aria-label="Robin Frank — Zur Startseite">
       <span class="brand-dot"></span>
-      <span>Robin Frank</span>
+      <span>robinfrank</span>
     </a>
-    <a href="/" class="legal-back">&larr; Zur&uuml;ck</a>
-  </header>
+    <a href="/" class="btn btn-soft btn-nav">&larr; Zur&uuml;ck zur Startseite</a>
+  </div>
+</header>
 
-  <main id="main" class="legal-main">
+<main id="main" class="container legal-page" tabindex="-1">
+
+  <div class="tile legal-tile">
     <h1>Datenschutzerkl&auml;rung</h1>
     <p class="legal-lede">Informationen zur Verarbeitung personenbezogener Daten gem&auml;&szlig; Art. 13 DSGVO.</p>
 
@@ -38,10 +48,10 @@
         Verantwortlich f&uuml;r die Datenverarbeitung auf dieser Webseite ist:
       </p>
       <p>
-        Robin Frank<br>
-        Ahornweg 8<br>
-        41540 Dormagen<br>
-        Deutschland<br>
+        Robin Frank<br />
+        Ahornweg 8<br />
+        41540 Dormagen<br />
+        Deutschland<br />
         E-Mail: <a href="mailto:info@rxf-sys.de">info@rxf-sys.de</a>
       </p>
     </section>
@@ -57,7 +67,21 @@
     </section>
 
     <section>
-      <h2>3. Hosting und Server-Logs</h2>
+      <h2>3. Lokale Speicherung von Einstellungen (Local Storage)</h2>
+      <p>
+        Die Webseite bietet einen hell/dunkel-Modus und eine Sprachumschaltung (Deutsch/Englisch).
+        Die gew&auml;hlte Einstellung wird ausschlie&szlig;lich lokal im Browser gespeichert
+        (Local Storage, Eintr&auml;ge <code>pf2-theme</code> und <code>pf2-lang</code>). Es
+        handelt sich nicht um Cookies; die Werte werden zu keinem Zeitpunkt an den Server oder an
+        Dritte &uuml;bertragen und enthalten keine personenbezogenen Daten. Die Speicherung ist
+        f&uuml;r die Bereitstellung der vom Besucher ausdr&uuml;cklich gew&uuml;nschten Funktion
+        erforderlich (&sect; 25 Abs. 2 Nr. 2 TDDDG). Die Eintr&auml;ge k&ouml;nnen jederzeit
+        &uuml;ber die Browser-Einstellungen gel&ouml;scht werden.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Hosting und Server-Logs</h2>
       <p>
         Die Webseite wird selbst gehostet und &uuml;ber einen Cloudflare-Tunnel der
         <strong>Cloudflare, Inc.</strong> (101 Townsend St., San Francisco, CA 94107, USA)
@@ -79,10 +103,10 @@
     </section>
 
     <section>
-      <h2>4. Externe Schriften (Google Fonts)</h2>
+      <h2>5. Externe Schriften (Google Fonts)</h2>
       <p>
-        Diese Webseite nutzt Webfonts (&bdquo;Inter&ldquo; und &bdquo;JetBrains Mono&ldquo;), die
-        von <strong>Google Ireland Limited</strong> (Gordon House, Barrow Street, Dublin 4,
+        Diese Webseite nutzt Webfonts (&bdquo;Bricolage Grotesque&ldquo; und &bdquo;Manrope&ldquo;),
+        die von <strong>Google Ireland Limited</strong> (Gordon House, Barrow Street, Dublin 4,
         Irland) bzw. der Google LLC bereitgestellt werden. Beim Aufruf der Webseite wird eine
         Verbindung zu Google-Servern aufgebaut, wodurch Google die IP-Adresse der Besucher
         erfasst.
@@ -98,7 +122,7 @@
     </section>
 
     <section>
-      <h2>5. Externe Icons (Font Awesome &uuml;ber cdnjs)</h2>
+      <h2>6. Externe Icons (Font Awesome &uuml;ber cdnjs)</h2>
       <p>
         Icons werden &uuml;ber das Content Delivery Network <strong>cdnjs</strong>, betrieben von
         Cloudflare, Inc. (Anschrift siehe oben), nachgeladen. Beim Abruf wird die IP-Adresse an
@@ -108,9 +132,9 @@
     </section>
 
     <section>
-      <h2>6. Verlinkte externe Profile</h2>
+      <h2>7. Verlinkte externe Profile</h2>
       <p>
-        Die Webseite enth&auml;lt Links zu externen Profilen (GitHub, LinkedIn, Xing). Bei einem
+        Die Webseite enth&auml;lt Links zu externen Profilen (GitHub, LinkedIn). Bei einem
         Klick wird die jeweilige Plattform aufgerufen und es gelten deren
         Datenschutzbestimmungen. Es findet keinerlei automatische &Uuml;bertragung von Daten an
         diese Dienste statt, solange die Links nicht aktiv aufgerufen werden.
@@ -118,7 +142,7 @@
     </section>
 
     <section>
-      <h2>7. Ihre Rechte</h2>
+      <h2>8. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
         <li>auf Auskunft &uuml;ber die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO),</li>
@@ -135,7 +159,7 @@
     </section>
 
     <section>
-      <h2>8. Beschwerderecht</h2>
+      <h2>9. Beschwerderecht</h2>
       <p>
         Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbeh&ouml;rde zu beschweren.
         Zust&auml;ndig f&uuml;r mich ist die <strong>Landesbeauftragte f&uuml;r Datenschutz und
@@ -146,24 +170,26 @@
     </section>
 
     <section>
-      <h2>9. Aktualit&auml;t und &Auml;nderung dieser Datenschutzerkl&auml;rung</h2>
+      <h2>10. Aktualit&auml;t und &Auml;nderung dieser Datenschutzerkl&auml;rung</h2>
       <p>
         Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig. Durch &Auml;nderungen der
         Webseite oder gesetzliche Vorgaben kann es notwendig werden, sie anzupassen. Die jeweils
         aktuelle Fassung ist immer hier abrufbar.
       </p>
     </section>
-  </main>
+  </div>
 
-  <footer class="legal-foot">
-    <div>&copy; 2026 Robin Frank</div>
-    <div class="foot-meta">
-      <a href="/">Startseite</a>
-      <span>&middot;</span>
-      <a href="/impressum.html">Impressum</a>
+  <footer>
+    <div class="footer-row">
+      <span>&copy; 2026 Robin Frank</span>
+      <div class="footer-links">
+        <a href="/">Startseite</a>
+        <a href="/impressum.html">Impressum</a>
+      </div>
     </div>
   </footer>
-</div>
+
+</main>
 
 </body>
 </html>
