@@ -7,6 +7,7 @@ DE/EN-Sprachumschalter, Scroll-Animationen.
 ## Struktur
 
 ```
+├── README.md           # Projekt-Doku (Features, lokale Entwicklung, CI, Deployment)
 ├── index.html          # Hauptseite (One-Pager, 7 Sektionen)
 ├── index.css           # Stylesheet (Design-Tokens in :root / html[data-theme="dark"])
 ├── index.js            # Theme, i18n (EN-Wörterbuch), Reveal, Counter, Lightbox
@@ -43,8 +44,8 @@ DE/EN-Sprachumschalter, Scroll-Animationen.
   HTML/CSS/JS-Dateien; npm-Tooling nur für CI-Checks (html-validate, jsdom-Tests)
 - **Security-Header** werden **ausschließlich im `infrastructure/Caddyfile`** gesetzt
 - **`_headers`** wird von Caddy **nicht gelesen** (Cloudflare Pages Format, inaktiv)
-- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/_headers`, `/CLAUDE.md`)
-  werden von Caddy mit 404 blockiert
+- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/_headers`, `/CLAUDE.md`,
+  `/README.md`) werden von Caddy mit 404 blockiert
 - **CSP**: kein `unsafe-eval`, kein `unsafe-inline` für Scripts. Das einzige
   Inline-Script ist das Theme-Init im `<head>` aller drei HTML-Dateien (verhindert
   Theme-Flash); es ist per **SHA-256-Hash** in der CSP im Caddyfile freigegeben.
