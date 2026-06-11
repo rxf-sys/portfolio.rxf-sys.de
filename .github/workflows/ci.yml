@@ -18,13 +18,26 @@ jobs:
           node-version: "22"
 
       - name: Install html-validate
-        run: npm install -g html-validate
+        run: npm install -g html-validate@11
 
       - name: Validate HTML
-        # continue-on-error: bestehende Violations blockieren nicht —
-        # nach Bereinigung auf false setzen.
         run: html-validate "*.html"
-        continue-on-error: true
+
+  dom:
+    name: DOM Smoke Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install jsdom
+        run: npm install --no-save jsdom@25
+
+      - name: Run DOM tests
+        run: node tests/dom.test.js
 
   links:
     name: Check Links
@@ -40,7 +53,6 @@ jobs:
             --root-dir ${{ github.workspace }}
             --exclude 'https://www\.linkedin\.com'
             --exclude 'https://www\.xing\.com'
-            --exclude 'https://api\.emailjs\.com'
             '*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
