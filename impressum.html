@@ -6,38 +6,48 @@
 <title>Impressum | Robin Frank</title>
 <meta name="description" content="Impressum von Robin Frank — Junior IT-Systemadministrator." />
 <meta name="robots" content="noindex, follow" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="theme-color" content="#E8ECF1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#050E22" media="(prefers-color-scheme: dark)" />
 
 <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+
+<!-- Theme vor dem ersten Paint setzen (kein Flash); Hash dieses Scripts steht
+     in der CSP im infrastructure/Caddyfile — bei Änderungen dort nachziehen. -->
+<script>(function(){try{var t=localStorage.getItem('pf2-theme');if(t!=='dark'&&t!=='light')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/index.css?v=2026-05-13b" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/index.css?v=2026-06-11" />
 </head>
 <body>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="legal">
-  <header class="legal-head">
-    <a href="/" class="brand-mark" aria-label="Zur Startseite">
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand" aria-label="Robin Frank — Zur Startseite">
       <span class="brand-dot"></span>
-      <span>Robin Frank</span>
+      <span>robinfrank</span>
     </a>
-    <a href="/" class="legal-back">&larr; Zur&uuml;ck</a>
-  </header>
+    <a href="/" class="btn btn-soft btn-nav">&larr; Zur&uuml;ck zur Startseite</a>
+  </div>
+</header>
 
-  <main id="main" class="legal-main">
+<main id="main" class="container legal-page" tabindex="-1">
+
+  <div class="tile legal-tile">
     <h1>Impressum</h1>
     <p class="legal-lede">Angaben gem&auml;&szlig; &sect; 5 DDG (Digitale-Dienste-Gesetz).</p>
 
     <section>
       <h2>Diensteanbieter</h2>
       <p>
-        Robin Frank<br>
-        Ahornweg 8<br>
-        41540 Dormagen<br>
+        Robin Frank<br />
+        Ahornweg 8<br />
+        41540 Dormagen<br />
         Deutschland
       </p>
     </section>
@@ -52,7 +62,7 @@
     <section>
       <h2>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h2>
       <p>
-        Robin Frank<br>
+        Robin Frank<br />
         Anschrift wie oben.
       </p>
     </section>
@@ -108,17 +118,19 @@
         ich derartige Inhalte umgehend entfernen.
       </p>
     </section>
-  </main>
+  </div>
 
-  <footer class="legal-foot">
-    <div>&copy; 2026 Robin Frank</div>
-    <div class="foot-meta">
-      <a href="/">Startseite</a>
-      <span>&middot;</span>
-      <a href="/datenschutz.html">Datenschutz</a>
+  <footer>
+    <div class="footer-row">
+      <span>&copy; 2026 Robin Frank</span>
+      <div class="footer-links">
+        <a href="/">Startseite</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </div>
     </div>
   </footer>
-</div>
+
+</main>
 
 </body>
 </html>

@@ -5,42 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Robin Frank | Junior IT-Systemadministrator</title>
-<meta name="title" content="Robin Frank | Junior IT-Systemadministrator" />
-<meta name="description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung mit Expertise in Systemadministration, Netzwerktechnik und modernen Webtechnologien." />
+<meta name="description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung. Linux, Proxmox, Netzwerke, Automatisierung." />
 <meta name="keywords" content="Robin Frank, IT-Systemadministrator, Fachinformatiker, Anwendungsentwicklung, Linux, Proxmox, Netzwerk, Java, JavaScript, Portfolio, Dormagen" />
 <meta name="author" content="Robin Frank" />
 <meta name="robots" content="index, follow" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="theme-color" content="#E8ECF1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#050E22" media="(prefers-color-scheme: dark)" />
+<link rel="canonical" href="https://portfolio.rxf-sys.de/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://rxf-sys.github.io/" />
+<meta property="og:url" content="https://portfolio.rxf-sys.de/" />
 <meta property="og:title" content="Robin Frank | Junior IT-Systemadministrator" />
-<meta property="og:description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung." />
-<meta property="og:image" content="https://rxf-sys.github.io/assets/images/og-card.jpg" />
+<meta property="og:description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung. Linux, Proxmox, Netzwerke, Automatisierung." />
+<meta property="og:image" content="https://portfolio.rxf-sys.de/assets/images/og-card.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Robin Frank — Junior IT-Systemadministrator" />
 <meta property="og:locale" content="de_DE" />
 
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://rxf-sys.github.io/" />
+<meta property="twitter:url" content="https://portfolio.rxf-sys.de/" />
 <meta property="twitter:title" content="Robin Frank | Junior IT-Systemadministrator" />
-<meta property="twitter:description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung." />
-<meta property="twitter:image" content="https://rxf-sys.github.io/assets/images/og-card.jpg" />
-
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta property="twitter:description" content="Portfolio von Robin Frank — Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung. Linux, Proxmox, Netzwerke, Automatisierung." />
+<meta property="twitter:image" content="https://portfolio.rxf-sys.de/assets/images/og-card.jpg" />
 
 <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
-<link rel="apple-touch-icon" href="/assets/images/favicon.ico" />
 
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<!-- Theme vor dem ersten Paint setzen (kein Flash); Hash dieses Scripts steht
+     in der CSP im infrastructure/Caddyfile — bei Änderungen dort nachziehen. -->
+<script>(function(){try{var t=localStorage.getItem('pf2-theme');if(t!=='dark'&&t!=='light')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/index.css?v=2026-05-13b" />
-<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<link rel="stylesheet" href="/index.css?v=2026-06-11" />
+<noscript><style>.reveal,.reveal .tile,.reveal .tl-item{opacity:1!important;transform:none!important}.reveal .timeline::before{transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
 {
@@ -48,8 +51,8 @@
   "@type": "Person",
   "name": "Robin Frank",
   "jobTitle": "Junior IT-Systemadministrator",
-  "url": "https://rxf-sys.github.io/",
-  "image": "https://rxf-sys.github.io/assets/images/robin-frank-portrait.jpg",
+  "url": "https://portfolio.rxf-sys.de/",
+  "image": "https://portfolio.rxf-sys.de/assets/images/robin-frank-portrait.jpg",
   "email": "info@rxf-sys.de",
   "address": {
     "@type": "PostalAddress",
@@ -63,477 +66,429 @@
     "https://www.xing.com/profile/Robin_Frank097779"
   ],
   "alumniOf": { "@type": "EducationalOrganization", "name": "BBS Gerolstein" },
-  "knowsAbout": ["Linux","Proxmox VE","Netzwerktechnik","Java","JavaScript","React","PHP","C++","Groovy","HTML5","CSS3","SQL","MongoDB","Git","NinjaOne"],
+  "knowsAbout": ["Linux","Proxmox VE","Netzwerktechnik","Docker","WireGuard","NinjaOne","Java","JavaScript","React","PHP","Groovy","HTML5","CSS3","SQL","MongoDB","Git","PowerShell","Bash"],
   "worksFor": { "@type": "Organization", "name": "Fusion IT" },
-  "description": "Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung mit Expertise in Systemadministration, Netzwerktechnik und modernen Webtechnologien."
+  "description": "Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung mit Expertise in Systemadministration, Netzwerktechnik und Automatisierung."
 }
 </script>
 </head>
 <body>
 
-<a class="skip-link" href="#home">Zum Inhalt springen</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<div class="shell">
+<a class="skip-link" href="#main" data-i18n="skip">Zum Inhalt springen</a>
 
-  <!-- ============== SIDE RAIL ============== -->
-  <aside class="rail">
-    <div>
-      <a href="#home" class="brand" aria-label="Robin Frank — Zur Startseite">
-        <div class="brand-mark">
-          <span class="brand-dot"></span>
-          <span>Robin Frank</span>
+<!-- ============ Header ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-row">
+    <a href="#home" class="brand" aria-label="Robin Frank — Zur Startseite">
+      <span class="brand-dot"></span>
+      <span>robinfrank</span>
+    </a>
+    <nav class="nav-pills" aria-label="Hauptnavigation">
+      <a href="#about" data-section="about" data-i18n="nav.about">Über mich</a>
+      <a href="#skills" data-section="skills" data-i18n="nav.skills">Skills</a>
+      <a href="#projects" data-section="projects" data-i18n="nav.projects">Projekte</a>
+      <a href="#certificates" data-section="certificates" data-i18n="nav.certs">Zertifikate</a>
+      <a href="#experience" data-section="experience" data-i18n="nav.cv">Werdegang</a>
+    </nav>
+    <button type="button" class="icon-btn" id="themeBtn" aria-label="Farbschema wechseln">
+      <i class="fas fa-moon" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="lang-btn" id="langBtn" aria-label="Sprache wechseln">EN</button>
+    <a href="#contact" class="btn btn-primary btn-nav" data-i18n="nav.contact">Kontakt</a>
+  </div>
+</header>
+
+<main id="main" class="container" tabindex="-1">
+
+  <!-- ============ Hero ============ -->
+  <section id="home" class="hero" data-screen-label="Hero">
+    <div class="bento">
+      <div class="tile span-8 hero-main">
+        <span class="chip"><span class="dot"></span><span data-i18n="hero.chip">Verfügbar für Projekte</span></span>
+        <h1 data-i18n-html="hero.title">Hi, ich bin Robin —<br />ich halte <span class="hl">Infrastruktur</span> am Laufen.</h1>
+        <p class="hero-lede" data-i18n="hero.lede">Junior IT-Systemadministrator bei Fusion IT. Linux, Proxmox, Netzwerke und Automatisierung — beruflich wie im eigenen HomeLab.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary"><span data-i18n="hero.cta1">Kontakt aufnehmen</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="#projects" class="btn btn-soft" data-i18n="hero.cta2">Projekte ansehen</a>
         </div>
-        <div class="brand-sub">Junior IT-Sysadmin · Dormagen</div>
-      </a>
-
-      <nav class="rail-nav" id="railNav" role="navigation" aria-label="Hauptnavigation">
-        <a href="#home" data-section="home" class="active"><span class="num">01</span><span>Home</span></a>
-        <a href="#about" data-section="about"><span class="num">02</span><span>Über mich</span></a>
-        <a href="#skills" data-section="skills"><span class="num">03</span><span>Fähigkeiten</span></a>
-        <a href="#projects" data-section="projects"><span class="num">04</span><span>Projekte</span></a>
-        <a href="#certificates" data-section="certificates"><span class="num">05</span><span>Zertifikate</span></a>
-        <a href="#experience" data-section="experience"><span class="num">06</span><span>Erfahrung</span></a>
-        <a href="#contact" data-section="contact"><span class="num">07</span><span>Kontakt</span></a>
-      </nav>
-    </div>
-
-    <div class="rail-foot">
-      <div class="rail-status">
-        <span class="status-dot"></span>
-        <span>Verfügbar für Projekte</span>
-      </div>
-      <div class="rail-socials">
-        <a href="https://github.com/rxf-sys" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/in/robin-frank-987b26350/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-        <a href="https://www.xing.com/profile/Robin_Frank097779" aria-label="Xing" target="_blank" rel="noopener noreferrer"><i class="fab fa-xing" aria-hidden="true"></i></a>
-        <a href="mailto:info@rxf-sys.de" aria-label="E-Mail"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-      </div>
-    </div>
-  </aside>
-
-  <main>
-
-    <!-- ============== HERO ============== -->
-    <section id="home" class="hero">
-      <div class="eyebrow">
-        <span class="badge"><i class="fas fa-bolt" aria-hidden="true"></i></span>
-        <span>Junior IT-Systemadministrator @ Fusion IT</span>
       </div>
 
-      <div class="hero-grid">
-        <div>
-          <h1>
-            Infrastruktur,<br>
-            die <span class="accent">verlässlich</span><br>
-            läuft.
-          </h1>
-          <p class="hero-lede">
-            Ich administriere IT-Infrastrukturen und entwickle moderne Lösungen mit Fokus auf
-            Zuverlässigkeit, Sicherheit und Automatisierung &mdash; vom Proxmox-HomeLab bis zur
-            unternehmensweiten RMM-Pipeline.
-          </p>
-
-          <div class="hero-meta">
-            <div class="hero-meta-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span><strong>Dormagen</strong>, DE</span></div>
-            <div class="hero-meta-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Fachinformatiker <strong>AE</strong></span></div>
-            <div class="hero-meta-item"><i class="fas fa-shield-halved" aria-hidden="true"></i><span><strong>2&times;</strong> NinjaOne zertifiziert</span></div>
-            <div class="hero-meta-item"><i class="fas fa-server" aria-hidden="true"></i><span>HomeLab seit <strong>2022</strong></span></div>
-          </div>
-
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Kontakt aufnehmen <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="#projects" class="btn btn-ghost">Projekte ansehen</a>
-          </div>
-        </div>
-
-        <div class="portrait-card">
-          <div class="portrait-tag">Erreichbar</div>
-          <picture>
-            <source srcset="/assets/images/robin-frank-portrait.webp" type="image/webp" />
-            <img src="/assets/images/robin-frank-portrait.jpg" alt="Profilbild von Robin Frank" width="648" height="648" loading="eager" decoding="async" fetchpriority="high" />
-          </picture>
-          <div class="portrait-overlay">
+      <div class="tile span-4 portrait-tile tile-hover">
+        <picture>
+          <source srcset="/assets/images/robin-frank-portrait.webp" type="image/webp" />
+          <img src="/assets/images/robin-frank-portrait.jpg" alt="Profilbild von Robin Frank" width="648" height="648" fetchpriority="high" />
+        </picture>
+        <div class="portrait-overlay">
+          <div>
             <div class="name">Robin Frank</div>
-            <div class="role">Linux · Proxmox · Networking · Java</div>
+            <div class="loc">Dormagen, NRW</div>
           </div>
+          <span class="status" title="Erreichbar"></span>
         </div>
       </div>
 
-      <div class="hero-strip">
-        <span class="hero-strip-label">Aktuell</span>
-        <span class="hero-strip-divider"></span>
-        <span class="hero-strip-text">Junior IT-Systemadministrator bei <strong>Fusion IT</strong> &mdash; seit Januar 2026</span>
-      </div>
-    </section>
-
-    <!-- ============== ABOUT ============== -->
-    <section id="about">
-      <div class="section-head">
-        <span class="section-num">02 ·</span>
-        <h2 class="section-title">Über mich</h2>
-        <span class="section-kicker">Hintergrund &amp; Werte</span>
+      <div class="tile span-5 stats-tile">
+        <div class="stat stat-blue"><span class="num">10</span><span class="lbl" data-i18n="stats.lxc">LXC Container</span></div>
+        <div class="stat stat-sand"><span class="num">2×</span><span class="lbl" data-i18n="stats.ninja">NinjaOne zertifiziert</span></div>
+        <div class="stat stat-pale"><span class="num" data-i18n="stats.uptimeNum">~3 J.</span><span class="lbl" data-i18n="stats.uptime">HomeLab Uptime</span></div>
       </div>
 
-      <div class="about-grid reveal">
-        <div class="about-text">
-          <p>Ich bin ausgebildeter Fachinformatiker für Anwendungsentwicklung und arbeite aktuell als Junior IT-Systemadministrator bei Fusion IT in Langenfeld. Meine Stärken liegen in der Administration von IT-Infrastrukturen, in der Netzwerktechnik und in der Automatisierung wiederkehrender Aufgaben.</p>
-          <p>Den Sprung von der Anwendungsentwicklung in die Administration habe ich bewusst gewählt &mdash; weil mich die Frage interessiert, wie Systeme stabil, sicher und beobachtbar bleiben, wenn echte Last darauf liegt.</p>
-          <p>In meiner Freizeit betreibe ich ein eigenes HomeLab auf Proxmox VE: Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer &mdash; jeder Container ist ein Experiment, das mir hilft, Linux, Virtualisierung und Networking weiter zu vertiefen.</p>
-
-          <blockquote class="about-quote">
-            Die beste Infrastruktur ist die, die niemand bemerkt &mdash; weil sie einfach läuft.
-            <span class="about-quote-source">— Mein Anspruch</span>
-          </blockquote>
-        </div>
-
-        <div class="about-side">
-          <div class="fact"><div class="fact-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div><div><div class="fact-label">Aktuell</div><div class="fact-value">Junior IT-Sysadmin</div></div><div class="fact-extra">FUSION&nbsp;IT</div></div>
-          <div class="fact"><div class="fact-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div><div><div class="fact-label">Abschluss</div><div class="fact-value">Fachinformatiker AE</div></div><div class="fact-extra">2025</div></div>
-          <div class="fact"><div class="fact-icon"><i class="fas fa-server" aria-hidden="true"></i></div><div><div class="fact-label">HomeLab</div><div class="fact-value">Proxmox VE Cluster</div></div><div class="fact-extra">10&nbsp;LXC &amp; 2&nbsp;VM</div></div>
-          <div class="fact"><div class="fact-icon"><i class="fas fa-language" aria-hidden="true"></i></div><div><div class="fact-label">Sprachen</div><div class="fact-value">Deutsch · Englisch · Französisch · Russisch</div></div><div class="fact-extra">DE/EN/FR/RU</div></div>
-          <div class="fact"><div class="fact-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div><div><div class="fact-label">Standort</div><div class="fact-value">Dormagen, NRW</div></div><div class="fact-extra">41540</div></div>
+      <div class="tile span-4">
+        <div class="tile-label">Tech-Stack</div>
+        <div class="tags">
+          <span class="tag">Linux</span><span class="tag">Proxmox VE</span><span class="tag">Docker</span>
+          <span class="tag">WireGuard</span><span class="tag">NinjaOne</span><span class="tag">Java</span>
+          <span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">SQL</span><span class="tag">Git</span>
         </div>
       </div>
-    </section>
 
-    <!-- ============== SKILLS ============== -->
-    <section id="skills">
-      <div class="section-head">
-        <span class="section-num">03 ·</span>
-        <h2 class="section-title">Fähigkeiten</h2>
-        <span class="section-kicker">Stack &amp; Erfahrungstiefe</span>
-      </div>
-
-      <div class="skills-grid reveal">
-        <div class="skill-block">
-          <div class="skill-head"><div class="skill-head-icon"><i class="fas fa-server" aria-hidden="true"></i></div><h3>Systemadministration</h3><span class="count">5 Tools</span></div>
-          <div class="skill-row"><span class="name">Linux (Debian / Ubuntu)</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Proxmox VE</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Docker / LXC</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">NinjaOne RMM</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">WireGuard / VPN</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-        </div>
-
-        <div class="skill-block">
-          <div class="skill-head"><div class="skill-head-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div><h3>Netzwerk &amp; Dienste</h3><span class="count">3 Tools</span></div>
-          <div class="skill-row"><span class="name">DNS / DHCP</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Samba / NAS</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Firewall / Routing</span><div class="lvl"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></div>
-        </div>
-
-        <div class="skill-block">
-          <div class="skill-head"><div class="skill-head-icon"><i class="fas fa-code" aria-hidden="true"></i></div><h3>Programmiersprachen</h3><span class="count">5 Sprachen</span></div>
-          <div class="skill-row"><span class="name">Java</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">JavaScript</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Groovy</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">PHP</span><div class="lvl"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">C++</span><div class="lvl"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></div>
-        </div>
-
-        <div class="skill-block">
-          <div class="skill-head"><div class="skill-head-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div><h3>Web &amp; Frameworks</h3><span class="count">4 Tools</span></div>
-          <div class="skill-row"><span class="name">HTML5 / CSS3</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">React.js</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Grails Framework</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Express / Node.js</span><div class="lvl"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></div>
-        </div>
-
-        <div class="skill-block skill-block--wide">
-          <div class="skill-head"><div class="skill-head-icon"><i class="fas fa-database" aria-hidden="true"></i></div><h3>Datenbanken &amp; Tools</h3><span class="count">3 Tools</span></div>
-          <div class="skill-row"><span class="name">SQL</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
-          <div class="skill-row"><span class="name">MongoDB</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div></div>
-          <div class="skill-row"><span class="name">Git</span><div class="lvl"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on peak"></span><span></span></div></div>
+      <div class="tile span-3 now-tile">
+        <div class="tile-label" data-i18n="now.label">Aktuell</div>
+        <div>
+          <div class="role" data-i18n-html="now.role">Junior IT-Sysadmin<br />@ Fusion IT</div>
+          <div class="meta" data-i18n="now.meta">seit Januar 2026 · Langenfeld</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============== PROJECTS ============== -->
-    <section id="projects">
-      <div class="section-head">
-        <span class="section-num">04 ·</span>
-        <h2 class="section-title">Projekte</h2>
-        <span class="section-kicker">Ausgewählte Arbeiten</span>
+  <!-- ============ Über mich ============ -->
+  <section id="about" data-screen-label="Über mich">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2 data-i18n="about.title">Über mich</h2>
+      <span class="kicker" data-i18n="about.kicker">Hintergrund &amp; Werte</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-7 about-text">
+        <p data-i18n="about.p1">Ich bin ausgebildeter Fachinformatiker für Anwendungsentwicklung und arbeite als Junior IT-Systemadministrator bei Fusion IT in Langenfeld. Meine Stärken: Administration von IT-Infrastrukturen, Netzwerktechnik und die Automatisierung wiederkehrender Aufgaben.</p>
+        <p data-i18n="about.p2">Den Sprung von der Anwendungsentwicklung in die Administration habe ich bewusst gewählt — weil mich die Frage interessiert, wie Systeme stabil, sicher und beobachtbar bleiben, wenn echte Last darauf liegt.</p>
+        <p data-i18n="about.p3">In meiner Freizeit betreibe ich ein eigenes HomeLab auf Proxmox VE: Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer — jeder Container ist ein Experiment, das mir hilft, Linux, Virtualisierung und Networking weiter zu vertiefen.</p>
       </div>
-
-      <div class="projects-grid reveal">
-        <div class="project feature">
-          <div class="project-hero project-hero-grad-3">
-            <span class="project-status live">Live</span>
-            <i class="fas fa-server" aria-hidden="true"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2022 — heute</span><span class="dot"></span><span>Personal · Infrastructure</span></div>
-            <h3>HomeLab — Proxmox VE Cluster</h3>
-            <p>Mein selbst gehostetes Labor: ein Proxmox-VE-Knoten mit zehn LXC-Containern für Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer und Docker-Workloads. Vaultwarden ersetzt den Cloud-Passwort-Manager, WireGuard öffnet einen sicheren Tunnel von unterwegs.</p>
-            <div class="project-stats">
-              <div class="project-stat"><span class="project-stat-num">10</span><span class="project-stat-label">LXC Container</span></div>
-              <div class="project-stat"><span class="project-stat-num">2</span><span class="project-stat-label">VMs</span></div>
-              <div class="project-stat"><span class="project-stat-num">~3 J.</span><span class="project-stat-label">Uptime gesamt</span></div>
-              <div class="project-stat"><span class="project-stat-num">täglich</span><span class="project-stat-label">Snapshots</span></div>
-            </div>
-            <div class="tags">
-              <span class="tag">Proxmox VE</span><span class="tag">Linux / Debian</span><span class="tag">LXC</span>
-              <span class="tag">WireGuard</span><span class="tag">Vaultwarden</span><span class="tag">Samba</span><span class="tag">Portainer</span>
-            </div>
-            <div class="project-foot">
-              <a class="project-link" href="https://github.com/rxf-sys/homelab" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
-            </div>
-          </div>
+      <div class="tile span-5">
+        <div class="fact">
+          <div class="fact-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+          <div><div class="k" data-i18n="fact.now">Aktuell</div><div class="v">Junior IT-Sysadmin · Fusion IT</div></div>
         </div>
-
-        <div class="project">
-          <div class="project-hero project-hero-grad-1">
-            <span class="project-status done">Bestanden</span>
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2025</span><span class="dot"></span><span>IHK Köln</span></div>
-            <h3>IHK Abschlussprojekt</h3>
-            <p>Dokumentation und Umsetzung meines Projekts für die IHK-Abschlussprüfung als Fachinformatiker für Anwendungsentwicklung &mdash; mit Groovy-Backend und Bootstrap-Frontend.</p>
-            <div class="tags"><span class="tag">Groovy</span><span class="tag">JavaScript</span><span class="tag">Grails</span><span class="tag">Bootstrap</span></div>
-            <div class="project-foot">
-              <a class="project-link" href="/assets/pdf/Projektdokumentation.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> Dokumentation</a>
-            </div>
-          </div>
+        <div class="fact">
+          <div class="fact-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+          <div><div class="k" data-i18n="fact.degree">Abschluss</div><div class="v" data-i18n="fact.degreeV">Fachinformatiker AE · 2025</div></div>
         </div>
-
-        <div class="project">
-          <div class="project-hero project-hero-grad-2">
-            <span class="project-status done">Abgeschlossen</span>
-            <i class="fas fa-magic" aria-hidden="true"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2023</span><span class="dot"></span><span>Smart Home</span></div>
-            <h3>MagicMirror</h3>
-            <p>Selbst gebauter MagicMirror auf einem Raspberry Pi mit eigens entwickelten Modulen für personalisierte Anzeigen und Smart-Home-Integration im Hausnetz.</p>
-            <div class="project-stats">
-              <div class="project-stat"><span class="project-stat-num">Pi 4</span><span class="project-stat-label">Hardware</span></div>
-              <div class="project-stat"><span class="project-stat-num">2</span><span class="project-stat-label">eigene Module</span></div>
-              <div class="project-stat"><span class="project-stat-num">24/7</span><span class="project-stat-label">Betrieb</span></div>
-            </div>
-            <div class="tags"><span class="tag">JavaScript</span><span class="tag">Raspberry Pi</span></div>
-          </div>
+        <div class="fact">
+          <div class="fact-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+          <div><div class="k">HomeLab</div><div class="v">Proxmox VE · 10 LXC &amp; 2 VM</div></div>
         </div>
-
-        <div class="project">
-          <div class="project-hero project-hero-grad-4">
-            <span class="project-status live">Live</span>
-            <i class="fas fa-globe" aria-hidden="true"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2025</span><span class="dot"></span><span>Diese Seite</span></div>
-            <h3>Portfolio-Website</h3>
-            <p>Diese responsive Portfolio-Website &mdash; statisches HTML/CSS/JS, ohne Build-Tools, gehostet auf meinem HomeLab Server mit eigener Domain via Cloudflare Tunnel.</p>
-            <div class="project-stats">
-              <div class="project-stat"><span class="project-stat-num">0</span><span class="project-stat-label">Build-Steps</span></div>
-              <div class="project-stat"><span class="project-stat-num">3</span><span class="project-stat-label">Dateien</span></div>
-              <div class="project-stat"><span class="project-stat-num">100 %</span><span class="project-stat-label">statisch</span></div>
-            </div>
-            <div class="tags"><span class="tag">HTML5 / CSS3</span><span class="tag">JavaScript</span><span class="tag">GitHub Pages</span></div>
-            <div class="project-foot">
-              <a class="project-link" href="https://github.com/rxf-sys/portfolio.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a>
-            </div>
-          </div>
+        <div class="fact">
+          <div class="fact-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
+          <div><div class="k" data-i18n="fact.lang">Sprachen</div><div class="v">DE · EN · FR · RU</div></div>
         </div>
-
-        <div class="project">
-          <div class="project-hero project-hero-grad-1">
-            <span class="project-status dev">In Arbeit</span>
-            <i class="fas fa-robot" aria-hidden="true"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2026</span><span class="dot"></span><span>NinjaOne · Automation</span></div>
-            <h3>RMM-Automatisierung</h3>
-            <p>NinjaOne-Scripting-Bibliothek für wiederkehrende Wartungsaufgaben: Patch-Reports, Disk-Health-Checks und Software-Inventar &mdash; in PowerShell und Bash.</p>
-            <div class="tags"><span class="tag">PowerShell</span><span class="tag">Bash</span><span class="tag">NinjaOne</span></div>
-          </div>
+        <div class="fact">
+          <div class="fact-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
+          <div><div class="k" data-i18n="fact.loc">Standort</div><div class="v">Dormagen, NRW</div></div>
         </div>
       </div>
-    </section>
-
-    <!-- ============== CERTIFICATES ============== -->
-    <section id="certificates">
-      <div class="section-head">
-        <span class="section-num">05 ·</span>
-        <h2 class="section-title">Zertifikate</h2>
-        <span class="section-kicker">Abschlüsse &amp; Weiterbildung</span>
+      <div class="tile span-12 quote-tile">
+        <blockquote data-i18n="about.quote">„Die beste Infrastruktur ist die, die niemand bemerkt — weil sie einfach läuft."</blockquote>
+        <cite data-i18n="about.quoteSrc">— Mein Anspruch</cite>
       </div>
+    </div>
+  </section>
 
-      <div class="certs-grid reveal">
-        <div class="cert">
-          <div class="cert-mark"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-          <div>
-            <h3>Fachinformatiker für Anwendungsentwicklung</h3>
-            <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i> IHK Köln</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i> August 2025</span></div>
-            <p>Abgeschlossene Berufsausbildung bei INEOS Manufacturing Deutschland GmbH &mdash; mit Note &bdquo;bestanden&ldquo;.</p>
-          </div>
+  <!-- ============ Skills ============ -->
+  <section id="skills" data-screen-label="Skills">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2 data-i18n="skills.title">Fähigkeiten</h2>
+      <span class="kicker" data-i18n="skills.kicker">Stack &amp; Praxis</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-6 skill-tile tile-hover">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+          <h3 data-i18n="skills.g1">Systemadministration</h3>
+          <span class="skill-freq freq-daily" data-i18n="skills.daily">Täglich</span>
         </div>
-
-        <div class="cert">
-          <div class="cert-mark"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-          <div>
-            <h3>NinjaOne Certified Technician | MSP</h3>
-            <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i> NinjaOne</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i> 2025</span></div>
-            <p>Zertifizierung als NinjaOne-Techniker für Managed Service Provider.</p>
-            <button class="cert-view" data-img="/assets/images/ninjaone_certified_technician_msp.png" data-alt="NinjaOne Certified Technician MSP"><i class="fas fa-eye" aria-hidden="true"></i> Zertifikat anzeigen</button>
-          </div>
-        </div>
-
-        <div class="cert">
-          <div class="cert-mark"><i class="fas fa-robot" aria-hidden="true"></i></div>
-          <div>
-            <h3>NinjaOne Automation Specialist</h3>
-            <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i> NinjaOne</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i> 2025</span></div>
-            <p>Spezialisierung auf IT-Automatisierung und Scripting mit der NinjaOne-Plattform.</p>
-            <button class="cert-view" data-img="/assets/images/ninjaone_automation_specialist.png" data-alt="NinjaOne Automation Specialist"><i class="fas fa-eye" aria-hidden="true"></i> Zertifikat anzeigen</button>
-          </div>
-        </div>
-
-        <div class="cert">
-          <div class="cert-mark"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-          <div>
-            <h3>Allgemeine Fachhochschulreife</h3>
-            <div class="cert-meta"><span><i class="fas fa-school" aria-hidden="true"></i> BBS Gerolstein</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i> 2022</span></div>
-            <p>Schwerpunkt Wirtschaft und Verwaltung &mdash; Grundlage für die spätere IHK-Ausbildung.</p>
-          </div>
+        <div class="tags">
+          <span class="tag">Linux (Debian / Ubuntu)</span><span class="tag">Proxmox VE</span>
+          <span class="tag">NinjaOne RMM</span><span class="tag">Docker / LXC</span><span class="tag">WireGuard / VPN</span>
         </div>
       </div>
-    </section>
+      <div class="tile span-6 skill-tile tile-hover">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+          <h3 data-i18n="skills.g2">Netzwerk &amp; Dienste</h3>
+          <span class="skill-freq freq-daily" data-i18n="skills.daily2">Täglich</span>
+        </div>
+        <div class="tags">
+          <span class="tag">DNS / DHCP</span><span class="tag">Samba / NAS</span><span class="tag">Firewall / Routing</span>
+        </div>
+      </div>
+      <div class="tile span-6 skill-tile tile-hover">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+          <h3 data-i18n="skills.g3">Entwicklung</h3>
+          <span class="skill-freq freq-regular" data-i18n="skills.regular">Regelmäßig</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">Groovy / Grails</span>
+          <span class="tag">React</span><span class="tag">PHP</span><span class="tag">HTML5 / CSS3</span>
+        </div>
+      </div>
+      <div class="tile span-6 skill-tile tile-hover">
+        <div class="skill-top">
+          <div class="skill-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+          <h3 data-i18n="skills.g4">Daten &amp; Tools</h3>
+          <span class="skill-freq freq-regular" data-i18n="skills.regular2">Regelmäßig</span>
+        </div>
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">MongoDB</span><span class="tag">Git</span>
+          <span class="tag">PowerShell</span><span class="tag">Bash</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ============== EXPERIENCE ============== -->
-    <section id="experience">
-      <div class="section-head">
-        <span class="section-num">06 ·</span>
-        <h2 class="section-title">Werdegang</h2>
-        <span class="section-kicker">Beruf &amp; Schule, chronologisch</span>
+  <!-- ============ Projekte ============ -->
+  <section id="projects" data-screen-label="Projekte">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2 data-i18n="projects.title">Projekte</h2>
+      <span class="kicker" data-i18n="projects.kicker">Ausgewählte Arbeiten</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-8 project-tile project-feature tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+          <span class="project-status st-live">Live</span>
+        </div>
+        <h3>HomeLab — Proxmox VE Cluster</h3>
+        <div class="project-meta" data-i18n="proj.home.meta">2022 — heute · Personal · Infrastructure</div>
+        <p data-i18n="proj.home.desc">Mein selbst gehostetes Labor: ein Proxmox-VE-Knoten mit zehn LXC-Containern für Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer und Docker-Workloads. Vaultwarden ersetzt den Cloud-Passwort-Manager, WireGuard öffnet einen sicheren Tunnel von unterwegs.</p>
+        <div class="feature-stats">
+          <div class="feature-stat"><div class="num">10</div><div class="lbl">LXC Container</div></div>
+          <div class="feature-stat"><div class="num">2</div><div class="lbl">VMs</div></div>
+          <div class="feature-stat"><div class="num" data-i18n="proj.home.s3n">~3 J.</div><div class="lbl" data-i18n="proj.home.s3l">Uptime gesamt</div></div>
+          <div class="feature-stat"><div class="num" data-i18n="proj.home.s4n">täglich</div><div class="lbl">Snapshots</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">Proxmox VE</span><span class="tag">Debian</span><span class="tag">LXC</span>
+          <span class="tag">WireGuard</span><span class="tag">Vaultwarden</span><span class="tag">Samba</span>
+        </div>
       </div>
 
-      <div class="reveal">
-        <div class="tl-section-label">Beruflich</div>
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+          <span class="project-status st-wip" data-i18n="proj.st.wip">In Arbeit</span>
+        </div>
+        <h3>RMM-Automatisierung</h3>
+        <div class="project-meta">2026 · NinjaOne · Automation</div>
+        <p data-i18n="proj.rmm.desc">NinjaOne-Scripting-Bibliothek für wiederkehrende Wartungsaufgaben: Patch-Reports, Disk-Health-Checks und Software-Inventar — in PowerShell und Bash.</p>
+        <div class="tags"><span class="tag">PowerShell</span><span class="tag">Bash</span><span class="tag">NinjaOne</span></div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></div>
+          <span class="project-status st-done" data-i18n="proj.st.done">Abgeschlossen</span>
+        </div>
+        <h3>MagicMirror</h3>
+        <div class="project-meta">2023 · Smart Home</div>
+        <p data-i18n="proj.mm.desc">Selbst gebauter MagicMirror auf einem Raspberry Pi 4 mit zwei eigens entwickelten Modulen für personalisierte Anzeigen und Smart-Home-Integration.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Raspberry Pi</span></div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+          <span class="project-status st-live">Live</span>
+        </div>
+        <h3 data-i18n="proj.pf.title">Portfolio-Website</h3>
+        <div class="project-meta" data-i18n="proj.pf.meta">2025 · Diese Seite</div>
+        <p data-i18n="proj.pf.desc">Diese Website — statisches HTML/CSS/JS ohne Build-Tools, self-hosted auf dem eigenen HomeLab-Server mit eigener Domain via Cloudflare Tunnel.</p>
+        <div class="tags"><span class="tag">HTML5 / CSS3</span><span class="tag">JavaScript</span><span class="tag">Caddy</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rxf-sys/portfolio.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a>
+        </div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+          <span class="project-status st-done" data-i18n="proj.st.passed">Bestanden</span>
+        </div>
+        <h3 data-i18n="proj.ihk.title">IHK-Abschlussprojekt</h3>
+        <div class="project-meta">2025 · IHK Köln</div>
+        <p data-i18n="proj.ihk.desc">Dokumentation und Umsetzung meines Abschlussprojekts als Fachinformatiker für Anwendungsentwicklung — mit Groovy-Backend und Bootstrap-Frontend.</p>
+        <div class="tags"><span class="tag">Groovy</span><span class="tag">Grails</span><span class="tag">Bootstrap</span></div>
+        <div class="project-links">
+          <a href="/assets/pdf/Projektdokumentation.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> <span data-i18n="proj.ihk.link">Dokumentation</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Zertifikate ============ -->
+  <section id="certificates" data-screen-label="Zertifikate">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2 data-i18n="certs.title">Zertifikate</h2>
+      <span class="kicker" data-i18n="certs.kicker">Abschlüsse &amp; Weiterbildung</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-6 cert-tile tile-hover">
+        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+        <div>
+          <h3 data-i18n="cert1.title">Fachinformatiker für Anwendungsentwicklung</h3>
+          <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i>IHK Köln</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i><span data-i18n="cert1.date">August 2025</span></span></div>
+          <p data-i18n="cert1.desc">Abgeschlossene Berufsausbildung bei INEOS Manufacturing Deutschland GmbH.</p>
+        </div>
+      </div>
+      <div class="tile span-6 cert-tile tile-hover">
+        <div class="cert-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+        <div>
+          <h3>NinjaOne Certified Technician | MSP</h3>
+          <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i>NinjaOne</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i>2025</span></div>
+          <p data-i18n="cert2.desc">Zertifizierung als NinjaOne-Techniker für Managed Service Provider.</p>
+          <button type="button" class="cert-view" data-img="/assets/images/ninjaone_certified_technician_msp.png" data-alt="NinjaOne Certified Technician MSP"><i class="fas fa-eye" aria-hidden="true"></i> <span data-i18n="certs.view">Zertifikat anzeigen</span></button>
+        </div>
+      </div>
+      <div class="tile span-6 cert-tile tile-hover">
+        <div class="cert-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+        <div>
+          <h3>NinjaOne Automation Specialist</h3>
+          <div class="cert-meta"><span><i class="fas fa-building" aria-hidden="true"></i>NinjaOne</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i>2025</span></div>
+          <p data-i18n="cert3.desc">Spezialisierung auf IT-Automatisierung und Scripting mit der NinjaOne-Plattform.</p>
+          <button type="button" class="cert-view" data-img="/assets/images/ninjaone_automation_specialist.png" data-alt="NinjaOne Automation Specialist"><i class="fas fa-eye" aria-hidden="true"></i> <span data-i18n="certs.view2">Zertifikat anzeigen</span></button>
+        </div>
+      </div>
+      <div class="tile span-6 cert-tile tile-hover">
+        <div class="cert-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+        <div>
+          <h3 data-i18n="cert4.title">Allgemeine Fachhochschulreife</h3>
+          <div class="cert-meta"><span><i class="fas fa-school" aria-hidden="true"></i>BBS Gerolstein</span><span><i class="fas fa-calendar-alt" aria-hidden="true"></i>2022</span></div>
+          <p data-i18n="cert4.desc">Schwerpunkt Wirtschaft und Verwaltung — Grundlage für die spätere IHK-Ausbildung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Werdegang ============ -->
+  <section id="experience" data-screen-label="Werdegang">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2 data-i18n="cv.title">Werdegang</h2>
+      <span class="kicker" data-i18n="cv.kicker">Beruf &amp; Schule, chronologisch</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-7">
+        <div class="tl-group-label" data-i18n="cv.work">Beruflich</div>
         <div class="timeline">
           <div class="tl-item current">
-            <div class="tl-dot"></div>
-            <div class="tl-date">Jan 2026 — heute</div>
-            <div class="tl-content">
-              <div class="tl-title">Fusion IT, Langenfeld <span class="tl-tag">Aktuell</span></div>
-              <div class="tl-role">Junior IT-Systemadministrator &mdash; Betreuung von Kunden-Infrastrukturen, RMM, Onboarding.</div>
-            </div>
+            <span class="tl-dot"></span>
+            <div class="tl-date" data-i18n="cv.j1.date">Jan 2026 — heute</div>
+            <div class="tl-title">Fusion IT, Langenfeld <span class="tl-tag" data-i18n="cv.current">Aktuell</span></div>
+            <div class="tl-role" data-i18n="cv.j1.role">Junior IT-Systemadministrator — Betreuung von Kunden-Infrastrukturen, RMM, Onboarding.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">Sep 2022 — Aug 2025</div>
-            <div class="tl-content">
-              <div class="tl-title">INEOS Manufacturing Deutschland GmbH</div>
-              <div class="tl-role">Ausbildung zum Fachinformatiker für Anwendungsentwicklung.</div>
-            </div>
+            <div class="tl-title">INEOS Manufacturing Deutschland GmbH</div>
+            <div class="tl-role" data-i18n="cv.j2.role">Ausbildung zum Fachinformatiker für Anwendungsentwicklung.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">Mai — Aug 2021</div>
-            <div class="tl-content">
-              <div class="tl-title">HIT Handelsgruppe GmbH &amp; Co. KG</div>
-              <div class="tl-role">Nebentätigkeit als Kassierer und in der Warenverräumung.</div>
-            </div>
+            <div class="tl-title">HIT Handelsgruppe GmbH &amp; Co. KG</div>
+            <div class="tl-role" data-i18n="cv.j3.role">Nebentätigkeit als Kassierer und in der Warenverräumung.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">August 2020</div>
-            <div class="tl-content">
-              <div class="tl-title">TofuTown GmbH</div>
-              <div class="tl-role">Ferienjob als Waren-Verpacker und Qualitätsprüfer.</div>
-            </div>
+            <div class="tl-title">TofuTown GmbH</div>
+            <div class="tl-role" data-i18n="cv.j4.role">Ferienjob als Waren-Verpacker und Qualitätsprüfer.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">April 2018</div>
-            <div class="tl-content">
-              <div class="tl-title">Johann Energie GmbH</div>
-              <div class="tl-role">Schülerpraktikum im kaufmännischen und technischen Bereich.</div>
-            </div>
+            <div class="tl-title">Johann Energie GmbH</div>
+            <div class="tl-role" data-i18n="cv.j5.role">Schülerpraktikum im kaufmännischen und technischen Bereich.</div>
           </div>
         </div>
-
-        <div class="tl-section-label">Schulisch</div>
+      </div>
+      <div class="tile span-5">
+        <div class="tl-group-label" data-i18n="cv.school">Schulisch</div>
         <div class="timeline">
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">2019 — 2022</div>
-            <div class="tl-content">
-              <div class="tl-title">BBS Gerolstein</div>
-              <div class="tl-role">Allgemeine Fachhochschulreife &mdash; Schwerpunkt Informatik.</div>
-            </div>
+            <div class="tl-title">BBS Gerolstein</div>
+            <div class="tl-role" data-i18n="cv.s1.role">Allgemeine Fachhochschulreife — Schwerpunkt Informatik.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">2013 — 2019</div>
-            <div class="tl-content">
-              <div class="tl-title">Drei-Maare-Realschule plus Daun</div>
-              <div class="tl-role">Sekundarabschluss 1.</div>
-            </div>
+            <div class="tl-title">Drei-Maare-Realschule plus Daun</div>
+            <div class="tl-role" data-i18n="cv.s2.role">Sekundarabschluss I.</div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot"></div>
+            <span class="tl-dot"></span>
             <div class="tl-date">2009 — 2013</div>
-            <div class="tl-content">
-              <div class="tl-title">Ganztagsgrundschule Mehren</div>
-              <div class="tl-role">Grundschulabschluss.</div>
-            </div>
+            <div class="tl-title">Ganztagsgrundschule Mehren</div>
+            <div class="tl-role" data-i18n="cv.s3.role">Grundschulabschluss.</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============== CONTACT ============== -->
-    <section id="contact">
-      <div class="section-head">
-        <span class="section-num">07 ·</span>
-        <h2 class="section-title">Kontakt</h2>
-        <span class="section-kicker">Lass uns sprechen</span>
-      </div>
-
-      <div class="contact-card reveal">
-        <div class="contact-grid">
-          <div>
-            <h2>Schreib mir &mdash;<br>ich melde mich <span class="accent">zurück</span>.</h2>
-            <p class="lede">Egal ob Festanstellung, Projektarbeit oder einfach ein guter Austausch zu HomeLab, Linux oder Automatisierung &mdash; ich freue mich, von dir zu hören.</p>
-            <div class="contact-actions">
-              <a href="mailto:info@rxf-sys.de" class="btn btn-primary"><i class="fas fa-envelope" aria-hidden="true"></i> E-Mail schreiben</a>
-              <a href="https://www.linkedin.com/in/robin-frank-987b26350/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
-            </div>
-          </div>
-
-          <div class="contact-info">
-            <div class="ci-item"><div class="ci-label"><i class="fas fa-envelope" aria-hidden="true"></i> E-Mail</div><div class="ci-value"><a href="mailto:info@rxf-sys.de">info@rxf-sys.de</a></div></div>
-            <div class="ci-item"><div class="ci-label"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Region</div><div class="ci-value">Dormagen, NRW &mdash; remote &amp; vor Ort</div></div>
-            <div class="ci-item"><div class="ci-label"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</div><div class="ci-value"><a href="https://www.linkedin.com/in/robin-frank-987b26350/" target="_blank" rel="noopener noreferrer">robin-frank</a></div></div>
-            <div class="ci-item"><div class="ci-label"><i class="fas fa-clock" aria-hidden="true"></i> Antwortzeit</div><div class="ci-value">Üblicherweise innerhalb von 24h</div></div>
-          </div>
+  <!-- ============ Kontakt ============ -->
+  <section id="contact" data-screen-label="Kontakt">
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2 data-i18n="contact.title">Kontakt</h2>
+      <span class="kicker" data-i18n="contact.kicker">Lass uns sprechen</span>
+    </div>
+    <div class="bento reveal">
+      <div class="tile span-7 contact-tile">
+        <h2 data-i18n-html="contact.head">Schreib mir —<br />ich melde mich <span class="hl">zurück</span>.</h2>
+        <p class="contact-lede" data-i18n="contact.lede">Egal ob Festanstellung, Projektarbeit oder einfach ein guter Austausch zu HomeLab, Linux oder Automatisierung — ich freue mich, von dir zu hören.</p>
+        <div class="hero-cta">
+          <a href="mailto:info@rxf-sys.de" class="btn btn-primary"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="contact.cta1">E-Mail schreiben</span></a>
+          <a href="https://www.linkedin.com/in/robin-frank-987b26350/" target="_blank" rel="noopener noreferrer" class="btn btn-soft"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
         </div>
       </div>
-    </section>
-
-    <footer>
-      <div>&copy; 2026 Robin Frank &mdash; Alle Rechte vorbehalten</div>
-      <div class="foot-meta">
-        <a href="/impressum.html">Impressum</a>
-        <span>·</span>
-        <a href="/datenschutz.html">Datenschutz</a>
-        <span>·</span>
-        <a href="#home">Zurück nach oben</a>
-        <span>·</span>
-        <a href="https://github.com/rxf-sys/portfolio.rxf-sys.de" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <div class="tile span-5">
+        <div class="ci-item"><div class="ci-label"><i class="fas fa-envelope" aria-hidden="true"></i>E-Mail</div><div class="ci-value"><a href="mailto:info@rxf-sys.de">info@rxf-sys.de</a></div></div>
+        <div class="ci-item"><div class="ci-label"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span data-i18n="contact.region">Region</span></div><div class="ci-value" data-i18n="contact.regionV">Dormagen, NRW — remote &amp; vor Ort</div></div>
+        <div class="ci-item"><div class="ci-label"><i class="fab fa-github" aria-hidden="true"></i>GitHub</div><div class="ci-value"><a href="https://github.com/rxf-sys" target="_blank" rel="noopener noreferrer">rxf-sys</a></div></div>
+        <div class="ci-item"><div class="ci-label"><i class="fas fa-clock" aria-hidden="true"></i><span data-i18n="contact.response">Antwortzeit</span></div><div class="ci-value" data-i18n="contact.responseV">Üblicherweise innerhalb von 24h</div></div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-  </main>
+  <footer>
+    <div class="footer-row">
+      <span data-i18n="footer.copy">© 2026 Robin Frank — Alle Rechte vorbehalten</span>
+      <div class="footer-links">
+        <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
+        <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+        <a href="https://github.com/rxf-sys/portfolio.rxf-sys.de" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#home" data-i18n="footer.top">Nach oben</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============ Cert-Lightbox ============ -->
+<div class="modal" id="certModal" role="dialog" aria-modal="true" aria-label="Zertifikat-Großansicht" hidden>
+  <button type="button" class="modal-close" id="certClose" aria-label="Schließen">&times;</button>
+  <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 
-<!-- Cert lightbox -->
-<div class="modal" id="certModal" role="dialog" aria-modal="true" aria-hidden="true">
-  <button class="modal-close" id="certClose" aria-label="Schließen">&times;</button>
-  <img id="certImg" src="" alt="" />
-</div>
-
-<script src="/index.js?v=2026-05-07"></script>
+<script src="/index.js?v=2026-06-11"></script>
 </body>
 </html>
