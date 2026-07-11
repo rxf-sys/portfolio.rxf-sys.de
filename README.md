@@ -8,8 +8,9 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
 
 ## Features
 
-- **Design „Bento / Soft Modern"** — 12-Spalten-Bento-Grid, Palette
-  Navy / Slate / Blau-Grau / Sand, Bricolage Grotesque + Manrope
+- **Design „Bento / Soft Modern"** — 12-Spalten-Bento-Grid, Farbpalette
+  des eigenen RMM-Tools („Uxintace sunset": Navy / Peach / Terracotta),
+  Bricolage Grotesque + Manrope
 - **Dark Mode** — folgt initial `prefers-color-scheme`, umschaltbar und
   persistent; ohne Theme-Flash dank Inline-Init im `<head>` (per CSP-Hash
   freigegeben, kein `unsafe-inline`)

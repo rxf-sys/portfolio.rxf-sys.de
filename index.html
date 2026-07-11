@@ -11,8 +11,8 @@
 <meta name="robots" content="index, follow" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta name="theme-color" content="#E8ECF1" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#050E22" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#EDE9E4" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14162B" media="(prefers-color-scheme: dark)" />
 <link rel="canonical" href="https://portfolio.rxf-sys.de/" />
 
 <meta property="og:type" content="website" />
@@ -43,7 +43,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/index.css?v=2026-06-11" />
+<link rel="stylesheet" href="/index.css?v=2026-07-11" />
 <noscript><style>.reveal,.reveal .tile,.reveal .tl-item{opacity:1!important;transform:none!important}.reveal .timeline::before{transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
@@ -67,7 +67,7 @@
     "https://www.xing.com/profile/Robin_Frank097779"
   ],
   "alumniOf": { "@type": "EducationalOrganization", "name": "BBS Gerolstein" },
-  "knowsAbout": ["Linux","Proxmox VE","Netzwerktechnik","Docker","WireGuard","NinjaOne","Java","JavaScript","React","PHP","Groovy","HTML5","CSS3","SQL","MongoDB","Git","PowerShell","Bash"],
+  "knowsAbout": ["Linux","Proxmox VE","Netzwerktechnik","Docker","WireGuard","NinjaOne","Java","JavaScript","TypeScript","React","Python","FastAPI","Go","PHP","Groovy","HTML5","CSS3","SQL","MongoDB","PostgreSQL","Git","PowerShell","Bash"],
   "worksFor": { "@type": "Organization", "name": "Fusion IT" },
   "description": "Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung mit Expertise in Systemadministration, Netzwerktechnik und Automatisierung."
 }
@@ -276,6 +276,48 @@
         <div class="tags">
           <span class="tag">Proxmox VE</span><span class="tag">Debian</span><span class="tag">LXC</span>
           <span class="tag">WireGuard</span><span class="tag">Vaultwarden</span><span class="tag">Samba</span>
+        </div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-tower-broadcast" aria-hidden="true"></i></div>
+          <span class="project-status st-wip" data-i18n="proj.st.wip2">In Arbeit</span>
+        </div>
+        <h3>Ryntra — RMM-Plattform</h3>
+        <div class="project-meta">2026 · Self-hosted · rmm.rxf-sys.de</div>
+        <p data-i18n="proj.ryntra.desc">Schlankes selbst gehostetes RMM-Tool: FastAPI-Server, React-Dashboard und ein Go-Agent als einzelne statische Binary. Agents verbinden sich ausgehend per WebSocket — Geräte brauchen keine offenen Ports.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">React / TS</span><span class="tag">Go</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rxf-sys/rmm.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a>
+        </div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-gauge-high" aria-hidden="true"></i></div>
+          <span class="project-status st-live">Live</span>
+        </div>
+        <h3>Admin-Dashboard</h3>
+        <div class="project-meta">2026 · Self-hosted · admin.rxf-sys.de</div>
+        <p data-i18n="proj.admin.desc">Monitoring-Dashboard für den Homeserver: überwacht Proxmox, Backups und Dienste mit Probe-Historien. FastAPI-Backend, React-Frontend und eigene Session-Auth mit Argon2id und Rollen.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">React / TS</span><span class="tag">Docker</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rxf-sys/admin.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a>
+        </div>
+      </div>
+
+      <div class="tile span-4 project-tile tile-hover">
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
+          <span class="project-status st-wip" data-i18n="proj.st.wip3">In Arbeit</span>
+        </div>
+        <h3>Orynthia — Finanz-App</h3>
+        <div class="project-meta">2026 · Self-hosted · Open Banking</div>
+        <p data-i18n="proj.ory.desc">Self-hosted Finanzverwaltung mit Open-Banking-Anbindung (PSD2): automatische Kategorisierung, Budgets, Verträge und Sparziele — React-Frontend, NestJS-Backend, PostgreSQL.</p>
+        <div class="tags"><span class="tag">React / TS</span><span class="tag">NestJS</span><span class="tag">PostgreSQL</span></div>
+        <div class="project-links">
+          <a href="https://github.com/rxf-sys/Orynthia" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a>
         </div>
       </div>
 
@@ -490,6 +532,6 @@
   <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 
-<script src="/index.js?v=2026-06-11"></script>
+<script src="/index.js?v=2026-07-11"></script>
 </body>
 </html>
