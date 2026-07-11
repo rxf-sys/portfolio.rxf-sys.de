@@ -42,6 +42,18 @@
     'proj.mm.desc': 'Self-built MagicMirror on a Raspberry Pi 4 with two custom modules for personalized displays and smart home integration.',
     'proj.pf.title': 'Portfolio website', 'proj.pf.meta': '2025 · This site',
     'proj.pf.desc': 'This website — static HTML/CSS/JS without build tools, self-hosted on my own HomeLab server with a custom domain via Cloudflare Tunnel.',
+    'demo.label': 'Interactive demo',
+    'demo.title': 'My apps — hands-on',
+    'demo.desc': 'Ryntra and Orynthia run right here as a clickable prototype with test data: no login, no backend — just take a look and click through.',
+    'demo.cta': 'Click through the prototype',
+    'demo.hint': 'Click through the tabs — all test data.',
+    'demo.switch': 'Switch to',
+    'demo.ry.s1': 'Devices online', 'demo.ry.s2': 'Warning', 'demo.ry.s3': 'Jobs today',
+    'demo.ry.offline': 'offline for 3 h',
+    'demo.ry.chart': 'Avg. cluster CPU load', 'demo.ry.now': 'now',
+    'demo.ry.done': 'Succeeded', 'demo.ry.running': 'Running', 'demo.ry.planned': 'Scheduled',
+    'demo.oy.tab3': 'Savings goals',
+    'demo.oy.s1': 'Total balance', 'demo.oy.s2': 'Income', 'demo.oy.s3': 'Expenses',
     'proj.ihk.title': 'IHK final project',
     'proj.ihk.desc': 'Documentation and implementation of my final project as an IT specialist for application development — with a Groovy backend and Bootstrap frontend.',
     'proj.ihk.link': 'Documentation',
@@ -276,6 +288,121 @@
         // Einziges fokussierbares Element im Dialog — Fokus dort halten
         e.preventDefault();
         certClose.focus();
+      }
+    });
+  }
+
+  /* ============ App-Demo: Carousel + klickbarer Prototyp ============ */
+  var demoStage = document.getElementById('demoStage');
+  var demoModal = document.getElementById('demoModal');
+  if (demoStage && demoModal) {
+    var demoSlides = Array.prototype.slice.call(demoStage.querySelectorAll('.demo-slide'));
+    var demoDots = Array.prototype.slice.call(document.querySelectorAll('.demo-dot'));
+    var demoCurrent = 0;
+    var demoTimer = null;
+
+    var demoGoTo = function (i) {
+      demoCurrent = (i + demoSlides.length) % demoSlides.length;
+      demoSlides.forEach(function (s, idx) { s.classList.toggle('active', idx === demoCurrent); });
+      demoDots.forEach(function (d, idx) { d.classList.toggle('active', idx === demoCurrent); });
+    };
+    var demoStop = function () { if (demoTimer) { clearInterval(demoTimer); demoTimer = null; } };
+    var demoStart = function () {
+      // Keine Auto-Rotation bei reduzierter Bewegung oder offenem Modal
+      if (reduceMotion || demoTimer || !demoModal.hidden) return;
+      demoTimer = setInterval(function () { demoGoTo(demoCurrent + 1); }, 7000);
+    };
+    demoDots.forEach(function (d, idx) {
+      d.addEventListener('click', function () { demoGoTo(idx); demoStop(); demoStart(); });
+    });
+    // Rotation pausiert, solange Maus oder Fokus auf der Bühne liegt
+    demoStage.addEventListener('mouseenter', demoStop);
+    demoStage.addEventListener('mouseleave', demoStart);
+    demoStage.addEventListener('focusin', demoStop);
+    demoStage.addEventListener('focusout', demoStart);
+    demoStart();
+
+    // Balken-Breiten/-Höhen aus data-Attributen setzen (kein Inline-Style im
+    // Markup — html-validate-Regel no-inline-style; CSS animiert via transform)
+    document.querySelectorAll('.proto .p-bar i[data-w]').forEach(function (el) {
+      el.style.width = el.getAttribute('data-w') + '%';
+    });
+    document.querySelectorAll('.proto .p-col[data-h]').forEach(function (el) {
+      el.style.setProperty('--h', el.getAttribute('data-h') + '%');
+    });
+
+    // Tabs beider Prototypen — funktionieren im Carousel und im Modal
+    document.querySelectorAll('.proto').forEach(function (proto) {
+      var tabs = Array.prototype.slice.call(proto.querySelectorAll('.p-tab'));
+      var views = Array.prototype.slice.call(proto.querySelectorAll('.proto-view'));
+      tabs.forEach(function (tab, idx) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          views.forEach(function (v) { v.classList.remove('active'); });
+          tab.classList.add('active');
+          if (views[idx]) views[idx].classList.add('active');
+        });
+      });
+    });
+
+    // Modal: der aktive Prototyp zieht in den Dialog um (kein doppeltes Markup);
+    // beim Schließen wandert er zurück in seinen Carousel-Slide.
+    var demoOpenBtn = document.getElementById('demoOpenBtn');
+    var demoHost = document.getElementById('demoHost');
+    var demoCloseBtn = document.getElementById('demoClose');
+    var demoTitle = document.getElementById('demoTitle');
+    var demoSwitch = document.getElementById('demoSwitch');
+    var demoSwitchName = document.getElementById('demoSwitchName');
+    var demoModalApp = 0;
+    var demoTrigger = null;
+
+    var demoUnmount = function () {
+      var mounted = demoHost.querySelector('.proto');
+      if (mounted && mounted._homeSlide) mounted._homeSlide.appendChild(mounted);
+    };
+    var demoMount = function (i) {
+      demoUnmount();
+      demoModalApp = (i + demoSlides.length) % demoSlides.length;
+      var slide = demoSlides[demoModalApp];
+      var proto = slide.querySelector('.proto');
+      proto._homeSlide = slide;
+      demoHost.appendChild(proto);
+      demoTitle.textContent = slide.getAttribute('data-app');
+      demoSwitchName.textContent = demoSlides[(demoModalApp + 1) % demoSlides.length].getAttribute('data-app');
+    };
+    var demoCloseModal = function () {
+      demoUnmount();
+      demoModal.classList.remove('open');
+      demoModal.hidden = true;
+      demoGoTo(demoModalApp); // Carousel zeigt die zuletzt betrachtete App
+      if (demoTrigger) { demoTrigger.focus(); demoTrigger = null; }
+      demoStart();
+    };
+    if (demoOpenBtn) {
+      demoOpenBtn.addEventListener('click', function () {
+        demoTrigger = demoOpenBtn;
+        demoStop();
+        demoMount(demoCurrent);
+        demoModal.hidden = false;
+        demoModal.classList.add('open');
+        demoCloseBtn.focus();
+      });
+    }
+    demoCloseBtn.addEventListener('click', demoCloseModal);
+    demoSwitch.addEventListener('click', function () { demoMount(demoModalApp + 1); });
+    demoModal.addEventListener('click', function (e) { if (e.target === demoModal) demoCloseModal(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (demoModal.hidden) return;
+      if (e.key === 'Escape') { demoCloseModal(); return; }
+      if (e.key === 'Tab') {
+        // Fokus im Dialog halten (Schließen, Tabs, Wechseln-Button)
+        var focusables = Array.prototype.slice.call(demoModal.querySelectorAll('button'));
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
   }

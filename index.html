@@ -43,7 +43,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/index.css?v=2026-07-11" />
+<link rel="stylesheet" href="/index.css?v=2026-07-11-2" />
 <noscript><style>.reveal,.reveal .tile,.reveal .tl-item{opacity:1!important;transform:none!important}.reveal .timeline::before{transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
@@ -370,6 +370,123 @@
           <a href="/assets/pdf/Projektdokumentation.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> <span data-i18n="proj.ihk.link">Dokumentation</span></a>
         </div>
       </div>
+
+      <!-- ============ Interaktive App-Demo (Carousel + Prototyp) ============ -->
+      <div class="tile span-12 demo-tile">
+        <div class="demo-info">
+          <div class="tile-label" data-i18n="demo.label">Interaktive Demo</div>
+          <h3 data-i18n="demo.title">Meine Apps — zum Anfassen</h3>
+          <p data-i18n="demo.desc">Ryntra und Orynthia laufen hier als klickbarer Prototyp mit Testdaten: kein Login, kein Backend — einfach reinschauen und durchklicken.</p>
+          <div class="demo-actions">
+            <button type="button" class="btn btn-primary" id="demoOpenBtn"><i class="fas fa-hand-pointer" aria-hidden="true"></i> <span data-i18n="demo.cta">Prototyp durchklicken</span></button>
+          </div>
+          <div class="demo-dots">
+            <button type="button" class="demo-dot active" data-slide="0">Ryntra RMM</button>
+            <button type="button" class="demo-dot" data-slide="1">Orynthia</button>
+          </div>
+        </div>
+
+        <div class="demo-stage" id="demoStage">
+          <div class="demo-slide active" data-app="Ryntra RMM">
+            <div class="proto proto-ryntra">
+              <div class="proto-top">
+                <span class="proto-brand"><span class="proto-logo"></span>Ryntra RMM</span>
+                <nav class="proto-tabs" aria-label="Ryntra Ansichten">
+                  <button type="button" class="p-tab active">Übersicht</button>
+                  <button type="button" class="p-tab">Geräte</button>
+                  <button type="button" class="p-tab">Jobs</button>
+                </nav>
+                <span class="p-badge"><span class="p-dot"></span>Demo</span>
+              </div>
+              <div class="proto-body">
+                <section class="proto-view active">
+                  <div class="p-stats">
+                    <div class="p-stat"><span class="p-num">12<span class="p-sub">/14</span></span><span class="p-lbl" data-i18n="demo.ry.s1">Geräte online</span></div>
+                    <div class="p-stat"><span class="p-num p-warn-tx">1</span><span class="p-lbl" data-i18n="demo.ry.s2">Warnung</span></div>
+                    <div class="p-stat"><span class="p-num">8</span><span class="p-lbl" data-i18n="demo.ry.s3">Jobs heute</span></div>
+                  </div>
+                  <div class="p-list">
+                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">srv-proxmox-01 wieder online</span><span class="p-row-meta">vor 2 min</span></div>
+                    <div class="p-row"><span class="p-dot p-warn-bg"></span><span class="p-row-main">nb-robin: Disk 87 % voll</span><span class="p-row-meta">vor 18 min</span></div>
+                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">Patch-Job auf 6 Geräten abgeschlossen</span><span class="p-row-meta">vor 1 h</span></div>
+                  </div>
+                  <div class="p-chart-cap" data-i18n="demo.ry.chart">Ø CPU-Auslastung Cluster</div>
+                  <div class="p-chart">
+                    <div class="p-col" data-h="34"><i></i><span>10 h</span></div>
+                    <div class="p-col" data-h="48"><i></i><span>11 h</span></div>
+                    <div class="p-col" data-h="41"><i></i><span>12 h</span></div>
+                    <div class="p-col" data-h="66"><i></i><span>13 h</span></div>
+                    <div class="p-col" data-h="52"><i></i><span>14 h</span></div>
+                    <div class="p-col p-col-now" data-h="38"><i></i><span data-i18n="demo.ry.now">jetzt</span></div>
+                  </div>
+                </section>
+                <section class="proto-view">
+                  <div class="p-list">
+                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">srv-proxmox-01</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i data-w="34"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i data-w="61"></i></span></div>
+                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">lxc-vaultwarden</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i data-w="12"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i data-w="28"></i></span></div>
+                    <div class="p-row"><span class="p-dot p-warn-bg"></span><span class="p-row-main">nb-robin</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i class="p-fill-warn" data-w="78"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i class="p-fill-warn" data-w="84"></i></span></div>
+                    <div class="p-row"><span class="p-dot p-neg-bg"></span><span class="p-row-main">pi-magicmirror</span><span class="p-row-meta" data-i18n="demo.ry.offline">offline seit 3 h</span></div>
+                  </div>
+                </section>
+                <section class="proto-view">
+                  <div class="p-list">
+                    <div class="p-row"><span class="p-row-main">Patch-Rollout Juli</span><span class="p-badge p-badge-ok" data-i18n="demo.ry.done">Erfolgreich</span><span class="p-row-meta">6/6</span></div>
+                    <div class="p-row"><span class="p-row-main">Disk-Cleanup nb-robin</span><span class="p-badge p-badge-warn" data-i18n="demo.ry.running">Läuft</span><span class="p-row-meta">42 %</span></div>
+                    <div class="p-row"><span class="p-row-main">Backup-Verify NAS</span><span class="p-badge" data-i18n="demo.ry.planned">Geplant</span><span class="p-row-meta">03:00</span></div>
+                  </div>
+                  <div class="p-console">$ apt-get upgrade -y … <span class="ok">✓ 14 Pakete aktualisiert</span> · reboot nicht nötig</div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-slide" data-app="Orynthia">
+            <div class="proto proto-ory">
+              <div class="proto-top">
+                <span class="proto-brand"><span class="proto-logo"></span>Orynthia</span>
+                <nav class="proto-tabs" aria-label="Orynthia Ansichten">
+                  <button type="button" class="p-tab active">Dashboard</button>
+                  <button type="button" class="p-tab">Budgets</button>
+                  <button type="button" class="p-tab" data-i18n="demo.oy.tab3">Sparziele</button>
+                </nav>
+                <span class="p-badge"><span class="p-dot"></span>Demo</span>
+              </div>
+              <div class="proto-body">
+                <section class="proto-view active">
+                  <div class="p-stats">
+                    <div class="p-stat"><span class="p-num">12.480&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s1">Gesamtsaldo</span></div>
+                    <div class="p-stat"><span class="p-num p-pos-tx">+3.210&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s2">Einnahmen</span></div>
+                    <div class="p-stat"><span class="p-num p-neg-tx">−1.874&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s3">Ausgaben</span></div>
+                  </div>
+                  <div class="p-chart">
+                    <div class="p-col" data-h="52"><i></i><span>Feb</span></div>
+                    <div class="p-col" data-h="64"><i></i><span>Mär</span></div>
+                    <div class="p-col" data-h="47"><i></i><span>Apr</span></div>
+                    <div class="p-col" data-h="71"><i></i><span>Mai</span></div>
+                    <div class="p-col" data-h="58"><i></i><span>Jun</span></div>
+                    <div class="p-col p-col-now" data-h="43"><i></i><span>Jul</span></div>
+                  </div>
+                </section>
+                <section class="proto-view">
+                  <div class="p-list">
+                    <div class="p-row"><span class="p-row-main">🛒 Lebensmittel</span><span class="p-bar"><i data-w="80"></i></span><span class="p-val">320 / 400&nbsp;€</span></div>
+                    <div class="p-row"><span class="p-row-main">🎮 Freizeit</span><span class="p-bar"><i class="p-fill-ok" data-w="63"></i></span><span class="p-val">95 / 150&nbsp;€</span></div>
+                    <div class="p-row"><span class="p-row-main">🍕 Restaurants</span><span class="p-bar"><i class="p-fill-neg" data-w="100"></i></span><span class="p-val">210 / 180&nbsp;€</span></div>
+                    <div class="p-row"><span class="p-row-main">🚗 Mobilität</span><span class="p-bar"><i class="p-fill-ok" data-w="41"></i></span><span class="p-val">82 / 200&nbsp;€</span></div>
+                  </div>
+                </section>
+                <section class="proto-view">
+                  <div class="p-list">
+                    <div class="p-row"><span class="p-row-main">🏖️ Urlaub Japan</span><span class="p-bar"><i data-w="65"></i></span><span class="p-val">3.250 / 5.000&nbsp;€</span></div>
+                    <div class="p-row"><span class="p-row-main">🛟 Notgroschen</span><span class="p-bar"><i class="p-fill-ok" data-w="80"></i></span><span class="p-val">8.000 / 10.000&nbsp;€</span></div>
+                    <div class="p-row"><span class="p-row-main">📷 Kamera</span><span class="p-bar"><i data-w="30"></i></span><span class="p-val">360 / 1.200&nbsp;€</span></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -526,12 +643,27 @@
 
 </main>
 
+<!-- ============ App-Prototyp-Modal ============ -->
+<div class="modal demo-modal" id="demoModal" role="dialog" aria-modal="true" aria-label="App-Prototyp" hidden>
+  <div class="demo-modal-frame">
+    <div class="demo-modal-head">
+      <span class="demo-title" id="demoTitle">Ryntra RMM</span>
+      <span class="demo-hint" data-i18n="demo.hint">Klick dich durch die Tabs — alles Testdaten.</span>
+      <button type="button" class="demo-close" id="demoClose" aria-label="Schließen">&times;</button>
+    </div>
+    <div class="demo-modal-host" id="demoHost"></div>
+    <div class="demo-modal-switch">
+      <button type="button" class="demo-switch-btn" id="demoSwitch"><i class="fas fa-arrow-right-arrow-left" aria-hidden="true"></i> <span data-i18n="demo.switch">Wechseln zu</span>&nbsp;<b id="demoSwitchName">Orynthia</b></button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ Cert-Lightbox ============ -->
 <div class="modal" id="certModal" role="dialog" aria-modal="true" aria-label="Zertifikat-Großansicht" hidden>
   <button type="button" class="modal-close" id="certClose" aria-label="Schließen">&times;</button>
   <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 
-<script src="/index.js?v=2026-07-11"></script>
+<script src="/index.js?v=2026-07-11-2"></script>
 </body>
 </html>
