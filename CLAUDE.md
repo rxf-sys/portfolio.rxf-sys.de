@@ -1,7 +1,9 @@
 # portfolio.rxf-sys.de
 
 Portfolio-Website — statisches HTML/CSS/JS, kein Build-Schritt.
-Design: „Bento / Soft Modern" (Navy/Slate/Blau-Grau/Sand), Dark Mode,
+Design: „Bento / Soft Modern" mit der Farbpalette des RMM-Tools
+(„Uxintace sunset": Navy `#181A2F`/`#242E49`/`#37415C`, Peach `#FDA481`,
+Terracotta `#D16A3E` als Light-Mode-Akzent), Dark Mode,
 DE/EN-Sprachumschalter, Scroll-Animationen.
 
 ## Struktur
