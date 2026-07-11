@@ -91,6 +91,35 @@ check('Escape schließt Modal', modal.hidden === true && !modal.classList.contai
 check('Bild zurückgesetzt (Platzhalter)', certImg.getAttribute('src').startsWith('data:image/gif'));
 check('Fokus zurück auf Trigger', document.activeElement === viewBtn);
 
+console.log('== App-Demo (Carousel + Prototyp) ==');
+const demoStage = document.getElementById('demoStage');
+const demoSlides = demoStage.querySelectorAll('.demo-slide');
+const demoDots = document.querySelectorAll('.demo-dot');
+check('Zwei Demo-Slides vorhanden', demoSlides.length === 2);
+check('Slide 0 (Ryntra) initial aktiv', demoSlides[0].classList.contains('active'));
+demoDots[1].click();
+check('Dot-Klick wechselt zu Slide 1', demoSlides[1].classList.contains('active') && !demoSlides[0].classList.contains('active'));
+
+const oryProto = demoSlides[1].querySelector('.proto');
+const oryTabs = oryProto.querySelectorAll('.p-tab');
+const oryViews = oryProto.querySelectorAll('.proto-view');
+oryTabs[1].click();
+check('Tab-Klick aktiviert zweite View', oryViews[1].classList.contains('active') && !oryViews[0].classList.contains('active'));
+
+const demoModal = document.getElementById('demoModal');
+const demoOpenBtn = document.getElementById('demoOpenBtn');
+const demoHost = document.getElementById('demoHost');
+demoOpenBtn.click();
+check('Demo-Modal offen', demoModal.hidden === false && demoModal.classList.contains('open'));
+check('Aktiver Prototyp ins Modal umgezogen', !!demoHost.querySelector('.proto'));
+check('Titel zeigt App-Namen', document.getElementById('demoTitle').textContent === 'Orynthia');
+document.getElementById('demoSwitch').click();
+check('Wechsel-Button mountet andere App', document.getElementById('demoTitle').textContent === 'Ryntra RMM');
+document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+check('Escape schließt Demo-Modal', demoModal.hidden === true && !demoHost.querySelector('.proto'));
+check('Prototyp zurück im Carousel-Slide', !!demoSlides[0].querySelector('.proto'));
+check('Fokus zurück auf Demo-Button', document.activeElement === demoOpenBtn);
+
 console.log('== Reveal-Fallback ==');
 check('Reveals ohne IntersectionObserver eingeblendet',
   Array.from(document.querySelectorAll('.reveal')).every((el) => el.classList.contains('in')));

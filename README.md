@@ -21,6 +21,10 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
   `prefers-reduced-motion`
 - **Barrierefrei** — Tastaturbedienung mit sichtbaren Fokus-Stilen,
   Skip-Link, Fokus-Management in der Lightbox (Trap, Escape, Fokus-Rückgabe)
+- **Interaktive App-Demo** — Ryntra RMM und Orynthia als klickbare
+  Prototypen mit Testdaten: sanft rotierendes Carousel in der
+  Projekte-Sektion plus Prototyp-Modal mit Tab-Navigation; Auto-Rotation
+  pausiert bei Hover/Fokus und respektiert `prefers-reduced-motion`
 
 ## Struktur
 
