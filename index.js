@@ -48,12 +48,34 @@
     'demo.cta': 'Click through the prototype',
     'demo.hint': 'Click through the tabs — all test data.',
     'demo.switch': 'Switch to',
-    'demo.ry.s1': 'Devices online', 'demo.ry.s2': 'Warning', 'demo.ry.s3': 'Jobs today',
-    'demo.ry.offline': 'offline for 3 h',
-    'demo.ry.chart': 'Avg. cluster CPU load', 'demo.ry.now': 'now',
-    'demo.ry.done': 'Succeeded', 'demo.ry.running': 'Running', 'demo.ry.planned': 'Scheduled',
-    'demo.oy.tab3': 'Savings goals',
-    'demo.oy.s1': 'Total balance', 'demo.oy.s2': 'Income', 'demo.oy.s3': 'Expenses',
+    /* Ryntra RMM prototype */
+    'demo.ry.nav1': 'Overview', 'demo.ry.nav2': 'Devices', 'demo.ry.nav3': 'Alerts',
+    'demo.ry.nav4': 'Patch management', 'demo.ry.nav5': 'Scripts',
+    'demo.ry.hi': 'Good afternoon, robin',
+    'demo.ry.sub': 'Tuesday, 14 July · 12 of 14 devices reporting on schedule',
+    'demo.ry.m1': 'System health', 'demo.ry.m1meta': '2 offline',
+    'demo.ry.m2': 'Patch compliance', 'demo.ry.m2v': '28 updates pending', 'demo.ry.m2meta': '6 of them security-critical',
+    'demo.ry.m3': 'Open alerts', 'demo.ry.crit': '2 critical',
+    'demo.ry.m4': 'Fleet load · now', 'demo.ry.m4meta': 'avg. 34 % CPU across 12 devices',
+    'demo.ry.devs': 'Devices', 'demo.ry.sorted': 'sorted by status',
+    'demo.ry.dm1': 'Server room · online · just now', 'demo.ry.dm2': 'Robin F. · online · 5 min ago',
+    'demo.ry.th1': 'Device', 'demo.ry.th2': 'Assigned', 'demo.ry.th3': 'Load', 'demo.ry.th4': 'Status',
+    'demo.ry.st.ok': 'Online', 'demo.ry.st.ok2': 'Online', 'demo.ry.st.warn': 'Disk', 'demo.ry.st.off': 'Offline',
+    'demo.ry.al1': 'Storage almost full — nb-robin',
+    'demo.ry.al2': 'Device offline — pi-magicmirror', 'demo.ry.al2s': 'no heartbeats for 3 h',
+    'demo.ry.al3': 'High CPU load — nb-robin', 'demo.ry.al3s': '78 % for 10 min',
+    /* Orynthia prototype */
+    'demo.oy.sec1': 'Overview', 'demo.oy.sec2': 'Planning',
+    'demo.oy.n2': 'Transactions', 'demo.oy.n3': 'Accounts', 'demo.oy.n5': 'Savings goals', 'demo.oy.n6': 'Portfolio',
+    'demo.oy.promot': 'Discover savings', 'demo.oy.promod': 'We help you save on contracts and subscriptions.',
+    'demo.oy.hi': 'Hi Robin 👋', 'demo.oy.sub': 'Today is 14 July 2026 · July overview', 'demo.oy.act': 'Transaction',
+    'demo.oy.net': 'Net worth', 'demo.oy.inc': 'Income July', 'demo.oy.exp': 'Expenses July', 'demo.oy.rate': 'Savings rate',
+    'demo.oy.cashsub': 'Last 6 months · income vs. expenses',
+    'demo.oy.inc2': 'Income', 'demo.oy.exp2': 'Expenses',
+    'demo.oy.budt': 'Budgets · July',
+    'demo.oy.cat1': 'Groceries', 'demo.oy.cat2': 'Leisure', 'demo.oy.cat3': 'Restaurants', 'demo.oy.cat4': 'Transport',
+    'demo.oy.savt': 'Savings goals',
+    'demo.oy.g1': 'Japan trip', 'demo.oy.g2': 'Emergency fund', 'demo.oy.g3': 'New camera',
     'proj.ihk.title': 'IHK final project',
     'proj.ihk.desc': 'Documentation and implementation of my final project as an IT specialist for application development — with a Groovy backend and Bootstrap frontend.',
     'proj.ihk.link': 'Documentation',
@@ -327,13 +349,17 @@
     demoStage.addEventListener('focusout', demoStart);
     demoStart();
 
-    // Balken-Breiten/-Höhen aus data-Attributen setzen (kein Inline-Style im
-    // Markup — html-validate-Regel no-inline-style; CSS animiert via transform)
-    document.querySelectorAll('.proto .p-bar i[data-w]').forEach(function (el) {
+    // Balken-Breiten, Säulen-Höhen und Ring-Prozente aus data-Attributen
+    // setzen (kein Inline-Style im Markup — html-validate no-inline-style;
+    // CSS animiert das dann via transform/conic-gradient).
+    document.querySelectorAll('.proto [data-w]').forEach(function (el) {
       el.style.width = el.getAttribute('data-w') + '%';
     });
-    document.querySelectorAll('.proto .p-col[data-h]').forEach(function (el) {
+    document.querySelectorAll('.proto [data-h]').forEach(function (el) {
       el.style.setProperty('--h', el.getAttribute('data-h') + '%');
+    });
+    document.querySelectorAll('.proto [data-pct]').forEach(function (el) {
+      el.style.setProperty('--pct', el.getAttribute('data-pct'));
     });
 
     // Tabs beider Prototypen — funktionieren im Carousel und im Modal

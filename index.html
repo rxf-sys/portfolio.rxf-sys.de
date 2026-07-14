@@ -41,9 +41,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/index.css?v=2026-07-13-2" />
+<link rel="stylesheet" href="/index.css?v=2026-07-13-3" />
 <noscript><style>.reveal,.reveal .tile,.reveal .tl-item{opacity:1!important;transform:none!important}.reveal .timeline::before{transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
@@ -389,99 +389,193 @@
         <div class="demo-stage" id="demoStage">
           <div class="demo-slide active" data-app="Ryntra RMM">
             <div class="proto proto-ryntra">
-              <div class="proto-top">
-                <span class="proto-brand"><span class="proto-logo"></span>Ryntra RMM</span>
-                <nav class="proto-tabs" aria-label="Ryntra Ansichten">
-                  <button type="button" class="p-tab active">Übersicht</button>
-                  <button type="button" class="p-tab">Geräte</button>
-                  <button type="button" class="p-tab">Jobs</button>
+              <div class="pa-side">
+                <div class="pa-brand">
+                  <span class="pa-mark">R</span>
+                  <span class="pa-brandtext">
+                    <span class="pa-name">Ryntra</span>
+                    <span class="pa-sub">Remote Monitoring &amp; Management</span>
+                  </span>
+                </div>
+                <nav class="pa-nav" aria-label="Ryntra Navigation">
+                  <button type="button" class="p-tab active"><span class="pa-nav-ico"><i class="fas fa-table-cells-large" aria-hidden="true"></i></span><span data-i18n="demo.ry.nav1">Übersicht</span></button>
+                  <button type="button" class="p-tab"><span class="pa-nav-ico"><i class="fas fa-display" aria-hidden="true"></i></span><span data-i18n="demo.ry.nav2">Geräte</span><span class="pa-nav-count">14</span></button>
+                  <button type="button" class="p-tab"><span class="pa-nav-ico"><i class="fas fa-bell" aria-hidden="true"></i></span><span data-i18n="demo.ry.nav3">Alarme</span><span class="pa-nav-badge pa-badge-neg">3</span></button>
+                  <span class="p-nav-static"><span class="pa-nav-ico"><i class="fas fa-shield-halved" aria-hidden="true"></i></span><span data-i18n="demo.ry.nav4">Patch-Management</span><span class="pa-nav-badge pa-badge-warn">28</span></span>
+                  <span class="p-nav-static"><span class="pa-nav-ico"><i class="fas fa-terminal" aria-hidden="true"></i></span><span data-i18n="demo.ry.nav5">Skripte</span></span>
                 </nav>
-                <span class="p-badge"><span class="p-dot"></span>Demo</span>
+                <div class="pa-foot">
+                  <div class="pa-user">
+                    <span class="pa-avatar">R</span>
+                    <span class="pa-usertext"><span class="pa-username">robin</span><span class="pa-role">Administrator</span></span>
+                  </div>
+                </div>
               </div>
-              <div class="proto-body">
-                <section class="proto-view active">
-                  <div class="p-stats">
-                    <div class="p-stat"><span class="p-num">12<span class="p-sub">/14</span></span><span class="p-lbl" data-i18n="demo.ry.s1">Geräte online</span></div>
-                    <div class="p-stat"><span class="p-num p-warn-tx">1</span><span class="p-lbl" data-i18n="demo.ry.s2">Warnung</span></div>
-                    <div class="p-stat"><span class="p-num">8</span><span class="p-lbl" data-i18n="demo.ry.s3">Jobs heute</span></div>
-                  </div>
-                  <div class="p-list">
-                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">srv-proxmox-01 wieder online</span><span class="p-row-meta">vor 2 min</span></div>
-                    <div class="p-row"><span class="p-dot p-warn-bg"></span><span class="p-row-main">nb-robin: Disk 87 % voll</span><span class="p-row-meta">vor 18 min</span></div>
-                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">Patch-Job auf 6 Geräten abgeschlossen</span><span class="p-row-meta">vor 1 h</span></div>
-                  </div>
-                  <div class="p-chart-cap" data-i18n="demo.ry.chart">Ø CPU-Auslastung Cluster</div>
-                  <div class="p-chart">
-                    <div class="p-col" data-h="34"><i></i><span>10 h</span></div>
-                    <div class="p-col" data-h="48"><i></i><span>11 h</span></div>
-                    <div class="p-col" data-h="41"><i></i><span>12 h</span></div>
-                    <div class="p-col" data-h="66"><i></i><span>13 h</span></div>
-                    <div class="p-col" data-h="52"><i></i><span>14 h</span></div>
-                    <div class="p-col p-col-now" data-h="38"><i></i><span data-i18n="demo.ry.now">jetzt</span></div>
-                  </div>
-                </section>
-                <section class="proto-view">
-                  <div class="p-list">
-                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">srv-proxmox-01</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i data-w="34"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i data-w="61"></i></span></div>
-                    <div class="p-row"><span class="p-dot p-ok-bg"></span><span class="p-row-main">lxc-vaultwarden</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i data-w="12"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i data-w="28"></i></span></div>
-                    <div class="p-row"><span class="p-dot p-warn-bg"></span><span class="p-row-main">nb-robin</span><span class="p-bar-lbl">CPU</span><span class="p-bar"><i class="p-fill-warn" data-w="78"></i></span><span class="p-bar-lbl">RAM</span><span class="p-bar"><i class="p-fill-warn" data-w="84"></i></span></div>
-                    <div class="p-row"><span class="p-dot p-neg-bg"></span><span class="p-row-main">pi-magicmirror</span><span class="p-row-meta" data-i18n="demo.ry.offline">offline seit 3 h</span></div>
-                  </div>
-                </section>
-                <section class="proto-view">
-                  <div class="p-list">
-                    <div class="p-row"><span class="p-row-main">Patch-Rollout Juli</span><span class="p-badge p-badge-ok" data-i18n="demo.ry.done">Erfolgreich</span><span class="p-row-meta">6/6</span></div>
-                    <div class="p-row"><span class="p-row-main">Disk-Cleanup nb-robin</span><span class="p-badge p-badge-warn" data-i18n="demo.ry.running">Läuft</span><span class="p-row-meta">42 %</span></div>
-                    <div class="p-row"><span class="p-row-main">Backup-Verify NAS</span><span class="p-badge" data-i18n="demo.ry.planned">Geplant</span><span class="p-row-meta">03:00</span></div>
-                  </div>
-                  <div class="p-console">$ apt-get upgrade -y … <span class="ok">✓ 14 Pakete aktualisiert</span> · reboot nicht nötig</div>
-                </section>
+              <div class="pa-main">
+                <div class="pa-top">
+                  <span class="pa-tophead">
+                    <span class="pa-title" data-i18n="demo.ry.hi">Guten Tag, robin</span>
+                    <span class="pa-subtitle" data-i18n="demo.ry.sub">Dienstag, 14. Juli · 12 von 14 Geräten melden sich planmäßig</span>
+                  </span>
+                  <span class="p-badge"><span class="p-dot"></span>Demo</span>
+                </div>
+                <div class="pa-content">
+                  <!-- Übersicht -->
+                  <section class="proto-view active">
+                    <div class="pg4">
+                      <div class="pc pc-pad p-hero-card">
+                        <div class="p-ring p-ring-ok" data-pct="86"><b>86%</b></div>
+                        <span class="p-metric"><span class="p-mlbl" data-i18n="demo.ry.m1">Systemzustand</span><span class="p-mval">12 / 14 online</span><span class="p-mmeta" data-i18n="demo.ry.m1meta">2 offline</span></span>
+                      </div>
+                      <div class="pc pc-pad p-hero-card">
+                        <div class="p-ring p-ring-warn" data-pct="71"><b>71%</b></div>
+                        <span class="p-metric"><span class="p-mlbl" data-i18n="demo.ry.m2">Patch-Compliance</span><span class="p-mval" data-i18n="demo.ry.m2v">28 Updates offen</span><span class="p-mmeta" data-i18n="demo.ry.m2meta">davon 6 sicherheitskritisch</span></span>
+                      </div>
+                      <div class="pc pc-pad p-col-card">
+                        <span class="p-mlbl" data-i18n="demo.ry.m3">Offene Alarme</span>
+                        <span class="p-alarmnum"><span class="p-big p-neg-tx">3</span><span class="p-badge p-badge-neg" data-i18n="demo.ry.crit">2 kritisch</span></span>
+                        <span class="p-mmeta">nb-robin: Disk 87 %</span>
+                      </div>
+                      <div class="pc pc-pad p-col-card">
+                        <span class="p-mlbl" data-i18n="demo.ry.m4">Flottenlast · jetzt</span>
+                        <svg class="p-spark" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,29 30,22 60,31 90,15 120,21 150,9 180,25 210,17 240,20"></polyline></svg>
+                        <span class="p-mmeta" data-i18n="demo.ry.m4meta">Ø 34 % CPU über 12 Geräte</span>
+                      </div>
+                    </div>
+                    <div class="p-subhead"><span data-i18n="demo.ry.devs">Geräte</span><span class="p-subhead-meta" data-i18n="demo.ry.sorted">nach Status sortiert</span></div>
+                    <div class="pg-dev">
+                      <button type="button" class="pc pc-pad p-dev">
+                        <span class="p-devtop"><span class="p-dot p-ok-bg"></span><span class="p-devname">srv-proxmox-01</span><span class="p-oschip"><i class="fab fa-linux" aria-hidden="true"></i></span></span>
+                        <span class="p-devmeta" data-i18n="demo.ry.dm1">Server-Raum · online · gerade eben</span>
+                        <span class="p-devbars">
+                          <span class="p-mini"><span class="p-mini-lbl">CPU</span><span class="p-bar"><i data-w="34"></i></span></span>
+                          <span class="p-mini"><span class="p-mini-lbl">RAM</span><span class="p-bar"><i class="p-fill-violet" data-w="61"></i></span></span>
+                          <span class="p-mini"><span class="p-mini-lbl">DISK</span><span class="p-bar"><i class="p-fill-ok" data-w="45"></i></span></span>
+                        </span>
+                      </button>
+                      <button type="button" class="pc pc-pad p-dev">
+                        <span class="p-devtop"><span class="p-dot p-warn-bg"></span><span class="p-devname">nb-robin</span><span class="p-oschip"><i class="fab fa-windows" aria-hidden="true"></i></span></span>
+                        <span class="p-devmeta" data-i18n="demo.ry.dm2">Robin F. · online · vor 5 min</span>
+                        <span class="p-devbars">
+                          <span class="p-mini"><span class="p-mini-lbl">CPU</span><span class="p-bar"><i data-w="52"></i></span></span>
+                          <span class="p-mini"><span class="p-mini-lbl">RAM</span><span class="p-bar"><i class="p-fill-violet" data-w="70"></i></span></span>
+                          <span class="p-mini"><span class="p-mini-lbl">DISK</span><span class="p-bar"><i class="p-fill-warn" data-w="87"></i></span></span>
+                        </span>
+                      </button>
+                    </div>
+                  </section>
+                  <!-- Geräte -->
+                  <section class="proto-view">
+                    <div class="p-tbl">
+                      <div class="p-tbl-head"><span data-i18n="demo.ry.th1">Gerät</span><span data-i18n="demo.ry.th2">Zugewiesen</span><span data-i18n="demo.ry.th3">Auslastung</span><span data-i18n="demo.ry.th4">Status</span></div>
+                      <div class="p-tbl-row"><span class="p-tbl-dev"><span class="p-dot p-ok-bg"></span><span>srv-proxmox-01</span></span><span class="p-tbl-owner">Server-Raum</span><span class="p-bar"><i data-w="34"></i></span><span class="p-badge p-badge-ok" data-i18n="demo.ry.st.ok">Online</span></div>
+                      <div class="p-tbl-row"><span class="p-tbl-dev"><span class="p-dot p-ok-bg"></span><span>lxc-vaultwarden</span></span><span class="p-tbl-owner">Dienste</span><span class="p-bar"><i data-w="12"></i></span><span class="p-badge p-badge-ok" data-i18n="demo.ry.st.ok2">Online</span></div>
+                      <div class="p-tbl-row"><span class="p-tbl-dev"><span class="p-dot p-warn-bg"></span><span>nb-robin</span></span><span class="p-tbl-owner">Robin F.</span><span class="p-bar"><i class="p-fill-warn" data-w="87"></i></span><span class="p-badge p-badge-warn" data-i18n="demo.ry.st.warn">Disk</span></div>
+                      <div class="p-tbl-row"><span class="p-tbl-dev"><span class="p-dot p-neg-bg"></span><span>pi-magicmirror</span></span><span class="p-tbl-owner">HomeLab</span><span class="p-bar"><i data-w="0"></i></span><span class="p-badge p-badge-neg" data-i18n="demo.ry.st.off">Offline</span></div>
+                    </div>
+                  </section>
+                  <!-- Alarme -->
+                  <section class="proto-view">
+                    <div class="pc pc-pad">
+                      <div class="p-list">
+                        <div class="p-row"><span class="p-dot p-neg-bg"></span><span class="p-rowtext"><span class="p-rowtitle" data-i18n="demo.ry.al1">Speicher fast voll — nb-robin</span><span class="p-rowsub">Disk C: 87 %</span></span><span class="p-badge p-badge-neg">Disk</span><span class="p-rowmeta">18 min</span></div>
+                        <div class="p-row"><span class="p-dot p-neg-bg"></span><span class="p-rowtext"><span class="p-rowtitle" data-i18n="demo.ry.al2">Gerät offline — pi-magicmirror</span><span class="p-rowsub" data-i18n="demo.ry.al2s">seit 3 h keine Heartbeats</span></span><span class="p-badge p-badge-neg">Offline</span><span class="p-rowmeta">3 h</span></div>
+                        <div class="p-row"><span class="p-dot p-warn-bg"></span><span class="p-rowtext"><span class="p-rowtitle" data-i18n="demo.ry.al3">Hohe CPU-Last — nb-robin</span><span class="p-rowsub" data-i18n="demo.ry.al3s">78 % über 10 min</span></span><span class="p-badge p-badge-warn">CPU</span><span class="p-rowmeta">25 min</span></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="demo-slide" data-app="Orynthia">
             <div class="proto proto-ory">
-              <div class="proto-top">
-                <span class="proto-brand"><span class="proto-logo"></span>Orynthia</span>
-                <nav class="proto-tabs" aria-label="Orynthia Ansichten">
-                  <button type="button" class="p-tab active">Dashboard</button>
-                  <button type="button" class="p-tab">Budgets</button>
-                  <button type="button" class="p-tab" data-i18n="demo.oy.tab3">Sparziele</button>
+              <div class="pa-side">
+                <div class="pa-brand">
+                  <span class="pa-mark">O</span>
+                  <span class="pa-name pa-name-oy">Orynthia</span>
+                </div>
+                <nav class="pa-nav" aria-label="Orynthia Navigation">
+                  <span class="pa-sec" data-i18n="demo.oy.sec1">Übersicht</span>
+                  <button type="button" class="p-tab active"><span class="pa-nav-ico"><i class="fas fa-table-columns" aria-hidden="true"></i></span><span>Dashboard</span></button>
+                  <span class="p-nav-static"><span class="pa-nav-ico"><i class="fas fa-right-left" aria-hidden="true"></i></span><span data-i18n="demo.oy.n2">Transaktionen</span></span>
+                  <span class="p-nav-static"><span class="pa-nav-ico"><i class="fas fa-building-columns" aria-hidden="true"></i></span><span data-i18n="demo.oy.n3">Konten</span></span>
+                  <span class="pa-sec" data-i18n="demo.oy.sec2">Planung</span>
+                  <button type="button" class="p-tab"><span class="pa-nav-ico"><i class="fas fa-bullseye" aria-hidden="true"></i></span><span>Budgets</span></button>
+                  <button type="button" class="p-tab"><span class="pa-nav-ico"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span><span data-i18n="demo.oy.n5">Sparziele</span></button>
+                  <span class="p-nav-static"><span class="pa-nav-ico"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span data-i18n="demo.oy.n6">Depot</span></span>
                 </nav>
-                <span class="p-badge"><span class="p-dot"></span>Demo</span>
+                <div class="pa-promo">
+                  <span class="pa-promo-t" data-i18n="demo.oy.promot">Sparpotential entdecken</span>
+                  <span class="pa-promo-d" data-i18n="demo.oy.promod">Wir helfen dir, bei Verträgen und Abos zu sparen.</span>
+                </div>
+                <div class="pa-foot">
+                  <div class="pa-user">
+                    <span class="pa-avatar">RF</span>
+                    <span class="pa-usertext"><span class="pa-username">Robin Frank</span><span class="pa-role">info@rxf-sys.de</span></span>
+                  </div>
+                </div>
               </div>
-              <div class="proto-body">
-                <section class="proto-view active">
-                  <div class="p-stats">
-                    <div class="p-stat"><span class="p-num">12.480&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s1">Gesamtsaldo</span></div>
-                    <div class="p-stat"><span class="p-num p-pos-tx">+3.210&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s2">Einnahmen</span></div>
-                    <div class="p-stat"><span class="p-num p-neg-tx">−1.874&nbsp;€</span><span class="p-lbl" data-i18n="demo.oy.s3">Ausgaben</span></div>
-                  </div>
-                  <div class="p-chart">
-                    <div class="p-col" data-h="52"><i></i><span>Feb</span></div>
-                    <div class="p-col" data-h="64"><i></i><span>Mär</span></div>
-                    <div class="p-col" data-h="47"><i></i><span>Apr</span></div>
-                    <div class="p-col" data-h="71"><i></i><span>Mai</span></div>
-                    <div class="p-col" data-h="58"><i></i><span>Jun</span></div>
-                    <div class="p-col p-col-now" data-h="43"><i></i><span>Jul</span></div>
-                  </div>
-                </section>
-                <section class="proto-view">
-                  <div class="p-list">
-                    <div class="p-row"><span class="p-row-main">🛒 Lebensmittel</span><span class="p-bar"><i data-w="80"></i></span><span class="p-val">320 / 400&nbsp;€</span></div>
-                    <div class="p-row"><span class="p-row-main">🎮 Freizeit</span><span class="p-bar"><i class="p-fill-ok" data-w="63"></i></span><span class="p-val">95 / 150&nbsp;€</span></div>
-                    <div class="p-row"><span class="p-row-main">🍕 Restaurants</span><span class="p-bar"><i class="p-fill-neg" data-w="100"></i></span><span class="p-val">210 / 180&nbsp;€</span></div>
-                    <div class="p-row"><span class="p-row-main">🚗 Mobilität</span><span class="p-bar"><i class="p-fill-ok" data-w="41"></i></span><span class="p-val">82 / 200&nbsp;€</span></div>
-                  </div>
-                </section>
-                <section class="proto-view">
-                  <div class="p-list">
-                    <div class="p-row"><span class="p-row-main">🏖️ Urlaub Japan</span><span class="p-bar"><i data-w="65"></i></span><span class="p-val">3.250 / 5.000&nbsp;€</span></div>
-                    <div class="p-row"><span class="p-row-main">🛟 Notgroschen</span><span class="p-bar"><i class="p-fill-ok" data-w="80"></i></span><span class="p-val">8.000 / 10.000&nbsp;€</span></div>
-                    <div class="p-row"><span class="p-row-main">📷 Kamera</span><span class="p-bar"><i data-w="30"></i></span><span class="p-val">360 / 1.200&nbsp;€</span></div>
-                  </div>
-                </section>
+              <div class="pa-main">
+                <div class="pa-top">
+                  <span class="pa-tophead">
+                    <span class="pa-title pa-title-oy" data-i18n="demo.oy.hi">Hallo Robin 👋</span>
+                    <span class="pa-subtitle" data-i18n="demo.oy.sub">Heute ist 14. Juli 2026 · Juli-Übersicht</span>
+                  </span>
+                  <span class="pa-act"><i class="fas fa-plus" aria-hidden="true"></i> <span data-i18n="demo.oy.act">Transaktion</span></span>
+                </div>
+                <div class="pa-content">
+                  <!-- Dashboard -->
+                  <section class="proto-view active">
+                    <div class="p-hero">
+                      <span class="p-hero-lbl"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i> <span data-i18n="demo.oy.net">Nettovermögen</span> <span class="p-hero-live"><i class="fas fa-bolt" aria-hidden="true"></i> Live</span></span>
+                      <span class="p-hero-num">12.480,00&nbsp;€</span>
+                      <span class="p-hero-row">
+                        <span><span class="p-hero-k" data-i18n="demo.oy.inc">Einnahmen Juli</span><span class="p-hero-v">3.210,00&nbsp;€</span></span>
+                        <span><span class="p-hero-k" data-i18n="demo.oy.exp">Ausgaben Juli</span><span class="p-hero-v">1.874,00&nbsp;€</span></span>
+                        <span><span class="p-hero-k" data-i18n="demo.oy.rate">Sparquote</span><span class="p-hero-v">42 %</span></span>
+                      </span>
+                    </div>
+                    <div class="pc pc-pad">
+                      <span class="p-card-title">Cashflow</span>
+                      <span class="p-card-sub" data-i18n="demo.oy.cashsub">Letzte 6 Monate · Einnahmen vs. Ausgaben</span>
+                      <div class="p-cash">
+                        <span class="p-cg"><i class="in" data-h="60"></i><i class="ex" data-h="44"></i></span>
+                        <span class="p-cg"><i class="in" data-h="72"></i><i class="ex" data-h="55"></i></span>
+                        <span class="p-cg"><i class="in" data-h="58"></i><i class="ex" data-h="63"></i></span>
+                        <span class="p-cg"><i class="in" data-h="80"></i><i class="ex" data-h="49"></i></span>
+                        <span class="p-cg"><i class="in" data-h="66"></i><i class="ex" data-h="58"></i></span>
+                        <span class="p-cg"><i class="in" data-h="74"></i><i class="ex" data-h="43"></i></span>
+                      </div>
+                      <div class="p-cash-x"><span>Feb</span><span>Mär</span><span>Apr</span><span>Mai</span><span>Jun</span><span>Jul</span></div>
+                      <div class="p-legend"><span class="p-lg"><i class="p-lg-in"></i><span data-i18n="demo.oy.inc2">Einnahmen</span></span><span class="p-lg"><i class="p-lg-ex"></i><span data-i18n="demo.oy.exp2">Ausgaben</span></span></div>
+                    </div>
+                  </section>
+                  <!-- Budgets -->
+                  <section class="proto-view">
+                    <div class="pc pc-pad">
+                      <span class="p-card-title" data-i18n="demo.oy.budt">Budgets · Juli</span>
+                      <div class="p-list">
+                        <div class="p-brow"><span class="p-bcat">🛒 <span data-i18n="demo.oy.cat1">Lebensmittel</span></span><span class="p-bar"><i class="p-fill-warn" data-w="80"></i></span><span class="p-bval">320 / 400&nbsp;€</span></div>
+                        <div class="p-brow"><span class="p-bcat">🎮 <span data-i18n="demo.oy.cat2">Freizeit</span></span><span class="p-bar"><i class="p-fill-ok" data-w="63"></i></span><span class="p-bval">95 / 150&nbsp;€</span></div>
+                        <div class="p-brow"><span class="p-bcat">🍕 <span data-i18n="demo.oy.cat3">Restaurants</span></span><span class="p-bar"><i class="p-fill-neg" data-w="100"></i></span><span class="p-bval over">210 / 180&nbsp;€</span></div>
+                        <div class="p-brow"><span class="p-bcat">🚗 <span data-i18n="demo.oy.cat4">Mobilität</span></span><span class="p-bar"><i class="p-fill-ok" data-w="41"></i></span><span class="p-bval">82 / 200&nbsp;€</span></div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- Sparziele -->
+                  <section class="proto-view">
+                    <div class="pc pc-pad">
+                      <span class="p-card-title" data-i18n="demo.oy.savt">Sparziele</span>
+                      <div class="p-list">
+                        <div class="p-brow"><span class="p-bcat">🏖️ <span data-i18n="demo.oy.g1">Urlaub Japan</span></span><span class="p-bar"><i data-w="65"></i></span><span class="p-bval">3.250 / 5.000&nbsp;€</span></div>
+                        <div class="p-brow"><span class="p-bcat">🛟 <span data-i18n="demo.oy.g2">Notgroschen</span></span><span class="p-bar"><i class="p-fill-ok" data-w="80"></i></span><span class="p-bval">8.000 / 10.000&nbsp;€</span></div>
+                        <div class="p-brow"><span class="p-bcat">📷 <span data-i18n="demo.oy.g3">Neue Kamera</span></span><span class="p-bar"><i data-w="30"></i></span><span class="p-bval">360 / 1.200&nbsp;€</span></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
@@ -682,6 +776,6 @@
   <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 
-<script src="/index.js?v=2026-07-13-2"></script>
+<script src="/index.js?v=2026-07-13-3"></script>
 </body>
 </html>
