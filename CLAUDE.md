@@ -21,6 +21,21 @@ Beide Seiten teilen einen **identischen `:root`-Tokenblock** in `index.css`
   Hauptseite ein zentrierter Hero mit klassischen Sektionen
 - Wird ein Token geändert, gehört dieselbe Änderung ins Schwester-Repo
 
+### Gemeinsame Kopfleiste
+
+Beide Seiten nutzen **dieselben Klassen und dieselbe Reihenfolge**:
+`.topbar` (randlos, `padding: 14px clamp(16px, 3vw, 48px)`, sticky) mit
+`.brand` → `.topbar-nav` → `.lang-toggle` → `.topbar-cta` → `.theme-toggle`
+→ `.nav-toggle`. Änderungen daran gehören immer in beide Repos.
+
+- Unter **900 px** klappt `.topbar-nav` zu einem Panel unter der Leiste auf:
+  `.nav-num` (Sektionsnummer, mono) und `.nav-cta` (Kontakt-Knopf) werden
+  sichtbar, `.topbar-cta` verschwindet
+- Der Schleier ist `.topbar::after`, absolut bei `top: 100%` — geschlossen mit
+  `height: 0`, damit er nichts zum Scrollbereich beiträgt
+- IDs, die das JS erwartet: `#topbar`, `#topbarNav`, `#navToggle`,
+  `#themeBtn`, `#langBtn`
+
 ## Struktur
 
 ```
