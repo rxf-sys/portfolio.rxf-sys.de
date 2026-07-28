@@ -46,7 +46,7 @@ document.body.appendChild(s);
 
 console.log('== Struktur ==');
 check('Skip-Link-Ziel existiert', !!document.querySelector(document.querySelector('.skip-link').getAttribute('href')));
-document.querySelectorAll('.nav-pills a').forEach((a) => {
+document.querySelectorAll('.topbar-nav a[data-section]').forEach((a) => {
   check('Nav-Ziel #' + a.getAttribute('data-section') + ' existiert', !!document.getElementById(a.getAttribute('data-section')));
 });
 check('Modal initial hidden', document.getElementById('certModal').hidden === true);
@@ -73,6 +73,29 @@ check('Button zeigt DE', langBtn.textContent === 'DE');
 check('localStorage pf2-lang=en', window.localStorage.getItem('pf2-lang') === 'en');
 langBtn.click();
 check('Rückübersetzung DE', navAbout.textContent === 'Über mich' && document.documentElement.getAttribute('lang') === 'de');
+
+console.log('== Mobil-Menü ==');
+const topbar = document.getElementById('topbar');
+const navToggle = document.getElementById('navToggle');
+const topbarNav = document.getElementById('topbarNav');
+check('Menü initial geschlossen',
+  !topbar.classList.contains('nav-open') && navToggle.getAttribute('aria-expanded') === 'false');
+navToggle.click();
+check('Klick öffnet Menü', topbar.classList.contains('nav-open'));
+check('aria-expanded = true', navToggle.getAttribute('aria-expanded') === 'true');
+check('Hintergrund gesperrt', document.body.classList.contains('nav-locked'));
+navToggle.click();
+check('Zweiter Klick schließt', !topbar.classList.contains('nav-open'));
+check('Sperre wieder aufgehoben', !document.body.classList.contains('nav-locked'));
+navToggle.click();
+topbarNav.querySelector('a[data-section]').click();
+check('Klick auf Menüpunkt schließt', !topbar.classList.contains('nav-open'));
+navToggle.click();
+document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+check('Escape schließt', !topbar.classList.contains('nav-open'));
+check('Kontakt-Knopf liegt im Menü', !!topbarNav.querySelector('.nav-cta'));
+check('Jeder Menüpunkt hat eine Sektionsnummer',
+  Array.from(topbarNav.querySelectorAll('a[data-section]')).every((a) => !!a.querySelector('.nav-num')));
 
 console.log('== Lightbox ==');
 const modal = document.getElementById('certModal');

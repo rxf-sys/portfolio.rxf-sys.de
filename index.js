@@ -174,7 +174,7 @@
   }
 
   /* ============ Sticky Header + Scroll-Fortschritt ============ */
-  var header = document.getElementById('siteHeader');
+  var header = document.getElementById('topbar');
   var progressBar = document.getElementById('scrollProgress');
   function onScroll() {
     if (header) header.classList.toggle('scrolled', window.scrollY > 30);
@@ -257,8 +257,46 @@
   }
   numCheck();
 
+  /* ============ Mobil-Menü ============ */
+  var navToggle = document.getElementById('navToggle');
+  var topbarNav = document.getElementById('topbarNav');
+
+  function setMenu(open) {
+    if (!header || !navToggle) return;
+    header.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    document.body.classList.toggle('nav-locked', open);
+  }
+  function menuOpen() { return !!header && header.classList.contains('nav-open'); }
+
+  if (navToggle) {
+    navToggle.addEventListener('click', function () { setMenu(!menuOpen()); });
+  }
+  if (topbarNav) {
+    // Ein Klick auf einen Menüpunkt schließt das Menü wieder.
+    topbarNav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setMenu(false);
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menuOpen()) {
+      setMenu(false);
+      if (navToggle) navToggle.focus();
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (menuOpen() && header && !header.contains(e.target)) setMenu(false);
+  });
+  // Wird das Fenster über den Umbruchpunkt hinaus vergrößert, ist die
+  // Navigation ohnehin wieder sichtbar — der offene Zustand muss weg.
+  var wide = window.matchMedia('(min-width: 901px)');
+  if (wide.addEventListener) {
+    wide.addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+  }
+
   /* ============ Aktive Navigation ============ */
-  var navLinks = document.querySelectorAll('.nav-pills a');
+  var navLinks = document.querySelectorAll('.topbar-nav a[data-section]');
   var sections = [];
   navLinks.forEach(function (a) {
     var sec = document.getElementById(a.getAttribute('data-section'));

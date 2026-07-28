@@ -43,7 +43,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/index.css?v=2026-07-27" />
+<link rel="stylesheet" href="/index.css?v=2026-07-28" />
 <noscript><style>.reveal,.reveal .tile,.reveal .tl-item{opacity:1!important;transform:none!important}.reveal .timeline::before{transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
@@ -80,25 +80,32 @@
 <a class="skip-link" href="#main" data-i18n="skip">Zum Inhalt springen</a>
 
 <!-- ============ Header ============ -->
-<header class="site-header" id="siteHeader">
-  <div class="container header-row">
-    <a href="#home" class="brand" aria-label="Robin Frank — Zur Startseite">
-      <span class="brand-dot"></span>
-      <span>robinfrank</span>
-    </a>
-    <nav class="nav-pills" aria-label="Hauptnavigation">
-      <a href="#about" data-section="about" data-i18n="nav.about">Über mich</a>
-      <a href="#skills" data-section="skills" data-i18n="nav.skills">Skills</a>
-      <a href="#projects" data-section="projects" data-i18n="nav.projects">Projekte</a>
-      <a href="#certificates" data-section="certificates" data-i18n="nav.certs">Zertifikate</a>
-      <a href="#experience" data-section="experience" data-i18n="nav.cv">Werdegang</a>
-    </nav>
-    <button type="button" class="icon-btn" id="themeBtn" aria-label="Farbschema wechseln">
-      <i class="fas fa-moon" aria-hidden="true"></i>
-    </button>
-    <button type="button" class="lang-btn" id="langBtn" aria-label="Sprache wechseln">EN</button>
-    <a href="#contact" class="btn btn-primary btn-nav" data-i18n="nav.contact">Kontakt</a>
-  </div>
+<header class="topbar" id="topbar">
+  <a href="#home" class="brand" aria-label="Robin Frank — Zur Startseite">
+    <span class="brand-dot"></span>
+    <span class="brand-text">robinfrank</span>
+  </a>
+
+  <nav class="topbar-nav" id="topbarNav" aria-label="Hauptnavigation">
+    <a href="#about" data-section="about"><span class="nav-num">01</span><span data-i18n="nav.about">Über mich</span></a>
+    <a href="#skills" data-section="skills"><span class="nav-num">02</span><span data-i18n="nav.skills">Skills</span></a>
+    <a href="#projects" data-section="projects"><span class="nav-num">03</span><span data-i18n="nav.projects">Projekte</span></a>
+    <a href="#certificates" data-section="certificates"><span class="nav-num">04</span><span data-i18n="nav.certs">Zertifikate</span></a>
+    <a href="#experience" data-section="experience"><span class="nav-num">05</span><span data-i18n="nav.cv">Werdegang</span></a>
+    <a href="#contact" class="btn btn-primary nav-cta" data-i18n="nav.contact">Kontakt</a>
+  </nav>
+
+  <button type="button" class="lang-toggle" id="langBtn" aria-label="Switch to English">EN</button>
+
+  <a href="#contact" class="topbar-cta" data-i18n="nav.contact">Kontakt</a>
+
+  <button type="button" class="theme-toggle" id="themeBtn" aria-label="Farbschema wechseln">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+  </button>
+
+  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="topbarNav" aria-label="Menü öffnen">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+  </button>
 </header>
 
 <main id="main" class="container" tabindex="-1">
@@ -776,6 +783,6 @@
   <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 
-<script src="/index.js?v=2026-07-27"></script>
+<script src="/index.js?v=2026-07-28"></script>
 </body>
 </html>
