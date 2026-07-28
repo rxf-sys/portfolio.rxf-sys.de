@@ -15,9 +15,9 @@
   --peach: #FDA481;      /* Akzent Dark */
 
   /* Semantik — Light */
-  --bg: #EDE9E4;
+  --bg: #EFEBE5;
   --card: #FFFFFF;
-  --tile-soft: #F3F0EB;
+  --tile-soft: #F5F2EC;
   --ink: #1D2438;
   --body: #3A445C;
   --muted: #4D5670;
@@ -30,6 +30,7 @@
   --navy-tile: #181A2F;
   --navy-tile-ink: #F2F3F8;
   --ok: #2F9E63;
+  --ok-soft: rgba(47, 158, 99, 0.14);
 
   --shadow: 0 2px 14px rgba(24, 26, 47, 0.08);
   --shadow-hover: 0 10px 30px rgba(24, 26, 47, 0.14);
@@ -37,6 +38,7 @@
   --r-sm: 16px;
   --head: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
   --sans: 'Manrope', 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -55,6 +57,8 @@ html[data-theme="dark"] {
   --blue-tile: #2A3450;
   --navy-tile: #FDA481;
   --navy-tile-ink: #181A2F;
+  --ok: #4FC98A;
+  --ok-soft: rgba(79, 201, 138, 0.16);
 
   --shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.45);
@@ -80,6 +84,9 @@ h1, h2, h3 { font-family: var(--head); color: var(--ink); margin: 0; text-wrap: 
 p { text-wrap: pretty; }
 
 .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* Anker-Sprünge dürfen nicht unter dem sticky Header landen */
+section[id] { scroll-margin-top: 92px; }
 
 .skip-link {
   position: absolute; left: -9999px; top: 0; z-index: 200;
@@ -156,7 +163,8 @@ html[data-theme="dark"] .btn-primary { background: var(--peach); color: var(--na
 .span-12 { grid-column: span 12; }
 
 .tile-label {
-  font-size: 12.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+  font-family: var(--mono);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
   color: var(--faint); margin-bottom: 14px;
 }
 
@@ -195,7 +203,13 @@ html[data-theme="dark"] .hero-main h1 .hl { color: var(--peach); }
   flex: 1; border-radius: 18px; padding: 18px 20px;
   display: flex; flex-direction: column; justify-content: center;
 }
-.stat .num { font-family: var(--head); font-size: 30px; font-weight: 800; line-height: 1.15; }
+.stat .num {
+  font-family: var(--mono); font-size: 28px; font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  /* Leerzeichen belegen in einer dicktengleichen Schrift eine volle Zelle
+     („~3 J.") — auf ein normales Wortabstandsmaß zusammenziehen. */
+  word-spacing: -0.3em;
+}
 .stat .lbl { font-size: 13px; font-weight: 600; opacity: 0.8; }
 .stat-blue { background: var(--blue-tile); color: var(--ink); }
 .stat-sand { background: var(--accent-soft); color: var(--accent-ink); }
@@ -216,7 +230,10 @@ html[data-theme="dark"] .stat-pale { color: var(--blue-soft); }
 /* ============ Sektionen ============ */
 section { padding: 56px 0 0; }
 .section-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 22px; padding: 0 6px; }
-.section-head .num { font-family: var(--head); font-size: 15px; font-weight: 700; color: var(--accent); }
+.section-head .num {
+  font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--accent-ink);
+}
 .section-head h2 { font-size: clamp(28px, 3vw, 36px); font-weight: 800; letter-spacing: -0.5px; }
 .section-head .kicker { margin-left: auto; font-size: 14px; font-weight: 600; color: var(--faint); }
 
@@ -236,7 +253,7 @@ html[data-theme="dark"] .quote-tile cite { color: var(--blue-soft); }
   display: flex; align-items: center; justify-content: center; font-size: 15px;
 }
 html[data-theme="dark"] .fact-icon { color: var(--peach); }
-.fact .k { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--faint); }
+.fact .k { font-family: var(--mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--faint); }
 .fact .v { font-size: 15px; font-weight: 700; color: var(--ink); }
 
 /* Skills */
@@ -288,7 +305,10 @@ html[data-theme="dark"] .project-links a:hover { color: var(--peach); }
 html[data-theme="dark"] .project-feature .project-links a { color: var(--navy-tile-ink); }
 html[data-theme="dark"] .project-feature .project-links a:hover { color: var(--navy-tile-ink); }
 .feature-stats { display: flex; gap: 28px; flex-wrap: wrap; margin: 4px 0; }
-.feature-stat .num { font-family: var(--head); font-size: 26px; font-weight: 800; }
+.feature-stat .num {
+  font-family: var(--mono); font-size: 24px; font-weight: 700;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
 .feature-stat .lbl { font-size: 12.5px; font-weight: 600; opacity: 0.6; }
 
 /* ============ App-Demo (Carousel + klickbarer Prototyp) ============ */
@@ -748,20 +768,51 @@ footer { padding: 36px 0 32px; }
 }
 
 /* ============ Responsive ============ */
+@media (max-width: 1180px) {
+  .nav-pills a { padding: 8px 12px; font-size: 13.5px; }
+}
 @media (max-width: 1080px) {
   .span-3, .span-4, .span-5 { grid-column: span 6; }
   .span-7, .span-8 { grid-column: span 12; }
-  .nav-pills { display: none; }
 }
+
+/* Header bricht auf zwei Zeilen: Marke + Aktionen oben, Navigation darunter.
+   Die Navigation scrollt horizontal, statt wie bisher ersatzlos zu verschwinden. */
+@media (max-width: 960px) {
+  .header-row { flex-wrap: wrap; row-gap: 10px; }
+  .nav-pills {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  section[id] { scroll-margin-top: 132px; }
+}
+
 @media (max-width: 720px) {
   .span-3, .span-4, .span-5, .span-6 { grid-column: span 12; }
+  .container { padding: 0 18px; }
+  .bento { gap: 14px; }
+  .tile { padding: 24px 22px; }
   .hero-main { padding: 34px 28px; }
   .contact-tile { padding: 36px 28px; }
   .stats-tile { flex-direction: column; }
   .section-head { flex-wrap: wrap; }
-  .section-head .kicker { display: none; }
+  .section-head .kicker { margin-left: 0; flex-basis: 100%; }
   .footer-row { flex-direction: column; align-items: flex-start; }
   .footer-links { margin-left: 0; }
+  .cert-tile { flex-direction: column; }
+  .feature-stats { gap: 20px; }
+}
+
+@media (max-width: 460px) {
+  .btn { padding: 13px 22px; font-size: 14.5px; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-main { padding: 28px 22px; }
+  .contact-tile { padding: 28px 22px; }
 }
 
 /* ============ Fokus-Stile (Tastaturbedienung) ============ */

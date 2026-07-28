@@ -6,6 +6,21 @@ Design: „Bento / Soft Modern" mit der Farbpalette des RMM-Tools
 Terracotta `#D16A3E` als Light-Mode-Akzent), Dark Mode,
 DE/EN-Sprachumschalter, Scroll-Animationen.
 
+## Gemeinsames Designsystem mit www.rxf-sys.de
+
+Beide Seiten teilen einen **identischen `:root`-Tokenblock** in `index.css`
+(Farben, `--r`/`--r-sm`, `--head`/`--sans`/`--mono`, `--shadow`, `--ease`).
+
+- **Schriften**: Bricolage Grotesque (`--head`) · Manrope (`--sans`) ·
+  JetBrains Mono (`--mono`, Kennzahlen, Sektionsnummern, `.tile-label`,
+  `.fact .k`)
+- **Ausnahme**: die Prototyp-Demo (`--p-*`-Tokens ab `.proto`) bildet bewusst
+  fremde Produkt-UIs nach und nutzt deshalb weiterhin Inter und
+  Instrument Serif — diese Schriften bleiben im Google-Fonts-Request
+- **Layout bleibt seitenspezifisch**: hier das Bento-Grid, auf der
+  Hauptseite ein zentrierter Hero mit klassischen Sektionen
+- Wird ein Token geändert, gehört dieselbe Änderung ins Schwester-Repo
+
 ## Struktur
 
 ```

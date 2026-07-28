@@ -10,7 +10,10 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
 
 - **Design „Bento / Soft Modern"** — 12-Spalten-Bento-Grid, Farbpalette
   des eigenen RMM-Tools („Uxintace sunset": Navy / Peach / Terracotta),
-  Bricolage Grotesque + Manrope
+  Bricolage Grotesque (Display) + Manrope (Fließtext) + JetBrains Mono
+  (Zahlen & Labels). Der `:root`-Tokenblock ist mit `www.rxf-sys.de`
+  identisch — Änderungen an Farben, Schriften oder Radien gehören in
+  beide Repos
 - **Dark Mode** — folgt initial `prefers-color-scheme`, umschaltbar und
   persistent; ohne Theme-Flash dank Inline-Init im `<head>` (per CSP-Hash
   freigegeben, kein `unsafe-inline`)
