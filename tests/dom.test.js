@@ -1,10 +1,12 @@
 /* DOM-Smoke-Tests für index.html + index.js (jsdom).
    Prüft: Theme-Init/-Toggle, DE/EN-Umschaltung, Lightbox inkl.
-   Fokus-Management, Reveal-Fallback, Anker-Integrität.
+   Fokus-Management, Reveal-Fallback, Anker-Integrität, Terminal,
+   Services, Hero-Intro. Läuft ohne GSAP/Lenis (externe Scripts werden
+   nicht geladen) und prüft damit zugleich den Fallback ohne Libraries.
    Ausführung (CI oder lokal): npm install --no-save jsdom && node tests/dom.test.js */
 'use strict';
 
-const { JSDOM } = require('jsdom');
+const { JSDOM, VirtualConsole } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 
@@ -12,8 +14,18 @@ const ROOT = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const js = fs.readFileSync(path.join(ROOT, 'index.js'), 'utf8');
 
-// Externes <script src> entfernen — index.js wird unten direkt injiziert
-const dom = new JSDOM(html.replace(/<script src="[^"]+"><\/script>/, ''), {
+// jsdom kennt kein Canvas — diese eine erwartete Meldung ausblenden,
+// alle anderen Fehler weiterhin ausgeben.
+const virtualConsole = new VirtualConsole();
+virtualConsole.on('jsdomError', (e) => {
+  if (!/Not implemented: HTMLCanvasElement/.test(e.message)) console.error(e);
+});
+virtualConsole.on('error', (...a) => console.error(...a));
+
+// Externe <script src> entfernen (Vendor-Libs, boot.js, index.js) —
+// index.js wird unten direkt injiziert
+const dom = new JSDOM(html.replace(/<script src="[^"]+"><\/script>/g, ''), {
+  virtualConsole,
   url: 'https://portfolio.rxf-sys.de/',
   runScripts: 'dangerously',
   pretendToBeVisual: true,
@@ -146,6 +158,48 @@ check('Fokus zurück auf Demo-Button', document.activeElement === demoOpenBtn);
 console.log('== Reveal-Fallback ==');
 check('Reveals ohne IntersectionObserver eingeblendet',
   Array.from(document.querySelectorAll('.reveal')).every((el) => el.classList.contains('in')));
+check('Motion-Schicht aktiv (html.motion)', document.documentElement.classList.contains('motion'));
+check('Ohne boot.js kein Boot-Overlay', !document.documentElement.classList.contains('is-booting'));
 
-console.log('\n' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+console.log('== Marquee ==');
+const mqItems = document.querySelectorAll('.marquee-track li');
+const mqClones = document.querySelectorAll('.marquee-track li[aria-hidden="true"]');
+check('Marquee-Einträge für die Schleife verdoppelt', mqItems.length === mqClones.length * 2 && mqClones.length > 0);
+
+console.log('== Terminal ==');
+const termIn = document.getElementById('termIn');
+const termForm = document.getElementById('termForm');
+const termOut = document.getElementById('termOut');
+function run(cmd) {
+  termIn.value = cmd;
+  termForm.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+}
+run('help');
+check('help listet Befehle (DE)', termOut.textContent.includes('Verfügbare Befehle'));
+check('Eingabefeld nach Ausführung geleert', termIn.value === '');
+run('gibtsnicht');
+check('Unbekannter Befehl als Fehler markiert', termOut.lastElementChild.classList.contains('err'));
+run('echo <img src=x onerror=alert(1)>');
+check('echo gibt Text aus, kein HTML (kein <img> erzeugt)', !termOut.querySelector('img') && termOut.lastElementChild.textContent.includes('<img'));
+document.querySelector('.term-chip[data-cmd="whoami"]').click();
+check('Befehls-Chip führt Befehl aus', termOut.textContent.includes('Robin Frank — Junior IT-Systemadministrator'));
+run('lang');
+check('lang schaltet auf Englisch um', document.documentElement.getAttribute('lang') === 'en');
+run('help');
+check('help danach auf Englisch', termOut.textContent.includes('Available commands'));
+run('lang');
+run('clear');
+check('clear leert die Ausgabe', termOut.children.length === 0);
+
+console.log('== Asynchron: Hero-Intro, Services, Timeline ==');
+setTimeout(() => {
+  check('Hero-Intro gestartet (html.hero-in)', document.documentElement.classList.contains('hero-in'));
+  check('Alle Services laufen (active (running))',
+    Array.from(document.querySelectorAll('.svc-state')).every((s) => s.textContent === 'active (running)'));
+  check('Werdegang-Einträge ohne GSAP beleuchtet',
+    Array.from(document.querySelectorAll('.tl-item')).every((it) => it.classList.contains('is-lit')));
+  check('Ortszeit wird angezeigt', /^\d{2}:\d{2}:\d{2}$/.test(document.getElementById('localTime').textContent));
+
+  console.log('\n' + pass + ' passed, ' + fail + ' failed');
+  process.exit(fail ? 1 : 0);
+}, 3200);

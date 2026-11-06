@@ -1,29 +1,53 @@
 # portfolio.rxf-sys.de
 
 Portfolio-Website — statisches HTML/CSS/JS, kein Build-Schritt.
-Design: „Bento / Soft Modern" mit der Farbpalette des RMM-Tools
-(„Uxintace sunset": Navy `#181A2F`/`#242E49`/`#37415C`, Peach `#FDA481`,
-Terracotta `#D16A3E` als Light-Mode-Akzent), Dark Mode,
-DE/EN-Sprachumschalter, Scroll-Animationen.
+Konzept „Live System": die Seite inszeniert sich als laufender Server
+(Boot-Sequenz, Kabel mit Ports pro Sektion, Services, Server-Rack,
+`git log`-Werdegang, interaktives Terminal). Palette „Phosphor"
+(Grün-Schwarz `#0B0F0E`, Papier `#ECEEE6`, ein Akzent Signal-Lime
+`#C6F432`, als Text im Hellmodus `#436100`, Amber für Warnzustände),
+Dark Mode, DE/EN-Sprachumschalter.
 
-## Gemeinsames Designsystem mit www.rxf-sys.de
+## Designsystem (eigenständig seit v3)
 
-Beide Seiten teilen einen **identischen `:root`-Tokenblock** in `index.css`
-(Farben, `--r`/`--r-sm`, `--head`/`--sans`/`--mono`, `--shadow`, `--ease`).
+Die Tokens in `index.css` (`:root` / `html[data-theme="dark"]`) sind
+**nicht mehr** mit www.rxf-sys.de synchron — Farb- und Schriftänderungen
+hier gehören **nicht** automatisch ins Schwester-Repo.
 
-- **Schriften**: Bricolage Grotesque (`--head`) · Manrope (`--sans`) ·
-  JetBrains Mono (`--mono`, Kennzahlen, Sektionsnummern, `.tile-label`,
-  `.fact .k`)
+- **Schriften**: Archivo (`--head`, breit via `font-stretch` 110–120 %) ·
+  Manrope (`--sans`) · JetBrains Mono (`--mono`, Zahlen, Labels, Terminal)
+- **Farbregeln**: genau ein Akzent (Lime), kein Violett; Lime als Fläche
+  immer mit dunkler Schrift (`--on-accent`), als Textfarbe im Hellmodus
+  `--accent-ink`. Kontraste: Fließtext ≥ 10:1, `--muted` ≥ 5,5:1
 - **Ausnahme**: die Prototyp-Demo (`--p-*`-Tokens ab `.proto`) bildet bewusst
   fremde Produkt-UIs nach und nutzt deshalb weiterhin Inter und
   Instrument Serif — diese Schriften bleiben im Google-Fonts-Request
-- **Layout bleibt seitenspezifisch**: hier das Bento-Grid, auf der
-  Hauptseite ein zentrierter Hero mit klassischen Sektionen
-- Wird ein Token geändert, gehört dieselbe Änderung ins Schwester-Repo
+
+## Motion-Schicht
+
+- **Bibliotheken** selbst gehostet in `assets/vendor/` (unverändert aus npm):
+  GSAP 3.13 (`gsap`, `ScrollTrigger`, `SplitText`) und Lenis 1.3.
+  Updates: Datei ersetzen und den `?v=`-Parameter im `<script src>` anheben
+- **`assets/js/boot.js`** läuft synchron im `<head>`: setzt `html.js` und —
+  einmal pro Sitzung (`sessionStorage` `pf3-booted`), nie bei reduzierter
+  Bewegung — `html.is-booting` für die Boot-Sequenz
+- **Progressive Enhancement**: Startzustände (versteckt/gedimmt) gelten nur
+  unter `html.motion` bzw. `html.js:not(.hero-in)`; CSS-Failsafes blenden
+  Boot-Overlay (6 s) und Hero (5 s) auch ohne JS wieder ein. `index.js`
+  muss ohne GSAP/Lenis lauffähig bleiben — die jsdom-Tests prüfen genau
+  diesen Fallback
+- **Texte, die gesplittet/überschrieben werden** (SplitText, Scramble)
+  machen das vor einem Sprachwechsel rückgängig: `applyLang` feuert
+  `pf:beforelang` und danach `pf:lang` — neue Text-Effekte müssen darauf
+  reagieren
+- **Reduced Motion**: kein Boot, kein Pinning, kein Scrub, kein Lenis —
+  jedes Element zeigt seinen Endzustand
 
 ### Gemeinsame Kopfleiste
 
-Beide Seiten nutzen **dieselben Klassen und dieselbe Reihenfolge**:
+Die Kopfleiste bleibt **strukturell** mit www.rxf-sys.de identisch (nur die
+Farben folgen der eigenen Palette). Beide Seiten nutzen **dieselben Klassen
+und dieselbe Reihenfolge**:
 `.topbar` (randlos, `padding: 14px clamp(16px, 3vw, 48px)`, sticky) mit
 `.brand` → `.topbar-nav` → `.lang-toggle` → `.topbar-cta` → `.theme-toggle`
 → `.nav-toggle`. Änderungen daran gehören immer in beide Repos.
@@ -40,17 +64,19 @@ Beide Seiten nutzen **dieselben Klassen und dieselbe Reihenfolge**:
 
 ```
 ├── README.md           # Projekt-Doku (Features, lokale Entwicklung, CI, Deployment)
-├── index.html          # Hauptseite (One-Pager, 7 Sektionen)
+├── index.html          # Hauptseite (One-Pager, Hero + 6 Sektionen)
 ├── index.css           # Stylesheet (Design-Tokens in :root / html[data-theme="dark"])
-├── index.js            # Theme, i18n (EN-Wörterbuch), Reveal, Counter, Lightbox
+├── index.js            # Theme, i18n (EN-Wörterbuch), Boot, Motion-Schicht, Terminal, Lightbox, Demo
 ├── datenschutz.html    # nutzt .legal-*-Klassen aus index.css
 ├── impressum.html      # nutzt .legal-*-Klassen aus index.css
 ├── .htmlvalidate.json  # html-validate-Konfiguration (void-style: selfclosing)
 ├── robots.txt          # SEO: alles erlaubt, verweist auf sitemap.xml
 ├── sitemap.xml         # SEO: nur die Hauptseite (Rechtsseiten sind noindex)
 ├── tests/
-│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Lightbox, Reveal)
+│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Lightbox, Reveal, Terminal, Fallback ohne GSAP)
 ├── assets/             # Bilder, Icons, PDF
+│   ├── js/boot.js      # synchrones Boot-Gate im <head>
+│   └── vendor/         # GSAP, ScrollTrigger, SplitText, Lenis (selbst gehostet)
 ├── _headers            # INAKTIV — nur historische Referenz (Cloudflare Pages Format)
 └── infrastructure/
     ├── Caddyfile       # Webserver-Konfiguration (Security-Header, Caching, file_server)
@@ -85,11 +111,13 @@ Beide Seiten nutzen **dieselben Klassen und dieselbe Reihenfolge**:
   bleiben und der Hash im Caddyfile neu berechnet werden:**
   `echo -n '<script-inhalt>' | openssl dgst -sha256 -binary | base64`
 - **Cache-Busting**: `index.css`/`index.js` werden mit `?v=…` referenziert und von
-  Caddy 7 Tage gecacht — **bei Änderungen an CSS/JS den `?v=`-Parameter in allen
+  Caddy 7 Tage gecacht (`/assets/*` sogar 30 Tage, also auch `boot.js` und
+  `vendor/`) — **bei Änderungen an CSS/JS den `?v=`-Parameter in allen
   HTML-Dateien bumpen** (z. B. auf das aktuelle Datum)
-- **Externe Ressourcen**: Google Fonts (Bricolage Grotesque, Manrope) und
-  Font Awesome 6.5.0 via cdnjs — bei neuen externen Quellen die CSP im Caddyfile
-  erweitern
+- **Externe Ressourcen**: Google Fonts (Archivo, Manrope, JetBrains Mono, für
+  die Demo Inter und Instrument Serif) und Font Awesome 6.5.0 via cdnjs.
+  Scripts kommen **nur** von `'self'` (Libraries liegen in `assets/vendor/`) —
+  bei neuen externen Quellen die CSP im Caddyfile erweitern
 - **i18n**: DE-Texte stehen im Markup, EN im `EN`-Objekt in `index.js`
   (Mapping über `data-i18n`/`data-i18n-html`) — neue Texte immer in beiden Sprachen
   pflegen
