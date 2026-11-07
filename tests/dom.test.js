@@ -1,7 +1,7 @@
 /* DOM-Smoke-Tests für index.html + index.js (jsdom).
-   Prüft: Theme-Init/-Toggle, DE/EN-Umschaltung, Lightbox inkl.
-   Fokus-Management, Reveal-Fallback, Anker-Integrität, Terminal,
-   Services, Hero-Intro. Läuft ohne GSAP/Lenis (externe Scripts werden
+   Prüft: Theme-Init/-Toggle, DE/EN-Umschaltung, Lightbox und
+   Projektdialog inkl. Fokus-Management, Reveal-Fallback, Anker,
+   Skill-Graph, Heatmap, Monitorwand, Terminal, Hero-Intro. Läuft ohne GSAP/Lenis (externe Scripts werden
    nicht geladen) und prüft damit zugleich den Fallback ohne Libraries.
    Ausführung (CI oder lokal): npm install --no-save jsdom && node tests/dom.test.js */
 'use strict';
@@ -126,45 +126,46 @@ check('Escape schließt Modal', modal.hidden === true && !modal.classList.contai
 check('Bild zurückgesetzt (Platzhalter)', certImg.getAttribute('src').startsWith('data:image/gif'));
 check('Fokus zurück auf Trigger', document.activeElement === viewBtn);
 
-console.log('== App-Demo (Carousel + Prototyp) ==');
-const demoStage = document.getElementById('demoStage');
-const demoSlides = demoStage.querySelectorAll('.demo-slide');
-const demoDots = document.querySelectorAll('.demo-dot');
-check('Zwei Demo-Slides vorhanden', demoSlides.length === 2);
-check('Slide 0 (Ryntra) initial aktiv', demoSlides[0].classList.contains('active'));
-demoDots[1].click();
-check('Dot-Klick wechselt zu Slide 1', demoSlides[1].classList.contains('active') && !demoSlides[0].classList.contains('active'));
+console.log('== Projektdialog (Fallstudie) ==');
+const pd = document.getElementById('projDialog');
+const pdBody = document.getElementById('projDialogBody');
+const pdClose = document.getElementById('projDialogClose');
+const openBtn = document.querySelector('[data-open-project="vulpexa"]');
+check('Dialog initial hidden', pd.hidden === true);
+openBtn.click();
+check('Klick öffnet Dialog', pd.hidden === false);
+check('Inhalt aus Template (Titel Vulpexa)', pdBody.textContent.includes('Vulpexa'));
+check('Architekturdiagramm vorhanden', !!pdBody.querySelector('svg.arch-svg'));
+// Fokus und Schließen laufen zeitversetzt (rAF bzw. Ausblend-Animation)
+setTimeout(() => {
+  check('Fokus auf Schließen-Button', document.activeElement === pdClose);
+  document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+}, 200);
+check('Jedes Projekt hat ein Dialog-Template',
+  Array.from(document.querySelectorAll('[data-open-project]')).every((b) => !!document.getElementById('tpl-proj-' + b.getAttribute('data-open-project'))));
 
-const oryProto = demoSlides[1].querySelector('.proto');
-const oryTabs = oryProto.querySelectorAll('.p-tab');
-const oryViews = oryProto.querySelectorAll('.proto-view');
-oryTabs[1].click();
-check('Tab-Klick aktiviert zweite View', oryViews[1].classList.contains('active') && !oryViews[0].classList.contains('active'));
+console.log('== Skill-Graph ==');
+const node = document.querySelector('.sg-node[data-skill="docker"]');
+node.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+check('Klick auf Knoten zeigt passende Karte', document.querySelector('.sg-card[data-skill="docker"]').classList.contains('is-on'));
+check('Abhängigkeiten hervorgehoben', document.querySelectorAll('.sg-edge.is-on').length > 0);
 
-const demoModal = document.getElementById('demoModal');
-const demoOpenBtn = document.getElementById('demoOpenBtn');
-const demoHost = document.getElementById('demoHost');
-demoOpenBtn.click();
-check('Demo-Modal offen', demoModal.hidden === false && demoModal.classList.contains('open'));
-check('Aktiver Prototyp ins Modal umgezogen', !!demoHost.querySelector('.proto'));
-check('Titel zeigt App-Namen', document.getElementById('demoTitle').textContent === 'Orynthia');
-document.getElementById('demoSwitch').click();
-check('Wechsel-Button mountet andere App', document.getElementById('demoTitle').textContent === 'Ryntra RMM');
-document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-check('Escape schließt Demo-Modal', demoModal.hidden === true && !demoHost.querySelector('.proto'));
-check('Prototyp zurück im Carousel-Slide', !!demoSlides[0].querySelector('.proto'));
-check('Fokus zurück auf Demo-Button', document.activeElement === demoOpenBtn);
+console.log('== Heatmap ==');
+check('Initial ist 2026 gewählt', !document.querySelector('.hm-panel[data-year="2026"]').hidden);
+document.querySelector('.hm-yb[data-year="2022"]').click();
+check('Jahr 2022 wählbar', !document.querySelector('.hm-panel[data-year="2022"]').hidden && document.querySelector('.hm-panel[data-year="2026"]').hidden);
+check('2022 enthält die Ausbildung', document.querySelector('.hm-panel[data-year="2022"]').textContent.includes('INEOS'));
+
+console.log('== Texte ==');
+check('Keine Gedankenstriche im sichtbaren Text (DE)', !/[\u2013\u2014]/.test(document.body.textContent));
+check('Keine Gedankenstriche in den EN-Texten', Object.values(window.PF_EN).every((v) => !/[\u2013\u2014]/.test(v)));
+check('Fusion IT nicht mehr als aktuell geführt', !document.body.textContent.includes('Fusion IT, Langenfeld Aktuell'));
 
 console.log('== Reveal-Fallback ==');
 check('Reveals ohne IntersectionObserver eingeblendet',
   Array.from(document.querySelectorAll('.reveal')).every((el) => el.classList.contains('in')));
 check('Motion-Schicht aktiv (html.motion)', document.documentElement.classList.contains('motion'));
 check('Ohne boot.js kein Boot-Overlay', !document.documentElement.classList.contains('is-booting'));
-
-console.log('== Marquee ==');
-const mqItems = document.querySelectorAll('.marquee-track li');
-const mqClones = document.querySelectorAll('.marquee-track li[aria-hidden="true"]');
-check('Marquee-Einträge für die Schleife verdoppelt', mqItems.length === mqClones.length * 2 && mqClones.length > 0);
 
 console.log('== Terminal ==');
 const termIn = document.getElementById('termIn');
@@ -182,7 +183,7 @@ check('Unbekannter Befehl als Fehler markiert', termOut.lastElementChild.classLi
 run('echo <img src=x onerror=alert(1)>');
 check('echo gibt Text aus, kein HTML (kein <img> erzeugt)', !termOut.querySelector('img') && termOut.lastElementChild.textContent.includes('<img'));
 document.querySelector('.term-chip[data-cmd="whoami"]').click();
-check('Befehls-Chip führt Befehl aus', termOut.textContent.includes('Robin Frank — Junior IT-Systemadministrator'));
+check('Befehls-Chip führt Befehl aus', termOut.textContent.includes('Robin Frank, Junior-Systemadministrator'));
 run('lang');
 check('lang schaltet auf Englisch um', document.documentElement.getAttribute('lang') === 'en');
 run('help');
@@ -191,13 +192,13 @@ run('lang');
 run('clear');
 check('clear leert die Ausgabe', termOut.children.length === 0);
 
-console.log('== Asynchron: Hero-Intro, Services, Timeline ==');
+console.log('== Asynchron: Hero-Intro, Monitorwand ==');
 setTimeout(() => {
   check('Hero-Intro gestartet (html.hero-in)', document.documentElement.classList.contains('hero-in'));
-  check('Alle Services laufen (active (running))',
-    Array.from(document.querySelectorAll('.svc-state')).every((s) => s.textContent === 'active (running)'));
-  check('Werdegang-Einträge ohne GSAP beleuchtet',
-    Array.from(document.querySelectorAll('.tl-item')).every((it) => it.classList.contains('is-lit')));
+  check('Monitore ohne GSAP eingeschaltet',
+    Array.from(document.querySelectorAll('.screen')).every((s) => s.classList.contains('on')));
+  check('Escape schließt Dialog', pd.hidden === true && pdBody.children.length === 0);
+  check('Fokus zurück auf Trigger', document.activeElement === openBtn);
   check('Ortszeit wird angezeigt', /^\d{2}:\d{2}:\d{2}$/.test(document.getElementById('localTime').textContent));
 
   console.log('\n' + pass + ' passed, ' + fail + ' failed');

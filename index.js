@@ -1,125 +1,295 @@
-/* Portfolio v3 — "Live System".
-   Theme, language (DE/EN), boot sequence, hero intro, cable, reveals,
-   counters, services, rack, timeline, terminal, lightbox, app demo.
-   Vanilla JS, no build step, no eval. GSAP / ScrollTrigger / SplitText /
-   Lenis are optional: without them (or with reduced motion) the page
-   stays complete and static.
-   Note: data-theme is set by the inline script in <head> and .js /
-   .is-booting by assets/js/boot.js — here we only toggle and persist. */
+/* ============================================================
+   Portfolio v4 · Leitstand. One file, three parts:
+   1. window.PF_EN / PF_TERM: English strings (German lives in the markup)
+   2. window.PF_VARIANT: skill graph, monitor wall, activity heatmap
+   3. core: theme, i18n, reveals, menu, dialogs, terminal, Lenis, intro
+   Runs without GSAP/Lenis; the jsdom tests check exactly that fallback.
+   ============================================================ */
+window.PF_EN = {
+"skip": "Skip to content",
+"proj.homelab.title": "HomeLab · Proxmox VE",
+"proj.homelab.meta": "2022 to today · Personal · Infrastructure",
+"proj.homelab.desc": "My self-hosted lab: a Proxmox VE node with ten LXC containers for Samba NAS, WireGuard VPN, Vaultwarden, Portainer and my own apps. Vaultwarden replaces the cloud password manager, WireGuard opens a secure tunnel from anywhere.",
+"st.live": "Live",
+"proj.homelab.s0": "LXC containers",
+"proj.homelab.s1": "VMs",
+"proj.homelab.s2": "running since",
+"proj.homelab.d0": "One Proxmox node, services as LXC instead of VMs: less overhead per service.",
+"proj.homelab.d1": "External access only via WireGuard and Cloudflare Tunnel, no open ports.",
+"proj.homelab.d2": "Snapshots before every experiment, so a mistake never takes the network down.",
+"projects.problem": "The problem",
+"proj.homelab.problem": "Own services instead of cloud subscriptions, and a place to learn without risk.",
+"projects.decisions": "Decisions",
+"projects.asof": "As of 11/2026",
+"projects.arch": "Architecture",
+"proj.vulpexa.title": "Vulpexa · RMM-Plattform",
+"proj.vulpexa.meta": "2026 · Self-hosted · rmm.rxf-sys.de",
+"proj.vulpexa.desc": "Lean self-hosted RMM tool for my own servers and the family’s devices, modelled on NinjaOne. Monitoring, patching, scripts with live output and remote support via RustDesk.",
+"st.wip": "In progress",
+"proj.vulpexa.s0": "Heartbeat",
+"proj.vulpexa.s1": "platforms",
+"proj.vulpexa.s2": "open ports per device",
+"proj.vulpexa.d0": "Agent written in Go as one static binary for Windows, Linux and macOS.",
+"proj.vulpexa.d1": "Agents connect outbound via WebSocket: no open ports, no fixed IP.",
+"proj.vulpexa.d2": "Signed auto-update (ed25519), TOTP and an audit log for every access.",
+"proj.vulpexa.problem": "Look after five to fifteen devices without paying for an enterprise RMM.",
+"proj.orynthia.title": "Orynthia · Alltags-App",
+"proj.orynthia.meta": "2026 · Self-hosted · Open banking",
+"proj.orynthia.desc": "A self-hosted all-rounder for everyday life: finances with open banking (PSD2), calendar, tasks, recipes, meal plan, lists, notes and travel. The modules work together: recipes go into the meal plan, the meal plan creates the shopping list.",
+"proj.orynthia.s0": "modules",
+"proj.orynthia.s1": "bank access",
+"proj.orynthia.s2": "TOTP",
+"proj.orynthia.d0": "Monorepo with a NestJS API and React frontend, Prisma as ORM.",
+"proj.orynthia.d1": "Bank access via Enable Banking (PSD2), sensitive data AES-256 encrypted.",
+"proj.orynthia.d2": "JWT with refresh tokens and TOTP 2FA, refuses to start without valid secrets.",
+"proj.orynthia.problem": "Finances, appointments and household lived in five different apps.",
+"proj.admin.title": "Admin-Dashboard",
+"proj.admin.meta": "2026 · Self-hosted · admin.rxf-sys.de",
+"proj.admin.desc": "Monitoring dashboard for my home server: watches Proxmox, backups and services with probe histories. FastAPI backend, React frontend and custom session auth with Argon2id and roles.",
+"proj.rmm.title": "RMM-Automatisierung",
+"proj.rmm.meta": "2026 · NinjaOne · Automation",
+"proj.rmm.desc": "NinjaOne scripting library for recurring maintenance tasks: patch reports, disk health checks and software inventory, written in PowerShell and Bash.",
+"st.done": "Completed",
+"proj.magicmirror.title": "MagicMirror",
+"proj.magicmirror.meta": "2023 · Smart home",
+"proj.magicmirror.desc": "Self-built MagicMirror on a Raspberry Pi 4 with two custom modules for personalized displays and smart home integration.",
+"proj.portfolio.title": "Portfolio website",
+"proj.portfolio.meta": "2025 · This site",
+"proj.portfolio.desc": "This website: static HTML, CSS and JS without a build step, animated with GSAP and Lenis. Self-hosted in my own HomeLab, reachable via Cloudflare Tunnel.",
+"proj.ihk.title": "IHK final project",
+"proj.ihk.meta": "2025 · IHK Cologne",
+"proj.ihk.desc": "Documentation and implementation of my final project as an IT specialist for application development, with a Groovy backend and Bootstrap frontend.",
+"st.passed": "Passed",
+"proj.ihk.link0": "Documentation",
+"nav.about": "About",
+"nav.skills": "Skills",
+"nav.projects": "Projects",
+"nav.certs": "Certificates",
+"nav.cv": "Experience",
+"nav.contact": "Contact",
+"who.seek.k": "Looking for",
+"who.seek.v": "A permanent role in system administration",
+"who.seek.m": "Cologne, Düsseldorf, Neuss area · available now",
+"who.deg.k": "Qualification",
+"who.deg.v": "IT specialist for application development",
+"who.deg.m": "IHK Cologne · 2025",
+"who.focus.k": "Focus",
+"who.focus.v": "Linux, Proxmox, networking and automation",
+"who.focus.m": "Own HomeLab since 2022",
+"hero.chip": "Open to a new role",
+"hero.title": "Hi, I’m Robin.<br />I keep <span class=\"hl\">infrastructure</span> running.",
+"hero.lede": "Junior system administrator, trained as an IT specialist. Linux, Proxmox, networking and automation: learned on the job, deepened in my own HomeLab.",
+"hero.cta1": "Get in touch",
+"hero.cta2": "View projects",
+"fact.statusV": "Open to a new role",
+"fact.status": "Status",
+"fact.degreeV": "IT Specialist (AE) · 2025",
+"fact.degree": "Degree",
+"fact.lastV": "Junior IT sysadmin · Fusion IT",
+"fact.last": "Most recently",
+"fact.labV": "Proxmox VE · 10 LXC and 2 VMs",
+"fact.lab": "HomeLab",
+"fact.lang": "Languages",
+"fact.loc": "Location",
+"facts.title": "Key facts",
+"about.title": "About me",
+"about.kicker": "Background and values",
+"about.quote": "“The best infrastructure is the one nobody notices, because it just works.”",
+"about.quoteSrc": "My standard",
+"about.p1": "I’m a trained IT specialist for application development and most recently looked after customer infrastructures as a junior IT system administrator at Fusion IT in Langenfeld. My strengths: administering IT infrastructures, networking, and automating recurring tasks.",
+"about.p2": "I deliberately moved from application development into administration. I’m fascinated by how systems stay stable, secure and observable under real load.",
+"about.p3": "In my free time I run my own HomeLab on Proxmox VE: Samba NAS, WireGuard VPN, Vaultwarden, Portainer and my own apps. Every container is an experiment that deepens my Linux, virtualization and networking skills.",
+"skills.title": "Skills",
+"skills.kicker": "Stack and practice",
+"graph.base": "base",
+"grp.sys": "Systems",
+"skill.linux.note": "Everyday base for servers, containers and agents.",
+"graph.needs": "builds on",
+"graph.feeds": "supports",
+"skills.since": "since",
+"skill.proxmox.note": "Own node with 10 LXC and 2 VMs, snapshots before every experiment.",
+"skill.docker.note": "Every app of mine runs as a Compose stack.",
+"skill.ninja.note": "Certified twice, scripts for maintenance and inventory.",
+"grp.net": "Network",
+"skill.wg.note": "Secure access to the HomeLab from anywhere.",
+"skill.dns.note": "Own name resolution and addressing at home.",
+"skill.fw.note": "Securepoint UTM operator, networking fundamentals and TCP/IP.",
+"skills.none": "Training and work",
+"skill.tunnel.note": "Publishing without open ports, security headers in the Caddyfile.",
+"grp.dev": "Development",
+"skill.java.note": "Training and IHK project with Grails on the JVM.",
+"skill.js.note": "From MagicMirror modules to React dashboards.",
+"skill.react.note": "Dashboards for my own self-hosted apps.",
+"skill.python.note": "REST APIs and WebSocket servers with tests and type checks.",
+"skill.go.note": "The Vulpexa agent as one static binary for three platforms.",
+"skill.nest.note": "Backend of the Orynthia app with PostgreSQL and Redis.",
+"grp.auto": "Data and automation",
+"skill.bash.note": "Deploy, backup and setup scripts.",
+"skill.ps.note": "Maintenance scripts for Windows fleets.",
+"skill.sql.note": "Data models, migrations and reports.",
+"skill.git.note": "CI checks on every push, deploys via webhook or self-hosted runner.",
+"skills.self": "Level as self-assessment from 1 to 5",
+"projects.title": "Projects",
+"projects.kicker": "Selected work",
+"certs.title": "Certificates",
+"certs.kicker": "Qualifications and training",
+"cert1.title": "IT Specialist for Application Development",
+"cert1.desc": "Completed vocational training at INEOS Manufacturing Deutschland GmbH.",
+"certs.view": "View certificate",
+"cert2.desc": "Certification as a NinjaOne technician for managed service providers.",
+"cert3.desc": "Specialization in IT automation and scripting with the NinjaOne platform.",
+"cert4.date": "July 2026",
+"cert4.desc": "Operating and initial setup of a Securepoint NextGen UTM firewall, including networking fundamentals, TCP/IP, addressing and routing.",
+"cert5.date": "July 2026",
+"cert5.desc": "Managing Securepoint Antivirus Pro: unified security, cloud administration and initial setup for endpoint protection.",
+"cert6.title": "University of Applied Sciences entrance qualification",
+"cert6.desc": "Focus on business and administration, the foundation for the later IHK training.",
+"cv.title": "Experience",
+"cv.kicker": "Work and education, chronological",
+"cv.type.school": "School",
+"cv.type.work": "Work",
+"cv.type.project": "Project",
+"cv.type.cert": "Certificate",
+"tl.2009.f5fe09b.t": "Ganztagsgrundschule Mehren",
+"tl.2009.f5fe09b.s": "Primary school",
+"tl.2013.e8457fd.t": "Drei-Maare-Realschule plus Daun",
+"tl.2013.e8457fd.s": "Secondary school certificate",
+"tl.2018.68b3570.t": "Johann Energie GmbH",
+"tl.2018.68b3570.s": "April: student internship, commercial and technical",
+"tl.2019.dbd27bd.t": "BBS Gerolstein",
+"tl.2019.dbd27bd.s": "University entrance qualification, focus on computer science",
+"tl.2020.0a196b0.t": "TofuTown GmbH",
+"tl.2020.0a196b0.s": "August: summer job in packing and quality control",
+"tl.2021.e6756bd.t": "HIT Handelsgruppe GmbH & Co. KG",
+"tl.2021.e6756bd.s": "May to August: part-time job as cashier and shelf stocker",
+"tl.2022.079744f.t": "INEOS Manufacturing Deutschland GmbH",
+"tl.2022.079744f.s": "September 2022 to August 2025: training as an IT specialist for application development",
+"tl.2022.2efac8f.t": "HomeLab",
+"tl.2022.2efac8f.s": "The first Proxmox node goes live",
+"tl.2023.3afd102.t": "MagicMirror",
+"tl.2023.3afd102.s": "Raspberry Pi 4 with two custom modules",
+"tl.2025.0ac0846.t": "IHK-Abschluss",
+"tl.2025.0ac0846.s": "August: IT specialist for application development, IHK Cologne",
+"tl.2025.df7294c.t": "NinjaOne",
+"tl.2025.df7294c.s": "Certified Technician MSP and Automation Specialist",
+"tl.2026.04a75c6.t": "Fusion IT, Langenfeld",
+"tl.2026.04a75c6.s": "January to September: junior IT system administrator, customer infrastructures, RMM, onboarding",
+"tl.2026.a0b6ab2.t": "Securepoint",
+"tl.2026.a0b6ab2.s": "July: UTM Operator and Antivirus Pro Operator",
+"tl.2026.4fb765d.t": "Vulpexa, Orynthia, Admin-Dashboard",
+"tl.2026.4fb765d.s": "My own apps run in the HomeLab",
+"cv.type.now": "Today",
+"tl.2026.1e87bc8.t": "Open to a new role",
+"tl.2026.1e87bc8.s": "Since October 2026",
+"contact.title": "Contact",
+"contact.kicker": "Let’s talk",
+"contact.head": "Drop me a line.<br />I’ll get <span class=\"hl\">back to you</span>.",
+"contact.lede": "Looking for help in system administration? Or want to talk HomeLabs, Linux or automation? I’d love to hear from you.",
+"contact.cta1": "Write an e-mail",
+"contact.region": "Region",
+"contact.regionV": "Dormagen, NRW · remote and on-site",
+"contact.response": "Response time",
+"contact.responseV": "Usually within 24 hours",
+"term.title": "Or just ask the terminal",
+"term.hint": "Type help and press Enter. Or pick a command below.",
+"term.label": "Enter a command",
+"footer.copy": "© 2026 Robin Frank · All rights reserved",
+"footer.built": "handcrafted · runs in my own HomeLab",
+"footer.imprint": "Imprint",
+"footer.privacy": "Privacy",
+"footer.top": "Back to top"
+};
+window.PF_TERM = {"de": {"whoami": ["Robin Frank, Junior-Systemadministrator. Offen für eine neue Stelle.", "Fachinformatiker für Anwendungsentwicklung (IHK, 2025) · Dormagen, NRW."], "skills": ["system:  linux · proxmox ve · docker/lxc · ninjaone", "netz:    wireguard · dns/dhcp · firewall/routing · caddy", "code:    python · go · typescript · react · nestjs · java · bash · powershell"]}, "en": {"whoami": ["Robin Frank, junior system administrator. Open to a new role.", "IT specialist for application development (IHK, 2025) · Dormagen, NRW."], "skills": ["system:  linux · proxmox ve · docker/lxc · ninjaone", "network: wireguard · dns/dhcp · firewall/routing · caddy", "code:    python · go · typescript · react · nestjs · java · bash · powershell"]}};
+
+/* Variant C · Leitstand: skill graph, monitor wall with power-on, activity heatmap. */
+window.PF_VARIANT = function (api) {
+  'use strict';
+  var $all = api.$all;
+
+  /* ---------- Skills: graph focus shows a node, its dependencies and details ---------- */
+  var graph = document.querySelector('.sgraph');
+  if (graph) {
+    var nodes = $all('.sg-node', graph);
+    var edges = $all('.sg-edge', graph);
+    var cards = $all('.sg-card', graph);
+    nodes.forEach(function (n, i) { n.style.setProperty('--d', i); });
+    var current = null;
+    var focus = function (id) {
+      current = id;
+      graph.classList.toggle('has-focus', !!id);
+      var near = {};
+      edges.forEach(function (e) {
+        var on = !!id && (e.getAttribute('data-a') === id || e.getAttribute('data-b') === id);
+        e.classList.toggle('is-on', on);
+        if (on) { near[e.getAttribute('data-a')] = 1; near[e.getAttribute('data-b')] = 1; }
+      });
+      nodes.forEach(function (n) {
+        var sid = n.getAttribute('data-skill');
+        n.classList.toggle('is-on', sid === id);
+        n.classList.toggle('is-near', !!near[sid] && sid !== id);
+      });
+      cards.forEach(function (c) { c.classList.toggle('is-on', c.getAttribute('data-skill') === id); });
+    };
+    nodes.forEach(function (n) {
+      var sid = n.getAttribute('data-skill');
+      n.addEventListener('mouseenter', function () { if (api.finePointer) focus(sid); });
+      n.addEventListener('click', function () { focus(current === sid ? null : sid); });
+      n.addEventListener('focus', function () { focus(sid); });
+      n.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); focus(current === sid ? null : sid); }
+      });
+    });
+    focus('linux');
+  }
+
+  /* ---------- Projects: screens power on as they scroll in; dialog zooms out of the screen ---------- */
+  $all('.screen').forEach(function (s, i) {
+    if (!api.motion) { s.classList.add('on'); return; }
+    api.onceVisible(s, function () { setTimeout(function () { s.classList.add('on'); }, (i % 4) * 110); }, 0.9);
+  });
+  api.setProjectAnimator(function (trigger, dlg) {
+    if (!api.hasGsap || !trigger) return;
+    var glass = trigger.querySelector('.scr-glass') || trigger;
+    var panel = dlg.querySelector('.pd-panel');
+    if (!panel) return;
+    var gr = glass.getBoundingClientRect(), pr = panel.getBoundingClientRect();
+    api.gsap.fromTo(panel,
+      { x: gr.left + gr.width / 2 - (pr.left + pr.width / 2), y: gr.top + gr.height / 2 - (pr.top + pr.height / 2), scale: Math.max(0.2, gr.width / pr.width), opacity: 0.5 },
+      { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.6, ease: 'expo.out', clearProps: 'transform,opacity' });
+  });
+
+  /* ---------- Experience: pick a year on the heatmap ---------- */
+  var heat = document.getElementById('heat');
+  if (heat) {
+    var cells = $all('.hm-cell', heat);
+    var ybtns = $all('.hm-yb', heat);
+    var panels = $all('.hm-panel', heat);
+    cells.forEach(function (c, i) { c.style.setProperty('--d', i % 18 + Math.floor(i / 18) * 3); });
+    var pick = function (y) {
+      y = String(y);
+      ybtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-year') === y)); });
+      cells.forEach(function (c) { c.classList.toggle('is-sel', c.getAttribute('data-year') === y); });
+      panels.forEach(function (p) { p.hidden = p.getAttribute('data-year') !== y; });
+    };
+    ybtns.forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-year')); api.relayout(); }); });
+    cells.forEach(function (c) { c.addEventListener('click', function () { pick(c.getAttribute('data-year')); }); });
+    pick(2026);
+  }
+};
+
+/* ============================================================
+   Portfolio v4 core: theme, i18n (EN from window.PF_EN), visibility
+   watcher, reveals, counters, header state, mobile menu, active nav,
+   cert lightbox, project dialog, clock, title scramble, hero grid,
+   terminal, Lenis + statement, hero intro, boot sequence.
+   A variant script may register window.PF_VARIANT(api) for its own
+   sections; the core runs fine without it, and without GSAP/Lenis.
+   ============================================================ */
 (function () {
   'use strict';
 
-  /* ============ Translations (EN) ============ */
-  var EN = {
-    'skip': 'Skip to content',
-    'nav.about': 'About', 'nav.skills': 'Skills', 'nav.projects': 'Projects',
-    'nav.certs': 'Certificates', 'nav.cv': 'Experience', 'nav.contact': 'Contact',
-    'hero.chip': 'Available for projects',
-    'hero.title': 'Hi, I’m Robin —<br />I keep <span class="hl">infrastructure</span> running.',
-    'hero.lede': 'Junior IT system administrator at Fusion IT. Linux, Proxmox, networking and automation — at work and in my own HomeLab.',
-    'hero.cta1': 'Get in touch', 'hero.cta2': 'View projects',
-    'stats.lxc': 'LXC containers', 'stats.ninja': 'NinjaOne certified',
-    'stats.uptimeNum': '~3 yrs', 'stats.uptime': 'HomeLab uptime',
-    'now.label': 'Currently', 'now.role': 'Junior IT Sysadmin<br />@ Fusion IT', 'now.meta': 'since January 2026 · Langenfeld',
-    'about.title': 'About me', 'about.kicker': 'Background & values',
-    'about.p1': 'I’m a trained IT specialist for application development, working as a junior IT system administrator at Fusion IT in Langenfeld. My strengths: administering IT infrastructures, networking, and automating recurring tasks.',
-    'about.p2': 'I deliberately chose the move from application development into administration — because I’m fascinated by how systems stay stable, secure and observable under real load.',
-    'about.p3': 'In my free time I run my own HomeLab on Proxmox VE: Samba NAS, WireGuard VPN, Vaultwarden, Portainer — every container is an experiment that deepens my Linux, virtualization and networking skills.',
-    'fact.now': 'Currently', 'fact.degree': 'Degree', 'fact.degreeV': 'IT Specialist (AE) · 2025',
-    'fact.lang': 'Languages', 'fact.loc': 'Location',
-    'about.quote': '“The best infrastructure is the one nobody notices — because it just works.”',
-    'about.quoteSrc': '— My standard',
-    'skills.title': 'Skills', 'skills.kicker': 'Stack & practice',
-    'skills.g1': 'System administration', 'skills.g2': 'Network & services',
-    'skills.g3': 'Development', 'skills.g4': 'Data & tools',
-    'skills.daily': 'Daily', 'skills.daily2': 'Daily', 'skills.regular': 'Regularly', 'skills.regular2': 'Regularly',
-    'projects.title': 'Projects', 'projects.kicker': 'Selected work',
-    'proj.home.meta': '2022 — today · Personal · Infrastructure',
-    'proj.home.desc': 'My self-hosted lab: a Proxmox VE node with ten LXC containers for Samba NAS, WireGuard VPN, Vaultwarden, Portainer and Docker workloads. Vaultwarden replaces the cloud password manager, WireGuard opens a secure tunnel from anywhere.',
-    'proj.home.s3n': '~3 yrs', 'proj.home.s3l': 'Total uptime', 'proj.home.s4n': 'daily',
-    'proj.st.wip': 'In progress', 'proj.st.wip2': 'In progress', 'proj.st.wip3': 'In progress',
-    'proj.st.done': 'Completed', 'proj.st.passed': 'Passed',
-    'proj.ryntra.desc': 'Lean self-hosted RMM tool: FastAPI server, React dashboard and a Go agent shipped as a single static binary. Agents connect outbound via WebSocket — devices never need open ports.',
-    'proj.admin.desc': 'Monitoring dashboard for my home server: watches Proxmox, backups and services with probe histories. FastAPI backend, React frontend and custom session auth with Argon2id and roles.',
-    'proj.ory.desc': 'Self-hosted personal finance app with open banking (PSD2): automatic categorization, budgets, contracts and savings goals — React frontend, NestJS backend, PostgreSQL.',
-    'proj.rmm.desc': 'NinjaOne scripting library for recurring maintenance tasks: patch reports, disk health checks and software inventory — in PowerShell and Bash.',
-    'proj.mm.desc': 'Self-built MagicMirror on a Raspberry Pi 4 with two custom modules for personalized displays and smart home integration.',
-    'proj.pf.title': 'Portfolio website', 'proj.pf.meta': '2025 · This site',
-    'proj.pf.desc': 'This website — static HTML/CSS/JS without a build step, animated with GSAP and Lenis, self-hosted on my own HomeLab server with a custom domain via Cloudflare Tunnel.',
-    'demo.label': 'Interactive demo',
-    'demo.title': 'My apps — hands-on',
-    'demo.desc': 'Ryntra and Orynthia run right here as a clickable prototype with test data: no login, no backend — just take a look and click through.',
-    'demo.cta': 'Click through the prototype',
-    'demo.hint': 'Click through the tabs — all test data.',
-    'demo.switch': 'Switch to',
-    /* Ryntra RMM prototype */
-    'demo.ry.nav1': 'Overview', 'demo.ry.nav2': 'Devices', 'demo.ry.nav3': 'Alerts',
-    'demo.ry.nav4': 'Patch management', 'demo.ry.nav5': 'Scripts',
-    'demo.ry.hi': 'Good afternoon, robin',
-    'demo.ry.sub': 'Tuesday, 14 July · 12 of 14 devices reporting on schedule',
-    'demo.ry.m1': 'System health', 'demo.ry.m1meta': '2 offline',
-    'demo.ry.m2': 'Patch compliance', 'demo.ry.m2v': '28 updates pending', 'demo.ry.m2meta': '6 of them security-critical',
-    'demo.ry.m3': 'Open alerts', 'demo.ry.crit': '2 critical',
-    'demo.ry.m4': 'Fleet load · now', 'demo.ry.m4meta': 'avg. 34 % CPU across 12 devices',
-    'demo.ry.devs': 'Devices', 'demo.ry.sorted': 'sorted by status',
-    'demo.ry.dm1': 'Server room · online · just now', 'demo.ry.dm2': 'Robin F. · online · 5 min ago',
-    'demo.ry.th1': 'Device', 'demo.ry.th2': 'Assigned', 'demo.ry.th3': 'Load', 'demo.ry.th4': 'Status',
-    'demo.ry.st.ok': 'Online', 'demo.ry.st.ok2': 'Online', 'demo.ry.st.warn': 'Disk', 'demo.ry.st.off': 'Offline',
-    'demo.ry.al1': 'Storage almost full — nb-robin',
-    'demo.ry.al2': 'Device offline — pi-magicmirror', 'demo.ry.al2s': 'no heartbeats for 3 h',
-    'demo.ry.al3': 'High CPU load — nb-robin', 'demo.ry.al3s': '78 % for 10 min',
-    /* Orynthia prototype */
-    'demo.oy.sec1': 'Overview', 'demo.oy.sec2': 'Planning',
-    'demo.oy.n2': 'Transactions', 'demo.oy.n3': 'Accounts', 'demo.oy.n5': 'Savings goals', 'demo.oy.n6': 'Portfolio',
-    'demo.oy.promot': 'Discover savings', 'demo.oy.promod': 'We help you save on contracts and subscriptions.',
-    'demo.oy.hi': 'Hi Robin 👋', 'demo.oy.sub': 'Today is 14 July 2026 · July overview', 'demo.oy.act': 'Transaction',
-    'demo.oy.net': 'Net worth', 'demo.oy.inc': 'Income July', 'demo.oy.exp': 'Expenses July', 'demo.oy.rate': 'Savings rate',
-    'demo.oy.cashsub': 'Last 6 months · income vs. expenses',
-    'demo.oy.inc2': 'Income', 'demo.oy.exp2': 'Expenses',
-    'demo.oy.budt': 'Budgets · July',
-    'demo.oy.cat1': 'Groceries', 'demo.oy.cat2': 'Leisure', 'demo.oy.cat3': 'Restaurants', 'demo.oy.cat4': 'Transport',
-    'demo.oy.savt': 'Savings goals',
-    'demo.oy.g1': 'Japan trip', 'demo.oy.g2': 'Emergency fund', 'demo.oy.g3': 'New camera',
-    'proj.ihk.title': 'IHK final project',
-    'proj.ihk.desc': 'Documentation and implementation of my final project as an IT specialist for application development — with a Groovy backend and Bootstrap frontend.',
-    'proj.ihk.link': 'Documentation',
-    'certs.title': 'Certificates', 'certs.kicker': 'Qualifications & training',
-    'cert1.title': 'IT Specialist for Application Development', 'cert1.date': 'August 2025',
-    'cert1.desc': 'Completed vocational training at INEOS Manufacturing Deutschland GmbH.',
-    'cert2.desc': 'Certification as a NinjaOne technician for managed service providers.',
-    'certs.view': 'View certificate', 'certs.view2': 'View certificate',
-    'certs.view3': 'View certificate', 'certs.view4': 'View certificate',
-    'cert3.desc': 'Specialization in IT automation and scripting with the NinjaOne platform.',
-    'cert5.date': 'July 2026',
-    'cert5.desc': 'Operating and initial setup of a Securepoint NextGen UTM firewall — including networking fundamentals, TCP/IP, addressing and routing.',
-    'cert6.date': 'July 2026',
-    'cert6.desc': 'Managing Securepoint Antivirus Pro — unified security, cloud administration and initial setup for endpoint protection.',
-    'cert4.title': 'University of Applied Sciences entrance qualification',
-    'cert4.desc': 'Focus on business and administration — the foundation for the later IHK training.',
-    'cv.title': 'Experience', 'cv.kicker': 'Work & education, chronological',
-    'cv.work': 'Professional', 'cv.school': 'Education', 'cv.current': 'Current',
-    'cv.j1.date': 'Jan 2026 — today',
-    'cv.j1.role': 'Junior IT system administrator — managing customer infrastructures, RMM, onboarding.',
-    'cv.j2.role': 'Vocational training as an IT specialist for application development.',
-    'cv.j3.role': 'Part-time job as a cashier and shelf stocker.',
-    'cv.j4.role': 'Summer job as a packer and quality inspector.',
-    'cv.j5.role': 'Student internship in the commercial and technical departments.',
-    'cv.s1.role': 'University entrance qualification — focus on computer science.',
-    'cv.s2.role': 'Secondary school certificate.', 'cv.s3.role': 'Primary school.',
-    'contact.title': 'Contact', 'contact.kicker': 'Let’s talk',
-    'contact.head': 'Drop me a line —<br />I’ll get <span class="hl">back to you</span>.',
-    'contact.lede': 'Whether it’s a permanent role, project work or just a good conversation about HomeLabs, Linux or automation — I’d love to hear from you.',
-    'contact.cta1': 'Write an e-mail',
-    'contact.region': 'Region', 'contact.regionV': 'Dormagen, NRW — remote & on-site',
-    'contact.response': 'Response time', 'contact.responseV': 'Usually within 24h',
-    'footer.copy': '© 2026 Robin Frank — All rights reserved',
-    'footer.imprint': 'Imprint', 'footer.privacy': 'Privacy', 'footer.top': 'Back to top',
-    'footer.built': 'handcrafted · runs in my own HomeLab',
-    'projects.hint': 'Scroll to slide through the rack',
-    'term.title': 'Or just ask the terminal',
-    'term.hint': 'Type help and press Enter — or pick a command below.',
-    'term.label': 'Enter a command'
-  };
+  var EN = window.PF_EN || {};
+  var TERM = window.PF_TERM || { de: {}, en: {} };
 
   var LS_THEME = 'pf2-theme', LS_LANG = 'pf2-lang', SS_BOOT = 'pf3-booted';
   var html = document.documentElement;
@@ -128,16 +298,19 @@
   var gsap = window.gsap;
   var ScrollTrigger = window.ScrollTrigger;
   var SplitText = window.SplitText;
+  var Flip = window.Flip;
   var hasGsap = !!(gsap && ScrollTrigger);
   var motion = !reduceMotion;
   var lenis = null;
 
-  // CSS-level motion layer: reveals, marquee, timeline states. Without it
+  // CSS-level motion layer: reveals and scroll states. Without it
   // (reduced motion) every element simply stays in its final state.
   if (motion) html.classList.add('motion');
-  if (hasGsap) gsap.registerPlugin.apply(gsap, [ScrollTrigger].concat(SplitText ? [SplitText] : []));
+  if (hasGsap) {
+    gsap.registerPlugin.apply(gsap, [ScrollTrigger].concat(SplitText ? [SplitText] : [], Flip ? [Flip] : []));
+  }
 
-  function emit(name) { document.dispatchEvent(new CustomEvent(name)); }
+  function emit(name, detail) { document.dispatchEvent(new CustomEvent(name, { detail: detail })); }
   function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function lockScroll(on) { if (lenis) { if (on) lenis.stop(); else lenis.start(); } }
@@ -164,36 +337,46 @@
 
   /* ============ Language ============ */
   var langBtn = document.getElementById('langBtn');
-  var originals = {}; // key -> { de: string }
+  var originals = {}; // key -> German original
 
   function collectOriginals() {
-    $all('[data-i18n]').forEach(function (el) {
-      originals[el.getAttribute('data-i18n')] = { de: el.textContent };
-    });
-    $all('[data-i18n-html]').forEach(function (el) {
-      originals[el.getAttribute('data-i18n-html')] = { de: el.innerHTML };
+    // Templates (project dialogs, radar details) carry strings too
+    var roots = [document].concat($all('template').map(function (tp) { return tp.content; }));
+    roots.forEach(function (root) {
+      $all('[data-i18n]', root).forEach(function (el) {
+        var k = el.getAttribute('data-i18n');
+        if (originals[k] === undefined) originals[k] = el.textContent;
+      });
+      $all('[data-i18n-html]', root).forEach(function (el) {
+        var k = el.getAttribute('data-i18n-html');
+        if (originals[k] === undefined) originals[k] = el.innerHTML;
+      });
     });
   }
-
   function applyLang(l) {
     // Animations that split or rewrite text undo themselves first
     emit('pf:beforelang');
     $all('[data-i18n]').forEach(function (el) {
       var k = el.getAttribute('data-i18n');
-      el.textContent = l === 'en' ? (EN[k] || originals[k].de) : originals[k].de;
+      if (originals[k] === undefined) originals[k] = el.textContent;
+      el.textContent = l === 'en' && EN[k] !== undefined ? EN[k] : originals[k];
     });
     $all('[data-i18n-html]').forEach(function (el) {
       var k = el.getAttribute('data-i18n-html');
-      el.innerHTML = l === 'en' ? (EN[k] || originals[k].de) : originals[k].de;
+      if (originals[k] === undefined) originals[k] = el.innerHTML;
+      el.innerHTML = l === 'en' && EN[k] !== undefined ? EN[k] : originals[k];
     });
     html.setAttribute('lang', l);
-    if (langBtn) langBtn.textContent = l === 'en' ? 'DE' : 'EN';
+    if (langBtn) {
+      langBtn.textContent = l === 'en' ? 'DE' : 'EN';
+      langBtn.setAttribute('aria-label', l === 'en' ? 'Auf Deutsch umschalten' : 'Switch to English');
+    }
     emit('pf:lang');
   }
 
   collectOriginals();
   var lang = 'de';
-  try { lang = localStorage.getItem(LS_LANG) || 'de'; } catch (e) { lang = 'de'; }
+  try { lang = localStorage.getItem(LS_LANG) === 'en' ? 'en' : 'de'; } catch (e) { lang = 'de'; }
   if (lang === 'en') applyLang('en');
 
   function setLang(l) {
@@ -202,11 +385,11 @@
     try { localStorage.setItem(LS_LANG, lang); } catch (e) { /* storage blocked: language just isn't remembered */ }
   }
   if (langBtn) langBtn.addEventListener('click', function () { setLang(lang === 'de' ? 'en' : 'de'); });
+  function t(key) { return lang === 'en' && EN[key] !== undefined ? EN[key] : (originals[key] !== undefined ? originals[key] : key); }
 
   /* ============ Visibility watcher ============
-     One rect-based check on scroll (no IntersectionObserver needed, works
-     in every embed context). Fires each callback once when the element's
-     top crosses `ratio` of the viewport height. */
+     One rect-based check per scroll frame. Fires each callback once when
+     the element's top crosses `ratio` of the viewport height. */
   var watchers = [];
   function onceVisible(el, fn, ratio) { watchers.push({ el: el, fn: fn, ratio: ratio || 0.9 }); }
   function watchCheck() {
@@ -233,7 +416,7 @@
     var m = el.textContent.match(/^([^0-9]*)(\d+)(.*)$/);
     if (!m) return;
     var prefix = m[1], target = parseInt(m[2], 10), suffix = m[3];
-    if (!motion || target <= 1) return;
+    if (!motion || target <= 1 || target > 1900) return;
     var start = null, dur = 1000;
     function step(ts) {
       if (start === null) start = ts;
@@ -243,51 +426,14 @@
     }
     requestAnimationFrame(step);
   }
-  // Hero counters start with the hero intro; all others when scrolled into view
   $all('[data-count]').forEach(function (el) {
     if (!el.closest('.hero')) onceVisible(el, animateNum, 0.92);
   });
 
-  /* ============ Header state, progress bar, cable ============ */
+  /* ============ Header state, progress bar, scroll hooks ============ */
   var header = document.getElementById('topbar');
   var progressBar = document.getElementById('scrollProgress');
-  var mainEl = document.getElementById('main');
-  var cable = document.getElementById('cable');
-  var cableFill = document.getElementById('cableFill');
-  var packet = document.getElementById('packet');
-  var ports = $all('.section-head .port');
-  var cableGeo = null;
-
-  function buildCable() {
-    cableGeo = null;
-    if (!cable || !mainEl || !ports.length) return;
-    var first = ports[0].getBoundingClientRect();
-    if (!first.width) return; // ports hidden on small screens
-    var mr = mainEl.getBoundingClientRect();
-    var heroEl = document.getElementById('home');
-    var top = heroEl ? heroEl.getBoundingClientRect().bottom - mr.top : 0;
-    var portY = ports.map(function (p) {
-      var r = p.getBoundingClientRect();
-      return r.top + r.height / 2 - mr.top;
-    });
-    var bottom = portY[portY.length - 1];
-    if (bottom <= top) return;
-    cableGeo = { top: top, height: bottom - top, ports: portY };
-    cable.style.left = (first.left + first.width / 2 - mr.left - 1) + 'px';
-    cable.style.top = top + 'px';
-    cable.style.height = (bottom - top) + 'px';
-    updateCable();
-  }
-  function updateCable() {
-    if (!cableGeo) return;
-    // The cable tip follows a fixed line at 62 % of the viewport
-    var tip = window.innerHeight * 0.62 - mainEl.getBoundingClientRect().top;
-    var f = motion ? clamp((tip - cableGeo.top) / cableGeo.height, 0, 1) : 1;
-    cableFill.style.transform = 'scaleY(' + f.toFixed(4) + ')';
-    packet.style.transform = 'translateY(' + (f * cableGeo.height).toFixed(1) + 'px)';
-    packet.style.opacity = f > 0 && f < 1 ? '1' : '0';
-    ports.forEach(function (p, i) { p.classList.toggle('is-live', !motion || cableGeo.ports[i] <= tip); });
-  }
+  var frameHooks = [], relayoutHooks = [];
 
   function frame() {
     if (header) header.classList.toggle('scrolled', window.scrollY > 30);
@@ -296,7 +442,7 @@
       progressBar.style.width = (max > 0 ? Math.min(window.scrollY / max, 1) * 100 : 0) + '%';
     }
     watchCheck();
-    updateCable();
+    frameHooks.forEach(function (fn) { fn(); });
   }
   var ticking = false;
   function onScroll() {
@@ -306,7 +452,7 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Keep the CSS header height in sync with the real bar (pinned rack, anchors)
+  // Keep the CSS header height in sync with the real bar (pinning, anchors)
   function syncHeaderHeight() {
     if (header) html.style.setProperty('--topbar-h', header.offsetHeight + 'px');
   }
@@ -315,17 +461,21 @@
   function relayout() {
     syncHeaderHeight();
     if (hasGsap) ScrollTrigger.refresh();
-    buildCable();
+    relayoutHooks.forEach(function (fn) { fn(); });
     frame();
   }
   var resizeTimer = 0;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () { syncHeaderHeight(); buildCable(); frame(); }, 150);
+    resizeTimer = setTimeout(function () {
+      syncHeaderHeight();
+      relayoutHooks.forEach(function (fn) { fn(); });
+      frame();
+    }, 150);
   }, { passive: true });
   window.addEventListener('load', relayout);
   document.addEventListener('pf:lang', function () { setTimeout(relayout, 60); });
-  if (hasGsap) ScrollTrigger.addEventListener('refresh', function () { buildCable(); });
+  if (hasGsap) ScrollTrigger.addEventListener('refresh', function () { relayoutHooks.forEach(function (fn) { fn(); }); });
 
   /* ============ Mobile menu ============ */
   var navToggle = document.getElementById('navToggle');
@@ -343,7 +493,6 @@
 
   if (navToggle) navToggle.addEventListener('click', function () { setMenu(!menuOpen()); });
   if (topbarNav) {
-    // Clicking a menu item closes the menu again.
     topbarNav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   }
   document.addEventListener('keydown', function (e) {
@@ -355,7 +504,6 @@
   document.addEventListener('click', function (e) {
     if (menuOpen() && header && !header.contains(e.target)) setMenu(false);
   });
-  // Above the breakpoint the navigation is always visible — drop the open state.
   var wide = window.matchMedia('(min-width: 901px)');
   if (wide.addEventListener) wide.addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
@@ -382,7 +530,6 @@
   var modal = document.getElementById('certModal');
   var certImg = document.getElementById('certImg');
   var certClose = document.getElementById('certClose');
-  // 1×1 transparent GIF — placeholder while no certificate is open
   var BLANK_IMG = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
   var lastTrigger = null;
 
@@ -394,7 +541,6 @@
     lockScroll(false);
     if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
   }
-
   if (modal && certImg && certClose) {
     $all('.cert-view').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -412,122 +558,68 @@
     document.addEventListener('keydown', function (e) {
       if (!modal.classList.contains('open')) return;
       if (e.key === 'Escape') { closeModal(); return; }
-      if (e.key === 'Tab') {
-        // Only focusable element in the dialog — keep focus there
-        e.preventDefault();
-        certClose.focus();
-      }
+      if (e.key === 'Tab') { e.preventDefault(); certClose.focus(); }
     });
   }
 
-  /* ============ App demo: carousel + clickable prototype ============ */
-  var demoStage = document.getElementById('demoStage');
-  var demoModal = document.getElementById('demoModal');
-  if (demoStage && demoModal) {
-    var demoSlides = $all('.demo-slide', demoStage);
-    var demoDots = $all('.demo-dot');
-    var demoCurrent = 0;
-    var demoTimer = null;
+  /* ============ Project dialog (case studies) ============
+     Content comes from <template id="tpl-proj-ID">; a variant can animate
+     the opening with api.setProjectAnimator(fn(trigger, panel)). */
+  var pd = document.getElementById('projDialog');
+  var pdBody = document.getElementById('projDialogBody');
+  var pdClose = document.getElementById('projDialogClose');
+  var pdTrigger = null, pdAnimator = null;
 
-    var demoGoTo = function (i) {
-      demoCurrent = (i + demoSlides.length) % demoSlides.length;
-      demoSlides.forEach(function (s, idx) { s.classList.toggle('active', idx === demoCurrent); });
-      demoDots.forEach(function (d, idx) { d.classList.toggle('active', idx === demoCurrent); });
-    };
-    var demoStop = function () { if (demoTimer) { clearInterval(demoTimer); demoTimer = null; } };
-    var demoStart = function () {
-      // No auto-rotation with reduced motion or while the modal is open
-      if (reduceMotion || demoTimer || !demoModal.hidden) return;
-      demoTimer = setInterval(function () { demoGoTo(demoCurrent + 1); }, 7000);
-    };
-    demoDots.forEach(function (d, idx) {
-      d.addEventListener('click', function () { demoGoTo(idx); demoStop(); demoStart(); });
+  function focusables(root) {
+    return $all('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])', root)
+      .filter(function (el) { return el.offsetParent !== null || el === pdClose; });
+  }
+  function openProject(id, trigger) {
+    var tpl = document.getElementById('tpl-proj-' + id);
+    if (!pd || !pdBody || !tpl) return;
+    pdTrigger = trigger || null;
+    pdBody.textContent = '';
+    pdBody.appendChild(tpl.content.cloneNode(true));
+    // Strings inside the template follow the current language
+    $all('[data-i18n]', pdBody).forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
+    $all('[data-i18n-html]', pdBody).forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
+    pd.hidden = false;
+    pd.setAttribute('data-project', id);
+    lockScroll(true);
+    document.body.classList.add('pd-open');
+    requestAnimationFrame(function () {
+      pd.classList.add('open');
+      if (pdAnimator && motion) pdAnimator(trigger, pd);
+      pdClose.focus({ preventScroll: true });
     });
-    // Rotation pauses while pointer or focus is on the stage
-    demoStage.addEventListener('mouseenter', demoStop);
-    demoStage.addEventListener('mouseleave', demoStart);
-    demoStage.addEventListener('focusin', demoStop);
-    demoStage.addEventListener('focusout', demoStart);
-    demoStart();
-
-    // Bar widths, column heights and ring percentages from data attributes
-    // (no inline styles in the markup — html-validate no-inline-style).
-    $all('.proto [data-w]').forEach(function (el) { el.style.width = el.getAttribute('data-w') + '%'; });
-    $all('.proto [data-h]').forEach(function (el) { el.style.setProperty('--h', el.getAttribute('data-h') + '%'); });
-    $all('.proto [data-pct]').forEach(function (el) { el.style.setProperty('--pct', el.getAttribute('data-pct')); });
-
-    // Tabs of both prototypes — work in the carousel and in the modal
-    $all('.proto').forEach(function (proto) {
-      var tabs = $all('.p-tab', proto);
-      var views = $all('.proto-view', proto);
-      tabs.forEach(function (tab, idx) {
-        tab.addEventListener('click', function () {
-          tabs.forEach(function (t) { t.classList.remove('active'); });
-          views.forEach(function (v) { v.classList.remove('active'); });
-          tab.classList.add('active');
-          if (views[idx]) views[idx].classList.add('active');
-        });
-      });
-    });
-
-    // Modal: the active prototype moves into the dialog (no duplicate markup)
-    // and moves back into its carousel slide on close.
-    var demoOpenBtn = document.getElementById('demoOpenBtn');
-    var demoHost = document.getElementById('demoHost');
-    var demoCloseBtn = document.getElementById('demoClose');
-    var demoTitle = document.getElementById('demoTitle');
-    var demoSwitch = document.getElementById('demoSwitch');
-    var demoSwitchName = document.getElementById('demoSwitchName');
-    var demoModalApp = 0;
-    var demoTrigger = null;
-
-    var demoUnmount = function () {
-      var mounted = demoHost.querySelector('.proto');
-      if (mounted && mounted._homeSlide) mounted._homeSlide.appendChild(mounted);
-    };
-    var demoMount = function (i) {
-      demoUnmount();
-      demoModalApp = (i + demoSlides.length) % demoSlides.length;
-      var slide = demoSlides[demoModalApp];
-      var proto = slide.querySelector('.proto');
-      proto._homeSlide = slide;
-      demoHost.appendChild(proto);
-      demoTitle.textContent = slide.getAttribute('data-app');
-      demoSwitchName.textContent = demoSlides[(demoModalApp + 1) % demoSlides.length].getAttribute('data-app');
-    };
-    var demoCloseModal = function () {
-      demoUnmount();
-      demoModal.classList.remove('open');
-      demoModal.hidden = true;
+    emit('pf:projopen', { id: id });
+  }
+  function closeProject() {
+    if (!pd || pd.hidden) return;
+    pd.classList.remove('open');
+    var finish = function () {
+      pd.hidden = true;
+      pdBody.textContent = '';
+      document.body.classList.remove('pd-open');
       lockScroll(false);
-      demoGoTo(demoModalApp); // carousel shows the app viewed last
-      if (demoTrigger) { demoTrigger.focus(); demoTrigger = null; }
-      demoStart();
+      if (pdTrigger) { pdTrigger.focus({ preventScroll: true }); pdTrigger = null; }
     };
-    if (demoOpenBtn) {
-      demoOpenBtn.addEventListener('click', function () {
-        demoTrigger = demoOpenBtn;
-        demoStop();
-        demoMount(demoCurrent);
-        demoModal.hidden = false;
-        demoModal.classList.add('open');
-        lockScroll(true);
-        demoCloseBtn.focus();
-      });
-    }
-    demoCloseBtn.addEventListener('click', demoCloseModal);
-    demoSwitch.addEventListener('click', function () { demoMount(demoModalApp + 1); });
-    demoModal.addEventListener('click', function (e) { if (e.target === demoModal) demoCloseModal(); });
-
+    if (motion) setTimeout(finish, 280); else finish();
+  }
+  if (pd && pdClose) {
+    document.addEventListener('click', function (e) {
+      var tr = e.target.closest('[data-open-project]');
+      if (tr) { e.preventDefault(); openProject(tr.getAttribute('data-open-project'), tr); }
+    });
+    pdClose.addEventListener('click', closeProject);
+    pd.addEventListener('click', function (e) { if (e.target === pd) closeProject(); });
     document.addEventListener('keydown', function (e) {
-      if (demoModal.hidden) return;
-      if (e.key === 'Escape') { demoCloseModal(); return; }
+      if (pd.hidden) return;
+      if (e.key === 'Escape') { closeProject(); return; }
       if (e.key === 'Tab') {
-        // Keep focus inside the dialog (close, tabs, switch button)
-        var focusables = $all('button', demoModal);
-        if (!focusables.length) return;
-        var first = focusables[0];
-        var last = focusables[focusables.length - 1];
+        var f = focusables(pd);
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
@@ -545,42 +637,8 @@
     setInterval(tickClock, 1000);
   }
 
-  /* ============ Marquee: duplicate the items for a seamless loop ============ */
-  var marquee = document.querySelector('.marquee-track');
-  if (marquee && motion) {
-    Array.prototype.slice.call(marquee.children).forEach(function (li) {
-      var c = li.cloneNode(true);
-      c.setAttribute('aria-hidden', 'true');
-      marquee.appendChild(c);
-    });
-  }
-
-  /* ============ Services: systemd-style start-up when scrolled in ============ */
-  var svcNext = 0;
-  $all('.service').forEach(function (svc) {
-    if (!motion) return;
-    var state = svc.querySelector('.svc-state');
-    var setState = function (txt) { if (state) state.textContent = txt; };
-    svc.classList.add('is-pending');
-    setState('inactive (dead)');
-    onceVisible(svc, function () {
-      // Queue start-ups so services entering together still start one by one
-      var now = Date.now(), at = Math.max(now + 150, svcNext);
-      svcNext = at + 300;
-      setTimeout(function () {
-        svc.classList.remove('is-pending');
-        svc.classList.add('is-starting');
-        setState('activating (start) …');
-        setTimeout(function () {
-          svc.classList.remove('is-starting');
-          setState('active (running)');
-        }, 700);
-      }, at - now);
-    }, 0.82);
-  });
-
   /* ============ Title scramble (decode effect) ============ */
-  var GLYPHS = '!<>-_/[]{}=+*^?#01';
+  var GLYPHS = '!<>/[]{}=+*^?#01';
   var scrambles = [];
   function scramble(el) {
     if (!motion) return;
@@ -607,29 +665,18 @@
   });
   $all('[data-scramble]').forEach(function (h) { onceVisible(h, scramble, 0.85); });
 
-  /* ============ Magnetic buttons ============ */
-  if (motion && finePointer) {
-    $all('.magnetic').forEach(function (b) {
-      b.addEventListener('pointermove', function (e) {
-        var r = b.getBoundingClientRect();
-        var x = e.clientX - (r.left + r.width / 2), y = e.clientY - (r.top + r.height / 2);
-        b.style.transform = 'translate(' + (x * 0.2).toFixed(1) + 'px,' + (y * 0.32).toFixed(1) + 'px)';
-      });
-      b.addEventListener('pointerleave', function () { b.style.transform = ''; });
-    });
-  }
-
   /* ============ Hero network grid (canvas) ============
-     Dot grid that reacts to the pointer; "packets" travel along grid
-     lines. Runs only while the hero is on screen and the tab is visible;
-     with reduced motion it draws one static frame. */
+     Dot grid that reacts to the pointer; packets travel along grid lines.
+     Runs only while the hero is visible; reduced motion draws one frame.
+     data-grid="lines" draws a blueprint grid instead of dots. */
   (function heroGrid() {
     var cv = document.getElementById('heroGrid');
     var heroEl = document.getElementById('home');
     if (!cv || !heroEl || !cv.getContext) return;
     var ctx = cv.getContext('2d');
     if (!ctx) return;
-    var GAP = 34, R = 150;
+    var linesMode = cv.getAttribute('data-grid') === 'lines';
+    var GAP = linesMode ? 40 : 34, R = 150;
     var w = 0, h = 0, cols = 0, rows = 0;
     var mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
     var packets = [], lastSpawn = 0, raf = 0, onScreen = true;
@@ -661,31 +708,45 @@
       ctx.clearRect(0, 0, w, h);
       mouse.x += (mouse.tx - mouse.x) * 0.15;
       mouse.y += (mouse.ty - mouse.y) * 0.15;
-      var near = [];
-      ctx.fillStyle = colDot;
-      for (var i = 0; i < cols; i++) {
-        for (var j = 0; j < rows; j++) {
-          var x = i * GAP, y = j * GAP, dx = x - mouse.x, dy = y - mouse.y, d2 = dx * dx + dy * dy;
-          if (d2 < R * R) near.push([x, y, dx, dy, Math.sqrt(d2)]);
-          else ctx.fillRect(x - 1, y - 1, 2, 2);
+      var near = [], i, j;
+      if (linesMode) {
+        ctx.strokeStyle = colDot;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        for (i = 0; i < cols; i++) { ctx.moveTo(i * GAP + 0.5, 0); ctx.lineTo(i * GAP + 0.5, h); }
+        for (j = 0; j < rows; j++) { ctx.moveTo(0, j * GAP + 0.5); ctx.lineTo(w, j * GAP + 0.5); }
+        ctx.stroke();
+        for (i = 0; i < cols; i++) {
+          for (j = 0; j < rows; j++) {
+            var lx = i * GAP, ly = j * GAP, ldx = lx - mouse.x, ldy = ly - mouse.y, ld2 = ldx * ldx + ldy * ldy;
+            if (ld2 < R * R) near.push([lx, ly, ldx, ldy, Math.sqrt(ld2)]);
+          }
+        }
+      } else {
+        ctx.fillStyle = colDot;
+        for (i = 0; i < cols; i++) {
+          for (j = 0; j < rows; j++) {
+            var x = i * GAP, y = j * GAP, dx = x - mouse.x, dy = y - mouse.y, d2 = dx * dx + dy * dy;
+            if (d2 < R * R) near.push([x, y, dx, dy, Math.sqrt(d2)]);
+            else ctx.fillRect(x - 1, y - 1, 2, 2);
+          }
         }
       }
-      // Pointer neighbourhood: brighter, larger dots pushed outwards + links
       ctx.fillStyle = colAcc;
       ctx.strokeStyle = colAcc;
       ctx.lineWidth = 1;
       near.forEach(function (n) {
-        var k = 1 - n[4] / R, len = n[4] || 1, push = k * 12;
+        var k = 1 - n[4] / R, len = n[4] || 1, push = linesMode ? 0 : k * 12;
         var px = n[0] + n[2] / len * push, py = n[1] + n[3] / len * push, s = 2 + k * 2.6;
         ctx.globalAlpha = 0.2 + k * 0.8;
-        ctx.fillRect(px - s / 2, py - s / 2, s, s);
-        if (k > 0.45) {
+        if (linesMode) { ctx.beginPath(); ctx.arc(px, py, s * 0.6, 0, Math.PI * 2); ctx.stroke(); }
+        else ctx.fillRect(px - s / 2, py - s / 2, s, s);
+        if (!linesMode && k > 0.45) {
           ctx.globalAlpha = (k - 0.45) * 0.6;
           ctx.beginPath(); ctx.moveTo(mouse.x, mouse.y); ctx.lineTo(px, py); ctx.stroke();
         }
       });
       ctx.globalAlpha = 1;
-      // Packets with fading trails
       if (motion) {
         spawn(now);
         ctx.lineWidth = 2;
@@ -739,54 +800,54 @@
       help: ['Verfügbare Befehle:',
         '  whoami          wer ist Robin?',
         '  skills          Technik-Stack',
-        '  projects        Projekte im Rack',
+        '  projects        Projekte',
         '  contact         Kontaktwege',
         '  ls · cd <dir>   durch die Seite springen',
         '  theme · lang    Darstellung umschalten',
         '  date · clear · sudo …'],
-      whoami: ['Robin Frank — Junior IT-Systemadministrator bei Fusion IT.', 'Fachinformatiker für Anwendungsentwicklung (IHK, 2025) · Dormagen, NRW.'],
-      skills: ['system:  linux · proxmox ve · docker/lxc · wireguard · ninjaone', 'netz:    dns/dhcp · samba · firewall/routing', 'code:    java · javascript · react · groovy · php · sql · bash · powershell'],
-      projects: 'Projekte im Rack:',
-      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Antwort üblicherweise innerhalb von 24h.'],
-      jump: '→ springe zu ~/{s} …',
+      whoami: TERM.de.whoami || [],
+      skills: TERM.de.skills || [],
+      projects: 'Projekte:',
+      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Antwort üblicherweise innerhalb von 24 Stunden.'],
+      jump: '-> springe zu ~/{s}',
       noDir: 'cd: {s}: Verzeichnis nicht gefunden',
       theme: 'Farbschema: {t}',
       lang: 'Sprache: Deutsch',
-      hire: ['[sudo] Passwort für guest: ********', 'Zugriff gewährt. Bester nächster Schritt:', '→ info@rxf-sys.de'],
+      hire: ['[sudo] Passwort für guest: ********', 'Zugriff gewährt. Bester nächster Schritt:', '-> info@rxf-sys.de'],
       sudo: 'guest steht nicht in der sudoers-Datei. Dieser Vorfall wird gemeldet. ;)',
-      exit: 'logout — bis bald.',
-      unknown: 'Befehl nicht gefunden: {c} — tippe help'
+      exit: 'logout. Bis bald.',
+      unknown: 'Befehl nicht gefunden: {c}. Tippe help.'
     },
     en: {
       help: ['Available commands:',
         '  whoami          who is Robin?',
         '  skills          tech stack',
-        '  projects        projects in the rack',
+        '  projects        projects',
         '  contact         ways to reach me',
         '  ls · cd <dir>   jump through the page',
         '  theme · lang    switch appearance',
         '  date · clear · sudo …'],
-      whoami: ['Robin Frank — junior IT system administrator at Fusion IT.', 'IT specialist for application development (IHK, 2025) · Dormagen, NRW.'],
-      skills: ['system:  linux · proxmox ve · docker/lxc · wireguard · ninjaone', 'network: dns/dhcp · samba · firewall/routing', 'code:    java · javascript · react · groovy · php · sql · bash · powershell'],
-      projects: 'Projects in the rack:',
-      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Usually replies within 24h.'],
-      jump: '→ jumping to ~/{s} …',
+      whoami: TERM.en.whoami || [],
+      skills: TERM.en.skills || [],
+      projects: 'Projects:',
+      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Usually replies within 24 hours.'],
+      jump: '-> jumping to ~/{s}',
       noDir: 'cd: {s}: no such directory',
       theme: 'Colour scheme: {t}',
       lang: 'Language: English',
-      hire: ['[sudo] password for guest: ********', 'Access granted. Best next step:', '→ info@rxf-sys.de'],
+      hire: ['[sudo] password for guest: ********', 'Access granted. Best next step:', '-> info@rxf-sys.de'],
       sudo: 'guest is not in the sudoers file. This incident will be reported. ;)',
-      exit: 'logout — see you soon.',
-      unknown: 'command not found: {c} — type help'
+      exit: 'logout. See you soon.',
+      unknown: 'command not found: {c}. Type help.'
     }
   };
   var DIRS = { about: 'about', skills: 'skills', projects: 'projects', certificates: 'certificates', certs: 'certificates', experience: 'experience', cv: 'experience', contact: 'contact', home: 'home', '~': 'home' };
 
   function scrollToId(id) {
-    var t = document.getElementById(id);
-    if (!t) return;
-    if (lenis) lenis.scrollTo(t, { offset: id === 'home' ? 0 : -(header ? header.offsetHeight : 0) });
-    else t.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    var tgt = document.getElementById(id);
+    if (!tgt) return;
+    if (lenis) lenis.scrollTo(tgt, { offset: id === 'home' ? 0 : -(header ? header.offsetHeight : 0) });
+    else tgt.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   }
 
   var termOut = document.getElementById('termOut');
@@ -817,9 +878,11 @@
       case 'help': case '?': termPrint(L.help); break;
       case 'whoami': termPrint(L.whoami); break;
       case 'skills': termPrint(L.skills); break;
-      case 'projects': case 'ls-projects':
+      case 'projects':
         termPrint(L.projects);
-        termPrint($all('.blade h3').map(function (h, i) { return '  u0' + (i + 1) + '  ' + h.textContent; }));
+        termPrint($all('[data-project-title]').map(function (h, i) {
+          return '  ' + (i < 9 ? '0' : '') + (i + 1) + '  ' + h.textContent.trim();
+        }));
         termPrint(L.jump.replace('{s}', 'projects'), 'dim');
         scrollToId('projects');
         break;
@@ -858,18 +921,17 @@
     });
   }
 
-  /* ============ GSAP layer: Lenis, rack, statement, timeline ============ */
-  var topbarH = header ? header.offsetHeight : 72;
-  var activeSplits = []; // { split, tween } — undone before a language switch
+  /* ============ Lenis + statement ============ */
+  var activeSplits = []; // { split, tween }: undone before a language switch
 
   if (motion && window.Lenis) {
     lenis = new window.Lenis({ duration: 1.15, smoothWheel: true });
     if (hasGsap) {
       lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+      gsap.ticker.add(function (tm) { lenis.raf(tm * 1000); });
       gsap.ticker.lagSmoothing(0);
     } else {
-      var lenisLoop = function (t) { lenis.raf(t); requestAnimationFrame(lenisLoop); };
+      var lenisLoop = function (tm) { lenis.raf(tm); requestAnimationFrame(lenisLoop); };
       requestAnimationFrame(lenisLoop);
     }
     // In-page anchors glide via Lenis and land below the sticky header
@@ -904,7 +966,6 @@
       });
       statementSplit = { split: split, tween: tween };
     };
-    // Word splitting depends on the final web fonts
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(buildStatement);
     document.addEventListener('pf:beforelang', function () {
       if (!statementSplit) return;
@@ -914,62 +975,27 @@
       statementSplit = null;
     });
     document.addEventListener('pf:lang', buildStatement);
+  }
 
-    // Projects: pinned horizontal rack on large screens
-    var pinEl = document.getElementById('projectsPin');
-    var track = document.getElementById('rackTrack');
-    var rackIndex = document.getElementById('rackIndex');
-    var rackTotal = document.getElementById('rackTotal');
-    var rackBar = document.getElementById('rackBar');
-    if (pinEl && track) {
-      var bladeCount = track.children.length;
-      if (rackTotal) rackTotal.textContent = (bladeCount < 10 ? '0' : '') + bladeCount;
-      gsap.matchMedia().add('(min-width: 1024px) and (min-height: 640px)', function () {
-        pinEl.classList.add('is-pinned');
-        var dist = function () { return Math.max(0, track.offsetWidth - window.innerWidth); };
-        gsap.to(track, {
-          x: function () { return -dist(); },
-          ease: 'none',
-          scrollTrigger: {
-            trigger: pinEl,
-            start: 'top top+=' + topbarH,
-            end: function () { return '+=' + dist(); },
-            pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true,
-            onUpdate: function (self) {
-              var idx = Math.min(bladeCount, Math.round(self.progress * (bladeCount - 1)) + 1);
-              if (rackIndex) rackIndex.textContent = (idx < 10 ? '0' : '') + idx;
-              if (rackBar) rackBar.style.transform = 'scaleX(' + Math.max(1 / bladeCount, self.progress).toFixed(3) + ')';
-            }
-          }
-        });
-        return function () { pinEl.classList.remove('is-pinned'); };
-      });
-    }
-
-    // Experience: the git graph draws itself, commits light up as it passes
-    $all('.timeline').forEach(function (tl) {
-      tl.style.setProperty('--tl', '0');
-      ScrollTrigger.create({
-        trigger: tl, start: 'top 68%', end: 'bottom 62%', scrub: 0.4,
-        onUpdate: function (self) { tl.style.setProperty('--tl', self.progress.toFixed(3)); }
-      });
-      $all('.tl-item', tl).forEach(function (it) {
-        ScrollTrigger.create({
-          trigger: it, start: 'top 66%',
-          onEnter: function () { it.classList.add('is-lit'); },
-          onLeaveBack: function () { it.classList.remove('is-lit'); }
-        });
-      });
-    });
-
-    // Sparklines draw in with the hero
-    $all('.spark polyline').forEach(function (pl) {
-      var len = pl.getTotalLength ? pl.getTotalLength() : 0;
-      if (len) gsap.set(pl, { strokeDasharray: len, strokeDashoffset: len });
-    });
-  } else if (motion) {
-    // No GSAP: commits light up via the plain visibility watcher
-    $all('.tl-item').forEach(function (it) { onceVisible(it, function () { it.classList.add('is-lit'); }, 0.7); });
+  /* ============ Variant hook ============ */
+  var introHooks = [];
+  var api = {
+    gsap: gsap, ScrollTrigger: ScrollTrigger, SplitText: SplitText, Flip: Flip,
+    hasGsap: hasGsap, motion: motion, reduceMotion: reduceMotion, finePointer: finePointer,
+    lenis: function () { return lenis; },
+    lang: function () { return lang; }, t: t,
+    onceVisible: onceVisible, lockScroll: lockScroll, animateNum: animateNum,
+    onFrame: function (fn) { frameHooks.push(fn); },
+    onRelayout: function (fn) { relayoutHooks.push(fn); },
+    onIntro: function (fn) { introHooks.push(fn); },
+    relayout: relayout, scrollToId: scrollToId, $all: $all, clamp: clamp,
+    header: header, topbarH: function () { return header ? header.offsetHeight : 72; },
+    setProjectAnimator: function (fn) { pdAnimator = fn; },
+    openProject: openProject
+  };
+  if (typeof window.PF_VARIANT === 'function') {
+    try { window.PF_VARIANT(api); }
+    catch (err) { if (window.console) console.error('variant init failed', err); }
   }
 
   /* ============ Hero intro ============ */
@@ -989,27 +1015,27 @@
         }
       });
       activeSplits.push(entry);
-      gsap.to('.spark polyline', { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut', delay: 0.7, stagger: 0.15 });
     }
     html.classList.add('hero-in');
     $all('.hero [data-count]').forEach(function (el) { setTimeout(function () { animateNum(el); }, 650); });
+    introHooks.forEach(function (fn) { fn(); });
   }
 
-  /* ============ Boot sequence (once per session) ============ */
+  /* ============ Boot sequence (once per session, variants with #boot) ============ */
   function runBoot(done) {
     var boot = document.getElementById('boot');
     var log = document.getElementById('bootLog');
-    if (!html.classList.contains('is-booting') || !boot || !log) { done(); return; }
+    if (!html.classList.contains('is-booting') || !boot || !log) { html.classList.remove('is-booting'); done(); return; }
     lockScroll(true);
     document.body.style.overflow = 'hidden';
     var LINES = [
-      [['[    0.000] rxf-sys bios v3.0 — power-on self test ....... '], ['ok', 'ok']],
+      [['[    0.000] rxf-sys bios v4.0 · power-on self test ...... '], ['ok', 'ok']],
       [['[    0.118] cpu0: robin-frank @ dormagen, nrw']],
       [['[    0.204] mem: homelab experience loaded ............ '], ['ok', 'ok']],
       [['[    0.317] eth0: link up · 1000 Mb/s full duplex']],
       [['['], ['  ok  ', 'ok'], ['] started proxmox-ve.service']],
       [['['], ['  ok  ', 'ok'], ['] started wireguard@wg0.service']],
-      [['['], ['  ok  ', 'ok'], ['] started ninjaone-agent.service']],
+      [['['], ['  ok  ', 'ok'], ['] started vulpexa-agent.service']],
       [['['], ['  ok  ', 'ok'], ['] reached target '], ['portfolio.target', 'hi']],
       [['welcome, '], ['guest', 'hi'], ['. ']]
     ];
@@ -1021,10 +1047,10 @@
     function addLine() {
       if (i >= LINES.length) { timer = setTimeout(finish, 420); return; }
       LINES[i].forEach(function (seg) {
-        var s = document.createElement('span');
-        if (seg[1]) s.className = seg[1];
-        s.textContent = seg[0];
-        log.insertBefore(s, cursor);
+        var sp = document.createElement('span');
+        if (seg[1]) sp.className = seg[1];
+        sp.textContent = seg[0];
+        log.insertBefore(sp, cursor);
       });
       i++;
       if (i < LINES.length) log.insertBefore(document.createTextNode('\n'), cursor);
@@ -1038,7 +1064,7 @@
       clearTimeout(timer);
       document.removeEventListener('keydown', finish);
       boot.removeEventListener('click', finish);
-      try { sessionStorage.setItem(SS_BOOT, '1'); } catch (e) { /* storage blocked: boot plays again next visit */ }
+      try { sessionStorage.setItem(SS_BOOT, '1'); } catch (err) { /* storage blocked: boot plays again next visit */ }
       boot.classList.add('is-leaving');
       document.body.style.overflow = '';
       lockScroll(false);
@@ -1062,7 +1088,6 @@
   fontsReady.then(function () { relayout(); startIntro(); });
   setTimeout(startIntro, reduceMotion ? 0 : 800);
 
-  buildCable();
+  relayoutHooks.forEach(function (fn) { fn(); });
   frame();
-
 })();
