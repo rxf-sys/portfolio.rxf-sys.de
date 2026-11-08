@@ -13,8 +13,8 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
   Im Hero stehen drei Blöcke zur Person (was ich suche, Abschluss, Fokus)
 - **Palette „Leitstand"**: Warmschwarz `#100E0B` / Hell `#F1F0EE`, ein
   Akzent Bernstein `#FFB23E` (im Hellmodus als Text `#8A4E00`).
-  Bricolage Grotesque (Display) + Instrument Sans (Fließtext) + Martian Mono
-  (Zahlen, Labels, Terminal), **selbst gehostet** unter `assets/fonts/`
+  Geist (Überschriften und Fließtext) + Geist Mono (Zahlen, Labels),
+  **selbst gehostet** unter `assets/fonts/`
   (kein Google-Fonts-Request). Eigenständig, nicht mit `www.rxf-sys.de` synchron
 - **Animationen** (GSAP 3.13 mit ScrollTrigger, SplitText und Flip, Lenis 1.3,
   selbst gehostet unter `assets/vendor/`):
@@ -28,9 +28,10 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
   - Werdegang als Aktivitäts-Heatmap 2009 bis 2026 mit Jahresauswahl
   - Ohne Libraries oder mit `prefers-reduced-motion` bleibt die Seite
     vollständig und statisch (alles sichtbar)
-- **Interaktives Terminal** im Kontaktbereich: `help`, `whoami`,
-  `projects`, `cd <sektion>`, `theme`, `lang`, `sudo hire robin` …
-  (Ausgabe nur per `textContent`, kein HTML)
+- **Kontakt-Baukasten**: Thema wählen (Stellenangebot, Projekt, Austausch),
+  optional Name und Firma ergänzen; daraus entsteht ein vorausgefüllter
+  `mailto:`-Link. Die Seite verschickt nichts selbst. Dazu Adresse kopieren
+  und Kontaktkarte (`assets/robin-frank.vcf`) speichern
 - **Dark Mode**: folgt initial `prefers-color-scheme`, umschaltbar und
   persistent; ohne Theme-Flash dank Inline-Init im `<head>` (per CSP-Hash
   freigegeben, kein `unsafe-inline`)
@@ -45,13 +46,13 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
 ```
 ├── index.html          # Hauptseite (One-Pager, Hero + 6 Sektionen)
 ├── index.css           # Stylesheet (Design-Tokens in :root / html[data-theme="dark"])
-├── index.js            # EN-Wörterbuch, Sektions-Module, Theme, i18n, Dialoge, Terminal, Motion
+├── index.js            # EN-Wörterbuch, Sektions-Module, Theme, i18n, Dialoge, Kontakt, Motion
 ├── impressum.html      # Rechtsseite (noindex)
 ├── datenschutz.html    # Rechtsseite (noindex)
 ├── tests/dom.test.js   # jsdom-Smoke-Tests (laufen ohne GSAP → prüfen den Fallback)
 ├── assets/
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
-│   ├── fonts/          # Bricolage Grotesque, Instrument Sans, Martian Mono (woff2, OFL)
+│   ├── fonts/          # Geist, Geist Mono (woff2, OFL)
 │   ├── vendor/         # GSAP, ScrollTrigger, SplitText, Flip, Lenis (unverändert, minified)
 │   └── …               # Bilder, Icons, PDF
 └── infrastructure/     # Caddyfile, Deploy-Script, Webhook-Konfiguration
