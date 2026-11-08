@@ -19,8 +19,8 @@ hier gehören **nicht** automatisch ins Schwester-Repo.
   Block „Variant C · Leitstand", der die Tokens überschreibt und die
   Sektions-Komponenten (Graph, Monitorwand, Heatmap) enthält
 - **Schriften**, selbst gehostet in `assets/fonts/` (woff2, OFL, aus
-  Fontsource): Bricolage Grotesque (`--head`, `font-stretch` 84–92 %) ·
-  Instrument Sans (`--sans`) · Martian Mono (`--mono`, `font-stretch` 87,5 %)
+  Fontsource): Geist (`--head` und `--sans`, Überschriften mit
+  `letter-spacing` um -0,035em) · Geist Mono (`--mono`, Zahlen und Labels)
 - **Farbregeln**: genau ein Akzent (Bernstein), kein Violett; Bernstein als
   Fläche immer mit dunkler Schrift (`--on-accent`), als Textfarbe im
   Hellmodus `--accent-ink`. Kontraste: Fließtext ≥ 10:1, `--muted` ≥ 5,5:1

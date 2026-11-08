@@ -13,8 +13,8 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
   Im Hero stehen drei Blöcke zur Person (was ich suche, Abschluss, Fokus)
 - **Palette „Leitstand"**: Warmschwarz `#100E0B` / Hell `#F1F0EE`, ein
   Akzent Bernstein `#FFB23E` (im Hellmodus als Text `#8A4E00`).
-  Bricolage Grotesque (Display) + Instrument Sans (Fließtext) + Martian Mono
-  (Zahlen, Labels), **selbst gehostet** unter `assets/fonts/`
+  Geist (Überschriften und Fließtext) + Geist Mono (Zahlen, Labels),
+  **selbst gehostet** unter `assets/fonts/`
   (kein Google-Fonts-Request). Eigenständig, nicht mit `www.rxf-sys.de` synchron
 - **Animationen** (GSAP 3.13 mit ScrollTrigger, SplitText und Flip, Lenis 1.3,
   selbst gehostet unter `assets/vendor/`):
@@ -52,7 +52,7 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
 ├── tests/dom.test.js   # jsdom-Smoke-Tests (laufen ohne GSAP → prüfen den Fallback)
 ├── assets/
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
-│   ├── fonts/          # Bricolage Grotesque, Instrument Sans, Martian Mono (woff2, OFL)
+│   ├── fonts/          # Geist, Geist Mono (woff2, OFL)
 │   ├── vendor/         # GSAP, ScrollTrigger, SplitText, Flip, Lenis (unverändert, minified)
 │   └── …               # Bilder, Icons, PDF
 └── infrastructure/     # Caddyfile, Deploy-Script, Webhook-Konfiguration

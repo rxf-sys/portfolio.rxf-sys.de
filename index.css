@@ -744,13 +744,13 @@ body.pd-open { overflow: hidden; }
 /* ============================================================
    Variant C · Leitstand (control room)
    A night-shift operations room: warm black consoles, amber signal
-   light, soft glass tiles. Bricolage Grotesque for display, Instrument
-   Sans for text, Martian Mono for readouts. Rounded console tiles,
+   light, soft glass tiles. Geist for display and text, Geist Mono for
+   readouts. Rounded console tiles,
    a monitor wall for projects, a skill graph and an activity heatmap.
    ============================================================ */
-@font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-display: swap; font-weight: 200 800; font-stretch: 75% 100%; src: url(/assets/fonts/bricolage-grotesque-latin-wdth-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Instrument Sans'; font-style: normal; font-display: swap; font-weight: 400 700; font-stretch: 75% 100%; src: url(/assets/fonts/instrument-sans-latin-wdth-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Martian Mono'; font-style: normal; font-display: swap; font-weight: 100 800; font-stretch: 75% 112.5%; src: url(/assets/fonts/martian-mono-latin-wdth-normal.woff2) format('woff2'); }
+
+@font-face { font-family: 'Geist'; font-style: normal; font-display: swap; font-weight: 100 900; src: url(/assets/fonts/geist-latin-wght-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-display: swap; font-weight: 100 900; src: url(/assets/fonts/geist-mono-latin-wght-normal.woff2) format('woff2'); }
 
 :root {
   --bg: #F1F0EE; --bg-2: #E8E6E2; --card: #FBFAF8; --card-2: #F3F1EE; --tile-soft: #E9E5DF; --blue-tile: #E0DBD3;
@@ -763,9 +763,9 @@ body.pd-open { overflow: hidden; }
   --shadow: 0 1px 2px rgba(23, 20, 15, 0.06), 0 16px 40px -22px rgba(23, 20, 15, 0.3);
   --shadow-hover: 0 2px 4px rgba(23, 20, 15, 0.08), 0 26px 52px -24px rgba(23, 20, 15, 0.4);
   --r: 16px; --r-sm: 10px;
-  --head: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
-  --sans: 'Instrument Sans', 'Segoe UI', sans-serif;
-  --mono: 'Martian Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --head: 'Geist', 'Segoe UI', system-ui, sans-serif;
+  --sans: 'Geist', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Geist Mono', 'SF Mono', Menlo, Consolas, monospace;
 }
 html[data-theme="dark"] {
   --bg: #100E0B; --bg-2: #15120E; --card: #1B1813; --card-2: #221E17; --tile-soft: #2A251C; --blue-tile: #332C21;
@@ -780,8 +780,7 @@ html[data-theme="dark"] {
 }
 
 body { font-size: 16.5px; }
-h1, h2, h3 { font-stretch: 92%; letter-spacing: -0.02em; }
-.mono, .tag, .project-status, .cert-meta, .kicker, .fact-k, .cc-k { font-stretch: 87.5%; }
+h1, h2, h3, .statement-text, .contact-title { font-stretch: normal; letter-spacing: -0.035em; }
 .hl { color: var(--accent-ink); }
 
 /* ---------- Topbar ---------- */
@@ -814,7 +813,7 @@ html.motion .status-mark span { animation: sweep-c 2.4s linear infinite; }
   -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
   mask-image: linear-gradient(to bottom, #000 60%, transparent);
 }
-.hero-title { font-size: clamp(44px, 5.4vw, 90px); font-weight: 800; font-stretch: 86%; line-height: 0.96; letter-spacing: -0.035em; }
+.hero-title { font-size: clamp(44px, 5.4vw, 90px); font-weight: 800; line-height: 0.96; letter-spacing: -0.035em; }
 .portrait-frame { border-radius: 26px; box-shadow: 0 0 0 1px var(--line), 0 30px 80px -30px var(--glow), var(--shadow); }
 .portrait-scan { background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(12, 10, 7, 0.08) 2px 3px); }
 .corner { border-color: var(--accent); }
@@ -825,16 +824,16 @@ html.motion .status-mark span { animation: sweep-c 2.4s linear infinite; }
 }
 .fact::after { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
 .fact-k { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--accent-ink); }
-.fact-v { font-size: clamp(19px, 1.65vw, 24px); font-stretch: 90%; }
+.fact-v { font-size: clamp(19px, 1.65vw, 24px); }
 
 /* ---------- Section heads: console labels ---------- */
-.section-head .num { border-radius: 8px; background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-stretch: 87.5%; font-size: 13px; }
-.section-head h2 { font-stretch: 84%; font-weight: 800; font-size: clamp(44px, 6.4vw, 104px); letter-spacing: -0.04em; }
+.section-head .num { border-radius: 8px; background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-size: 13px; }
+.section-head h2 { font-weight: 800; font-size: clamp(44px, 6.4vw, 104px); letter-spacing: -0.04em; }
 .port { display: none; }
 .section-band { background: var(--bg-2); }
 
 /* ---------- About ---------- */
-.statement-text { font-stretch: 88%; font-weight: 700; letter-spacing: -0.03em; }
+.statement-text { font-weight: 700; letter-spacing: -0.03em; }
 .spec { border-radius: var(--r); }
 .spec-bar { justify-content: space-between; font-family: var(--head); font-weight: 700; font-size: 15px; color: var(--ink); }
 .spec-led { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
@@ -894,7 +893,7 @@ html.motion .sgraph.in .sg-edge { transition: opacity 0.6s ease 0.8s, stroke 0.2
 .scr-glass .project-status { position: absolute; right: 16px; top: 14px; background: rgba(12, 10, 7, 0.7); }
 .scr-glass .st-live { color: #FFB23E; } .scr-glass .st-wip { color: #FF8A5B; } .scr-glass .st-done, .scr-glass .st-passed { color: #C9BFAE; }
 .scr-label { display: grid; gap: 2px; padding: 0 4px; }
-.scr-title { font-family: var(--head); font-weight: 800; font-size: 20px; font-stretch: 90%; color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
+.scr-title { font-family: var(--head); font-weight: 800; font-size: 20px; color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
 .screen:first-child .scr-title { font-size: 28px; }
 .scr-meta { font-size: 11.5px; color: var(--muted); }
 /* CRT power-on when the wall scrolls into view */
@@ -912,7 +911,6 @@ html.motion .screen.on .scr-glass::after { animation: crt-on 0.55s var(--ease-io
 .cover-homelab { background-image: url(/assets/images/cover-homelab.jpg); }
 .cover-vulpexa { background-image: url(/assets/images/cover-vulpexa.jpg); }
 .cover-orynthia { background-image: url(/assets/images/cover-orynthia.jpg); }
-.pd-title { font-stretch: 86%; }
 
 /* ---------- Experience: activity heatmap ---------- */
 .heat { display: grid; gap: 20px; }
@@ -932,18 +930,17 @@ html.motion .heat.in .hm-cell { transition: transform 0.45s var(--ease), opacity
 .hm-yb { min-height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--line-strong); background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; }
 .hm-yb[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .hm-panel { padding: 22px 24px; border-radius: var(--r); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
-.hm-panel-y { margin: 0 0 12px; font-family: var(--head); font-weight: 800; font-size: clamp(48px, 7vw, 96px); line-height: 0.9; letter-spacing: -0.04em; color: var(--accent-ink); font-stretch: 84%; }
+.hm-panel-y { margin: 0 0 12px; font-family: var(--head); font-weight: 800; font-size: clamp(48px, 7vw, 96px); line-height: 0.9; letter-spacing: -0.04em; color: var(--accent-ink); }
 .hm-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .hm-ev { display: grid; gap: 2px; }
 .hm-type { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.hm-ev b { font-family: var(--head); font-size: 20px; color: var(--ink); font-stretch: 90%; }
+.hm-ev b { font-family: var(--head); font-size: 20px; color: var(--ink); }
 .hm-ev.is-ongoing b { font-size: 16px; color: var(--muted); }
 .t-now b { color: var(--accent-ink); }
 
 /* Certificates, contact */
 .cert { border-radius: var(--r); box-shadow: var(--shadow); }
 .cert-icon { border-radius: 12px; background: var(--accent); color: var(--on-accent); }
-.contact-title { font-stretch: 86%; }
 .cc { border-radius: 20px; }
 .btn { border-radius: 14px; }
 
