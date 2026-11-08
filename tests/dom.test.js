@@ -1,7 +1,7 @@
 /* DOM-Smoke-Tests für index.html + index.js (jsdom).
    Prüft: Theme-Init/-Toggle, DE/EN-Umschaltung, Lightbox und
    Projektdialog inkl. Fokus-Management, Reveal-Fallback, Anker,
-   Skill-Graph, Heatmap, Monitorwand, Terminal, Hero-Intro. Läuft ohne GSAP/Lenis (externe Scripts werden
+   Skill-Graph, Heatmap, Monitorwand, Kontakt-Baukasten, Hero-Intro. Läuft ohne GSAP/Lenis (externe Scripts werden
    nicht geladen) und prüft damit zugleich den Fallback ohne Libraries.
    Ausführung (CI oder lokal): npm install --no-save jsdom && node tests/dom.test.js */
 'use strict';
@@ -167,30 +167,31 @@ check('Reveals ohne IntersectionObserver eingeblendet',
 check('Motion-Schicht aktiv (html.motion)', document.documentElement.classList.contains('motion'));
 check('Ohne boot.js kein Boot-Overlay', !document.documentElement.classList.contains('is-booting'));
 
-console.log('== Terminal ==');
-const termIn = document.getElementById('termIn');
-const termForm = document.getElementById('termForm');
-const termOut = document.getElementById('termOut');
-function run(cmd) {
-  termIn.value = cmd;
-  termForm.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
-}
-run('help');
-check('help listet Befehle (DE)', termOut.textContent.includes('Verfügbare Befehle'));
-check('Eingabefeld nach Ausführung geleert', termIn.value === '');
-run('gibtsnicht');
-check('Unbekannter Befehl als Fehler markiert', termOut.lastElementChild.classList.contains('err'));
-run('echo <img src=x onerror=alert(1)>');
-check('echo gibt Text aus, kein HTML (kein <img> erzeugt)', !termOut.querySelector('img') && termOut.lastElementChild.textContent.includes('<img'));
-document.querySelector('.term-chip[data-cmd="whoami"]').click();
-check('Befehls-Chip führt Befehl aus', termOut.textContent.includes('Robin Frank, Junior-Systemadministrator'));
-run('lang');
-check('lang schaltet auf Englisch um', document.documentElement.getAttribute('lang') === 'en');
-run('help');
-check('help danach auf Englisch', termOut.textContent.includes('Available commands'));
-run('lang');
-run('clear');
-check('clear leert die Ausgabe', termOut.children.length === 0);
+console.log('== Kontakt-Baukasten ==');
+const ccSend = document.getElementById('ccSend');
+const ccSubject = document.getElementById('ccSubject');
+check('Kein Terminal mehr', !document.getElementById('term'));
+check('Betreff vorbelegt (Stellenangebot)', ccSubject.textContent === 'Stellenangebot für dich');
+const talk = document.querySelector('input[name="ccTopic"][value="talk"]');
+talk.checked = true;
+talk.dispatchEvent(new window.Event('change', { bubbles: true }));
+document.getElementById('ccCompany').value = 'ACME';
+document.getElementById('ccCompany').dispatchEvent(new window.Event('input', { bubbles: true }));
+check('Thema und Firma landen im Betreff', ccSubject.textContent === 'Austausch zu HomeLab und Linux · ACME');
+check('mailto-Link mit kodiertem Betreff', ccSend.getAttribute('href').startsWith('mailto:info@rxf-sys.de?subject=Austausch%20zu%20HomeLab'));
+document.getElementById('langBtn').click();
+check('Betreff folgt der Sprache (EN)', ccSubject.textContent.startsWith('Let’s talk HomeLab'));
+document.getElementById('langBtn').click();
+check('vCard verlinkt', document.querySelector('.cc-vcf').getAttribute('href') === '/assets/robin-frank.vcf');
+
+console.log('== Runde-3-Inhalte ==');
+check('Keine Selbsteinschätzung mehr', !document.body.textContent.includes('Selbsteinschätzung') && !/\d\/5/.test(document.querySelector('.sgraph').textContent));
+check('Skills: Einleitung statt Untertitel', !!document.querySelector('#skills .section-intro') && !document.querySelector('#skills .kicker'));
+check('Projekte und Kontakt ohne Untertitel', !document.querySelector('#projects .kicker') && !document.querySelector('#contact .kicker'));
+check('Footer ohne GitHub-Link und ohne Bauvermerk', !document.querySelector('.footer a[href*="github"]') && !document.querySelector('.footer-built'));
+check('RMM-Automatisierung und MagicMirror ohne Status', ['rmm', 'magicmirror'].every((id) => !document.querySelector('.screen[data-project="' + id + '"] .project-status')));
+check('Admin-Dashboard in Arbeit (v2)', !!document.querySelector('.screen[data-project="admin"] .st-wip'));
+check('NinjaOne-Zertifikate 2026', Array.from(document.querySelectorAll('.cert')).filter((c) => c.textContent.includes('NinjaOne')).every((c) => c.textContent.includes('2026')));
 
 console.log('== Asynchron: Hero-Intro, Monitorwand ==');
 setTimeout(() => {

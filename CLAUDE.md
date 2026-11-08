@@ -3,7 +3,7 @@
 Portfolio-Website: statisches HTML/CSS/JS, kein Build-Schritt.
 Konzept „Leitstand" (v4): die Seite wirkt wie ein nächtlicher Kontrollraum
 (Konsolen-Kacheln, Skill-Graph, Monitorwand für Projekte mit Fallstudien,
-Aktivitäts-Heatmap im Werdegang, interaktives Terminal). Palette „Leitstand"
+Aktivitäts-Heatmap im Werdegang, Nachrichten-Baukasten im Kontakt). Palette „Leitstand"
 (Warmschwarz `#100E0B`, Hell `#F1F0EE`, ein Akzent Bernstein `#FFB23E`,
 als Text im Hellmodus `#8A4E00`), Dark Mode, DE/EN-Sprachumschalter.
 Sichtbare Texte enthalten **keine Gedankenstriche** (— oder –), weder DE noch EN.
@@ -15,7 +15,7 @@ Die Tokens in `index.css` (`:root` / `html[data-theme="dark"]`) sind
 hier gehören **nicht** automatisch ins Schwester-Repo.
 
 - **Aufbau `index.css`**: erst der Kern (Layout, Kopfleiste, Sektionen,
-  Zertifikate, Kontakt, Terminal, Dialoge, Rechtsseiten), danach der
+  Zertifikate, Kontakt-Baukasten, Dialoge, Rechtsseiten), danach der
   Block „Variant C · Leitstand", der die Tokens überschreibt und die
   Sektions-Komponenten (Graph, Monitorwand, Heatmap) enthält
 - **Schriften**, selbst gehostet in `assets/fonts/` (woff2, OFL, aus
@@ -33,9 +33,9 @@ hier gehören **nicht** automatisch ins Schwester-Repo.
 - **`assets/js/boot.js`** läuft synchron im `<head>` und setzt nur `html.js`
   (Leitstand hat keine Boot-Sequenz; der Code dafür im Kern greift nur, wenn
   `#boot` und `html.is-booting` existieren)
-- **`index.js`** besteht aus drei Teilen: `window.PF_EN`/`PF_TERM`
+- **`index.js`** besteht aus drei Teilen: `window.PF_EN`
   (EN-Texte), `window.PF_VARIANT(api)` (Graph, Monitorwand, Heatmap) und dem
-  Kern (Theme, i18n, Reveals, Menü, Lightbox, Projektdialog, Terminal,
+  Kern (Theme, i18n, Reveals, Menü, Lightbox, Projektdialog, Kontakt-Baukasten,
   Lenis, Intro). Strings in `<template>`-Elementen (Fallstudien) werden von
   der Sprachumschaltung mit erfasst
 - **Progressive Enhancement**: Startzustände (versteckt/gedimmt) gelten nur
@@ -72,17 +72,18 @@ und dieselbe Reihenfolge**:
 ├── README.md           # Projekt-Doku (Features, lokale Entwicklung, CI, Deployment)
 ├── index.html          # Hauptseite (One-Pager, Hero + 6 Sektionen)
 ├── index.css           # Stylesheet (Design-Tokens in :root / html[data-theme="dark"])
-├── index.js            # EN-Wörterbuch, Sektions-Module, Kern (Theme, i18n, Dialoge, Terminal, Motion)
+├── index.js            # EN-Wörterbuch, Sektions-Module, Kern (Theme, i18n, Dialoge, Kontakt, Motion)
 ├── datenschutz.html    # nutzt .legal-*-Klassen aus index.css
 ├── impressum.html      # nutzt .legal-*-Klassen aus index.css
 ├── .htmlvalidate.json  # html-validate-Konfiguration (void-style: selfclosing)
 ├── robots.txt          # SEO: alles erlaubt, verweist auf sitemap.xml
 ├── sitemap.xml         # SEO: nur die Hauptseite (Rechtsseiten sind noindex)
 ├── tests/
-│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Terminal, Fallback ohne GSAP)
+│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Kontakt-Baukasten, Fallback ohne GSAP)
 ├── assets/             # Bilder, Icons, PDF
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
 │   ├── fonts/          # selbst gehostete Schriften (woff2)
+│   ├── robin-frank.vcf # Kontaktkarte für „Kontakt speichern“
 │   └── vendor/         # GSAP, ScrollTrigger, SplitText, Flip, Lenis (selbst gehostet)
 ├── _headers            # INAKTIV — nur historische Referenz (Cloudflare Pages Format)
 └── infrastructure/

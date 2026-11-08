@@ -1,8 +1,8 @@
 /* ============================================================
    Portfolio v4 · Leitstand. One file, three parts:
-   1. window.PF_EN / PF_TERM: English strings (German lives in the markup)
+   1. window.PF_EN: English strings (German lives in the markup)
    2. window.PF_VARIANT: skill graph, monitor wall, activity heatmap
-   3. core: theme, i18n, reveals, menu, dialogs, terminal, Lenis, intro
+   3. core: theme, i18n, reveals, menu, dialogs, contact composer, Lenis, intro
    Runs without GSAP/Lenis; the jsdom tests check exactly that fallback.
    ============================================================ */
 window.PF_EN = {
@@ -44,12 +44,11 @@ window.PF_EN = {
 "proj.orynthia.d2": "JWT with refresh tokens and TOTP 2FA, refuses to start without valid secrets.",
 "proj.orynthia.problem": "Finances, appointments and household lived in five different apps.",
 "proj.admin.title": "Admin-Dashboard",
-"proj.admin.meta": "2026 · Self-hosted · admin.rxf-sys.de",
-"proj.admin.desc": "Monitoring dashboard for my home server: watches Proxmox, backups and services with probe histories. FastAPI backend, React frontend and custom session auth with Argon2id and roles.",
+"proj.admin.meta": "2026 · Self-hosted · v2 in progress",
+"proj.admin.desc": "Live dashboard for the home server: Proxmox host and guests, UniFi network, Proxmox Backup Server, Cloudflare tunnel and DNS, plus an audit with twelve checks and a score. v2 adds roles, API tokens, TOTP and ntfy push.",
 "proj.rmm.title": "RMM-Automatisierung",
 "proj.rmm.meta": "2026 · NinjaOne · Automation",
 "proj.rmm.desc": "NinjaOne scripting library for recurring maintenance tasks: patch reports, disk health checks and software inventory, written in PowerShell and Bash.",
-"st.done": "Completed",
 "proj.magicmirror.title": "MagicMirror",
 "proj.magicmirror.meta": "2023 · Smart home",
 "proj.magicmirror.desc": "Self-built MagicMirror on a Raspberry Pi 4 with two custom modules for personalized displays and smart home integration.",
@@ -100,7 +99,7 @@ window.PF_EN = {
 "about.p2": "I deliberately moved from application development into administration. I’m fascinated by how systems stay stable, secure and observable under real load.",
 "about.p3": "In my free time I run my own HomeLab on Proxmox VE: Samba NAS, WireGuard VPN, Vaultwarden, Portainer and my own apps. Every container is an experiment that deepens my Linux, virtualization and networking skills.",
 "skills.title": "Skills",
-"skills.kicker": "Stack and practice",
+"skills.intro": "In IT everything is connected. Here are a few nodes I have already got to know. Pick one to see what it builds on and where I use it.",
 "graph.base": "base",
 "grp.sys": "Systems",
 "skill.linux.note": "Everyday base for servers, containers and agents.",
@@ -128,9 +127,7 @@ window.PF_EN = {
 "skill.ps.note": "Maintenance scripts for Windows fleets.",
 "skill.sql.note": "Data models, migrations and reports.",
 "skill.git.note": "CI checks on every push, deploys via webhook or self-hosted runner.",
-"skills.self": "Level as self-assessment from 1 to 5",
 "projects.title": "Projects",
-"projects.kicker": "Selected work",
 "certs.title": "Certificates",
 "certs.kicker": "Qualifications and training",
 "cert1.title": "IT Specialist for Application Development",
@@ -170,8 +167,8 @@ window.PF_EN = {
 "tl.2023.3afd102.s": "Raspberry Pi 4 with two custom modules",
 "tl.2025.0ac0846.t": "IHK-Abschluss",
 "tl.2025.0ac0846.s": "August: IT specialist for application development, IHK Cologne",
-"tl.2025.df7294c.t": "NinjaOne",
-"tl.2025.df7294c.s": "Certified Technician MSP and Automation Specialist",
+"tl.2026.df7294c.t": "NinjaOne",
+"tl.2026.df7294c.s": "Certified Technician MSP and Automation Specialist",
 "tl.2026.04a75c6.t": "Fusion IT, Langenfeld",
 "tl.2026.04a75c6.s": "January to September: junior IT system administrator, customer infrastructures, RMM, onboarding",
 "tl.2026.a0b6ab2.t": "Securepoint",
@@ -182,7 +179,6 @@ window.PF_EN = {
 "tl.2026.1e87bc8.t": "Open to a new role",
 "tl.2026.1e87bc8.s": "Since October 2026",
 "contact.title": "Contact",
-"contact.kicker": "Let’s talk",
 "contact.head": "Drop me a line.<br />I’ll get <span class=\"hl\">back to you</span>.",
 "contact.lede": "Looking for help in system administration? Or want to talk HomeLabs, Linux or automation? I’d love to hear from you.",
 "contact.cta1": "Write an e-mail",
@@ -190,16 +186,23 @@ window.PF_EN = {
 "contact.regionV": "Dormagen, NRW · remote and on-site",
 "contact.response": "Response time",
 "contact.responseV": "Usually within 24 hours",
-"term.title": "Or just ask the terminal",
-"term.hint": "Type help and press Enter. Or pick a command below.",
-"term.label": "Enter a command",
+"cc.title": "Prepare a message",
+"cc.lede": "Pick a topic and optionally add your name and company. The finished e-mail opens in your mail app; nothing is sent through this page.",
+"cc.topic": "What is it about?",
+"cc.t.job": "Job offer",
+"cc.t.project": "Project",
+"cc.t.talk": "Just talk",
+"cc.name": "Your name (optional)",
+"cc.company": "Company (optional)",
+"cc.subject": "Subject",
+"cc.send": "Open in mail app",
+"cc.copy": "Copy address",
+"cc.vcf": "Save contact (.vcf)",
 "footer.copy": "© 2026 Robin Frank · All rights reserved",
-"footer.built": "handcrafted · runs in my own HomeLab",
 "footer.imprint": "Imprint",
 "footer.privacy": "Privacy",
 "footer.top": "Back to top"
 };
-window.PF_TERM = {"de": {"whoami": ["Robin Frank, Junior-Systemadministrator. Offen für eine neue Stelle.", "Fachinformatiker für Anwendungsentwicklung (IHK, 2025) · Dormagen, NRW."], "skills": ["system:  linux · proxmox ve · docker/lxc · ninjaone", "netz:    wireguard · dns/dhcp · firewall/routing · caddy", "code:    python · go · typescript · react · nestjs · java · bash · powershell"]}, "en": {"whoami": ["Robin Frank, junior system administrator. Open to a new role.", "IT specialist for application development (IHK, 2025) · Dormagen, NRW."], "skills": ["system:  linux · proxmox ve · docker/lxc · ninjaone", "network: wireguard · dns/dhcp · firewall/routing · caddy", "code:    python · go · typescript · react · nestjs · java · bash · powershell"]}};
 
 /* Variant C · Leitstand: skill graph, monitor wall with power-on, activity heatmap. */
 window.PF_VARIANT = function (api) {
@@ -281,7 +284,7 @@ window.PF_VARIANT = function (api) {
    Portfolio v4 core: theme, i18n (EN from window.PF_EN), visibility
    watcher, reveals, counters, header state, mobile menu, active nav,
    cert lightbox, project dialog, clock, title scramble, hero grid,
-   terminal, Lenis + statement, hero intro, boot sequence.
+   contact composer, Lenis + statement, hero intro, boot sequence.
    A variant script may register window.PF_VARIANT(api) for its own
    sections; the core runs fine without it, and without GSAP/Lenis.
    ============================================================ */
@@ -289,7 +292,6 @@ window.PF_VARIANT = function (api) {
   'use strict';
 
   var EN = window.PF_EN || {};
-  var TERM = window.PF_TERM || { de: {}, en: {} };
 
   var LS_THEME = 'pf2-theme', LS_LANG = 'pf2-lang', SS_BOOT = 'pf3-booted';
   var html = document.documentElement;
@@ -794,55 +796,6 @@ window.PF_VARIANT = function (api) {
     start();
   })();
 
-  /* ============ Interactive terminal ============ */
-  var T = {
-    de: {
-      help: ['Verfügbare Befehle:',
-        '  whoami          wer ist Robin?',
-        '  skills          Technik-Stack',
-        '  projects        Projekte',
-        '  contact         Kontaktwege',
-        '  ls · cd <dir>   durch die Seite springen',
-        '  theme · lang    Darstellung umschalten',
-        '  date · clear · sudo …'],
-      whoami: TERM.de.whoami || [],
-      skills: TERM.de.skills || [],
-      projects: 'Projekte:',
-      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Antwort üblicherweise innerhalb von 24 Stunden.'],
-      jump: '-> springe zu ~/{s}',
-      noDir: 'cd: {s}: Verzeichnis nicht gefunden',
-      theme: 'Farbschema: {t}',
-      lang: 'Sprache: Deutsch',
-      hire: ['[sudo] Passwort für guest: ********', 'Zugriff gewährt. Bester nächster Schritt:', '-> info@rxf-sys.de'],
-      sudo: 'guest steht nicht in der sudoers-Datei. Dieser Vorfall wird gemeldet. ;)',
-      exit: 'logout. Bis bald.',
-      unknown: 'Befehl nicht gefunden: {c}. Tippe help.'
-    },
-    en: {
-      help: ['Available commands:',
-        '  whoami          who is Robin?',
-        '  skills          tech stack',
-        '  projects        projects',
-        '  contact         ways to reach me',
-        '  ls · cd <dir>   jump through the page',
-        '  theme · lang    switch appearance',
-        '  date · clear · sudo …'],
-      whoami: TERM.en.whoami || [],
-      skills: TERM.en.skills || [],
-      projects: 'Projects:',
-      contact: ['mail      info@rxf-sys.de', 'github    github.com/rxf-sys', 'linkedin  in/robin-frank-987b26350', 'Usually replies within 24 hours.'],
-      jump: '-> jumping to ~/{s}',
-      noDir: 'cd: {s}: no such directory',
-      theme: 'Colour scheme: {t}',
-      lang: 'Language: English',
-      hire: ['[sudo] password for guest: ********', 'Access granted. Best next step:', '-> info@rxf-sys.de'],
-      sudo: 'guest is not in the sudoers file. This incident will be reported. ;)',
-      exit: 'logout. See you soon.',
-      unknown: 'command not found: {c}. Type help.'
-    }
-  };
-  var DIRS = { about: 'about', skills: 'skills', projects: 'projects', certificates: 'certificates', certs: 'certificates', experience: 'experience', cv: 'experience', contact: 'contact', home: 'home', '~': 'home' };
-
   function scrollToId(id) {
     var tgt = document.getElementById(id);
     if (!tgt) return;
@@ -850,75 +803,73 @@ window.PF_VARIANT = function (api) {
     else tgt.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   }
 
-  var termOut = document.getElementById('termOut');
-  var termForm = document.getElementById('termForm');
-  var termIn = document.getElementById('termIn');
-  var termHistory = [], termPos = 0;
-
-  function termPrint(lines, cls) {
-    [].concat(lines).forEach(function (txt) {
-      var p = document.createElement('p');
-      p.className = 'term-line' + (cls ? ' ' + cls : '');
-      p.textContent = txt;
-      termOut.appendChild(p);
-    });
-    while (termOut.children.length > 80) termOut.removeChild(termOut.firstChild);
-    termOut.scrollTop = termOut.scrollHeight;
-  }
-
-  function runCommand(raw) {
-    var input = raw.trim();
-    termPrint(input, 'cmd');
-    if (!input) return;
-    termHistory.push(input);
-    termPos = termHistory.length;
-    var L = T[lang] || T.de;
-    var parts = input.toLowerCase().split(/\s+/), cmd = parts[0], arg = parts.slice(1).join(' ');
-    switch (cmd) {
-      case 'help': case '?': termPrint(L.help); break;
-      case 'whoami': termPrint(L.whoami); break;
-      case 'skills': termPrint(L.skills); break;
-      case 'projects':
-        termPrint(L.projects);
-        termPrint($all('[data-project-title]').map(function (h, i) {
-          return '  ' + (i < 9 ? '0' : '') + (i + 1) + '  ' + h.textContent.trim();
-        }));
-        termPrint(L.jump.replace('{s}', 'projects'), 'dim');
-        scrollToId('projects');
-        break;
-      case 'contact': case 'mail': termPrint(L.contact, 'ok'); break;
-      case 'ls': termPrint('about/  skills/  projects/  certificates/  experience/  contact/'); break;
-      case 'cd': {
-        var dir = DIRS[arg.replace(/^~\//, '').replace(/\/$/, '')];
-        if (!arg || dir === 'home') { termPrint(L.jump.replace('{s}', ''), 'dim'); scrollToId('home'); }
-        else if (dir) { termPrint(L.jump.replace('{s}', dir), 'dim'); scrollToId(dir); }
-        else termPrint(L.noDir.replace('{s}', arg), 'err');
-        break;
-      }
-      case 'theme': termPrint(L.theme.replace('{t}', toggleTheme())); break;
-      case 'lang': setLang(lang === 'de' ? 'en' : 'de'); termPrint(T[lang].lang); break;
-      case 'date': termPrint(new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'de-DE', { timeZone: 'Europe/Berlin', dateStyle: 'full', timeStyle: 'medium' }).format(new Date()) + ' (Europe/Berlin)'); break;
-      case 'clear': termOut.textContent = ''; break;
-      case 'echo': termPrint(raw.trim().slice(5)); break;
-      case 'sudo': termPrint(/hire/.test(arg) ? L.hire : L.sudo, /hire/.test(arg) ? 'ok' : 'err'); break;
-      case 'exit': case 'logout': termPrint(L.exit, 'dim'); break;
-      default: termPrint(L.unknown.replace('{c}', cmd), 'err');
+  /* ============ Contact composer ============
+     Builds a prefilled mailto link from topic, name and company. Nothing
+     is sent by the page itself; the visitor's mail app takes over. */
+  var MAIL = {
+    job: {
+      de: ['Stellenangebot für dich', 'wir suchen Verstärkung in der Systemadministration und würden dich gern kennenlernen.'],
+      en: ['A job offer for you', 'we are looking for support in system administration and would like to get to know you.']
+    },
+    project: {
+      de: ['Projektanfrage', 'ich habe ein Projekt, bei dem ich deine Unterstützung brauche:'],
+      en: ['Project inquiry', 'I have a project I would like your help with:']
+    },
+    talk: {
+      de: ['Austausch zu HomeLab und Linux', 'ich bin über dein Portfolio gestolpert und würde mich gern mit dir austauschen.'],
+      en: ['Let’s talk HomeLab and Linux', 'I came across your portfolio and would like to have a chat.']
     }
-  }
-
-  if (termOut && termForm && termIn) {
-    termForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      runCommand(termIn.value);
-      termIn.value = '';
-    });
-    termIn.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowUp' && termPos > 0) { termPos--; termIn.value = termHistory[termPos]; e.preventDefault(); }
-      else if (e.key === 'ArrowDown') { termPos = Math.min(termPos + 1, termHistory.length); termIn.value = termHistory[termPos] || ''; e.preventDefault(); }
-    });
-    $all('.term-chip').forEach(function (chip) {
-      chip.addEventListener('click', function () { runCommand(chip.getAttribute('data-cmd')); });
-    });
+  };
+  var cc = document.getElementById('cc');
+  if (cc) {
+    var ccSend = document.getElementById('ccSend');
+    var ccSubject = document.getElementById('ccSubject');
+    var ccName = document.getElementById('ccName');
+    var ccCompany = document.getElementById('ccCompany');
+    var ccCopy = document.getElementById('ccCopy');
+    var ccCopyLabel = document.getElementById('ccCopyLabel');
+    var EMAIL = ccCopy ? ccCopy.getAttribute('data-email') : 'info@rxf-sys.de';
+    var composeMail = function () {
+      var picked = cc.querySelector('input[name="ccTopic"]:checked');
+      var m = (MAIL[picked ? picked.value : 'job'] || MAIL.job)[lang === 'en' ? 'en' : 'de'];
+      var name = ccName.value.trim(), company = ccCompany.value.trim();
+      var subject = m[0] + (company ? ' · ' + company : '');
+      var greet = lang === 'en' ? 'Hi Robin,' : 'Hallo Robin,';
+      var bye = lang === 'en' ? 'Best regards' : 'Viele Grüße';
+      var sign = [name, company].filter(Boolean).join(', ');
+      var bodyText = greet + '\n\n' + m[1] + '\n\n\n' + bye + (sign ? '\n' + sign : '');
+      ccSubject.textContent = subject;
+      ccSend.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
+    };
+    cc.addEventListener('input', composeMail);
+    cc.addEventListener('change', composeMail);
+    document.addEventListener('pf:lang', composeMail);
+    composeMail();
+    if (ccCopy) {
+      var copied = function () {
+        if (!ccCopyLabel) return;
+        ccCopyLabel.textContent = t('cc.copied');
+        setTimeout(function () { ccCopyLabel.textContent = t('cc.copy'); }, 2000);
+      };
+      ccCopy.addEventListener('click', function () {
+        var fallback = function () {
+          // Clipboard refused (older browsers, embedded views): select the address instead
+          var mail = document.querySelector('.ci-item a[href^="mailto:"]');
+          if (mail && window.getSelection) {
+            var range = document.createRange();
+            range.selectNodeContents(mail);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(copied, fallback);
+        } else {
+          fallback();
+        }
+      });
+    }
   }
 
   /* ============ Lenis + statement ============ */
