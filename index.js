@@ -526,6 +526,11 @@ window.PF_VARIANT = function (api) {
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(function (s) { no.observe(s.sec); });
+    /* Sections without a nav entry (hero, contact) only clear the marker */
+    ['home', 'contact'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) no.observe(el);
+    });
   }
 
   /* ============ Cert lightbox (with focus management) ============ */

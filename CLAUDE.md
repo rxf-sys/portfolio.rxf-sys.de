@@ -122,10 +122,12 @@ und dieselbe Reihenfolge**:
   Caddy 7 Tage gecacht (`/assets/*` sogar 30 Tage, also auch `boot.js` und
   `vendor/`) — **bei Änderungen an CSS/JS den `?v=`-Parameter in allen
   HTML-Dateien bumpen** (z. B. auf das aktuelle Datum)
-- **Externe Ressourcen**: nur noch Font Awesome 6.5.0 via cdnjs; die
-  Schriften liegen selbst gehostet in `assets/fonts/` (kein Google Fonts).
-  Scripts kommen **nur** von `'self'` (Libraries liegen in `assets/vendor/`) —
-  bei neuen externen Quellen die CSP im Caddyfile erweitern
+- **Externe Ressourcen**: keine. Schriften liegen in `assets/fonts/`, Libraries
+  in `assets/vendor/`, Icons als CSS-Masken im Block „Icons" am Ende von
+  `index.css` (Auswahl aus Font Awesome Free 6.5.0, CC BY 4.0; Markup bleibt
+  `<i class="fas fa-name">`, neue Icons dort als Regel ergänzen). Scripts,
+  Styles und Fonts kommen **nur** von `'self'`: bei neuen externen Quellen die
+  CSP im Caddyfile erweitern
 - **i18n**: DE-Texte stehen im Markup, EN in `window.PF_EN` am Anfang von `index.js`
   (Mapping über `data-i18n`/`data-i18n-html`) — neue Texte immer in beiden Sprachen
   pflegen
