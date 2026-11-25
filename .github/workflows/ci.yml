@@ -39,6 +39,36 @@ jobs:
       - name: Run DOM tests
         run: node tests/dom.test.js
 
+  browser:
+    name: Browser and axe checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Playwright and axe
+        run: npm install --no-save playwright@1.63.0 @axe-core/playwright@4.14.1
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Serve the site
+        run: python3 -m http.server 8765 --bind 127.0.0.1 &
+
+      - name: Run browser checks
+        run: node tests/a11y.test.js http://127.0.0.1:8765
+
+      - name: Keep screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tests/screenshots/
+          retention-days: 14
+
   links:
     name: Check Links
     runs-on: ubuntu-latest

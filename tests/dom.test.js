@@ -189,8 +189,8 @@ check('Keine Selbsteinschätzung mehr', !document.body.textContent.includes('Sel
 check('Skills: Einleitung statt Untertitel', !!document.querySelector('#skills .section-intro') && !document.querySelector('#skills .kicker'));
 check('Projekte und Kontakt ohne Untertitel', !document.querySelector('#projects .kicker') && !document.querySelector('#contact .kicker'));
 check('Footer ohne GitHub-Link und ohne Bauvermerk', !document.querySelector('.footer a[href*="github"]') && !document.querySelector('.footer-built'));
-check('RMM-Automatisierung und MagicMirror ohne Status', ['rmm', 'magicmirror'].every((id) => !document.querySelector('.screen[data-project="' + id + '"] .project-status')));
-check('Admin-Dashboard in Arbeit (v2)', !!document.querySelector('.screen[data-project="admin"] .st-wip'));
+check('RMM-Automatisierung ohne Status', !document.querySelector('.screen[data-project="rmm"] .project-status'));
+check('Admin-Dashboard live, v2 in der Unterzeile', !!document.querySelector('.screen[data-project="admin"] .st-live') && /v2/.test(document.querySelector('.screen[data-project="admin"] .scr-meta').textContent));
 check('NinjaOne-Zertifikate 2026', Array.from(document.querySelectorAll('.cert')).filter((c) => c.textContent.includes('NinjaOne')).every((c) => c.textContent.includes('2026')));
 
 console.log('== Asynchron: Hero-Intro, Monitorwand ==');
@@ -202,6 +202,57 @@ setTimeout(() => {
   check('Fokus zurück auf Trigger', document.activeElement === openBtn);
   check('Ortszeit wird angezeigt', /^\d{2}:\d{2}:\d{2}$/.test(document.getElementById('localTime').textContent));
 
-  console.log('\n' + pass + ' passed, ' + fail + ' failed');
-  process.exit(fail ? 1 : 0);
+  v5Checks(() => {
+    console.log('\n' + pass + ' passed, ' + fail + ' failed');
+    process.exit(fail ? 1 : 0);
+  });
 }, 3200);
+
+// Monitor wall v5, case studies, plant schematic and shareable links
+function v5Checks(done) {
+  console.log('== Monitorwand, Fallstudien, Links ==');
+  const ids = Array.from(document.querySelectorAll('.wall [data-open-project]')).map((b) => b.getAttribute('data-open-project'));
+  check('Neun Kanäle auf der Monitorwand', ids.length === 9);
+  check('Jeder Kanal hat eine Fallstudie', ids.every((id) => !!document.getElementById('tpl-proj-' + id)));
+  check('Neue Kanäle Smart Home und IT-Service', ids.includes('smarthome') && ids.includes('itservice'));
+  check('Orynthia mit Status „Remake geplant“', /Remake geplant/.test(document.querySelector('.screen[data-project="orynthia"] .project-status').textContent));
+
+  const roots = [document].concat(Array.from(document.querySelectorAll('template')).map((tpl) => tpl.content));
+  const keys = new Set();
+  roots.forEach((r) => r.querySelectorAll('[data-i18n], [data-i18n-html]').forEach((el) => keys.add(el.getAttribute('data-i18n') || el.getAttribute('data-i18n-html'))));
+  const missingEn = Array.from(keys).filter((k) => window.PF_EN[k] === undefined);
+  check('Jeder Text hat eine englische Fassung' + (missingEn.length ? ' (fehlt: ' + missingEn.slice(0, 5).join(', ') + ')' : ''), missingEn.length === 0);
+
+  document.querySelector('.wall [data-open-project="homelab"]').click();
+  check('Fallstudie setzt #projekt-homelab', window.location.hash === '#projekt-homelab');
+  check('Plattform zeigt das Anlagenschema', !!pdBody.querySelector('.an-svg'));
+  const lamp = pdBody.querySelector('.lp.own[data-open-project="vulpexa"]');
+  lamp.dispatchEvent(new window.FocusEvent('focusin', { bubbles: true }));
+  check('Lampe nennt ihr Projekt', /Vulpexa/.test(document.getElementById('anRead').textContent));
+  lamp.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+  check('Enter auf einer Lampe öffnet deren Fallstudie', pd.getAttribute('data-project') === 'vulpexa' && window.location.hash === '#projekt-vulpexa');
+  document.querySelector('.wall [data-open-project="orynthia"]').click();
+  check('Orynthia-Fallstudie zeigt den Remake-Hinweis', /Remake geplant/.test(pdBody.querySelector('.pd-banner').textContent));
+  check('Screenshots folgen dem Theme (hell und dunkel vorhanden)', !!pdBody.querySelector('.shot-light img') && !!pdBody.querySelector('.shot-dark img'));
+  document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape' }));
+
+  setTimeout(() => {
+    check('Schließen entfernt den Hash', window.location.hash === '');
+    const dom2 = new JSDOM(html.replace(/<script src="[^"]+"><\/script>/g, ''), {
+      virtualConsole,
+      url: 'https://portfolio.rxf-sys.de/#projekt-smarthome',
+      runScripts: 'dangerously',
+      pretendToBeVisual: true,
+      beforeParse(w) {
+        w.matchMedia = (q) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} });
+      },
+    });
+    const s2 = dom2.window.document.createElement('script');
+    s2.textContent = js;
+    dom2.window.document.body.appendChild(s2);
+    const pd2 = dom2.window.document.getElementById('projDialog');
+    check('Link mit #projekt-smarthome öffnet die Fallstudie', !pd2.hidden && pd2.getAttribute('data-project') === 'smarthome');
+    dom2.window.close();
+    done();
+  }, 400);
+}

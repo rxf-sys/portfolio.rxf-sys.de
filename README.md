@@ -52,10 +52,14 @@ HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.
 ├── impressum.html      # Rechtsseite (noindex)
 ├── datenschutz.html    # Rechtsseite (noindex)
 ├── tests/dom.test.js   # jsdom-Smoke-Tests (laufen ohne GSAP → prüfen den Fallback)
+├── tests/a11y.test.js  # Browser-Checks: axe, kein seitliches Scrollen, alle Fallstudien, 1440/390, hell/dunkel
+├── tools/capture/      # echte Screenshots der Apps aus Demo-Instanzen (Playwright → WebP)
+├── tools/metrics/      # Testfälle, Codezeilen, CI-Workflows je Repo für die Fallstudien
 ├── assets/
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
 │   ├── fonts/          # Geist, Geist Mono (woff2, OFL)
 │   ├── vendor/         # GSAP, ScrollTrigger, SplitText, Flip, Lenis (unverändert, minified)
+│   ├── images/projects/ # Screenshots der Fallstudien (hell/dunkel, Desktop/Telefon)
 │   └── …               # Bilder, Icons, PDF
 └── infrastructure/     # Caddyfile, Deploy-Script, Webhook-Konfiguration
 ```
@@ -71,6 +75,17 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
+## Werkzeuge
+
+- **Screenshots** (`tools/capture/capture.js`): öffnet lokal laufende Instanzen mit
+  fiktiven Demo-Daten und speichert WebP-Dateien nach `assets/images/projects/`.
+  Rezepte: `finance` (finance-app nach `seed-demo`), `vulpexa` (Seed aus
+  `backend/tests/fixtures/seed_demo.py`, persönliche Namen und IPs vorher in der
+  Scratch-Datenbank ersetzen), `www`. Admin v2 liefert seine Bilder über die eigene
+  E2E-Suite (`pnpm e2e` → `e2e/screenshots/`).
+- **Kennzahlen** (`tools/metrics/collect.py`): `python3 tools/metrics/collect.py ../finance-app ../admin.rxf-sys.de …`
+  zählt Testfälle und Codezeilen; die Zahlen in den Fallstudien stammen daher.
+
 ## Tests & CI
 
 GitHub Actions ([`ci.yml`](.github/workflows/ci.yml)) prüft bei jedem
@@ -80,6 +95,7 @@ Push/PR auf `main` — alle Jobs sind blocking:
 | --- | --- |
 | HTML-Validierung (html-validate@11) | `npx html-validate@11 "*.html"` |
 | DOM-Smoke-Tests (jsdom) | `npm install --no-save jsdom && node tests/dom.test.js` |
+| Browser und axe (Playwright) | `npm install --no-save playwright@1.63.0 @axe-core/playwright@4.14.1`, `npx playwright install chromium`, Server auf :8765, dann `node tests/a11y.test.js` |
 | Link-Check (Lychee) | läuft in CI; LinkedIn/Xing ausgenommen (Bot-Blocking) |
 
 ## Deployment

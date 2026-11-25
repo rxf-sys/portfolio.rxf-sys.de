@@ -79,7 +79,11 @@ und dieselbe Reihenfolge**:
 ├── robots.txt          # SEO: alles erlaubt, verweist auf sitemap.xml
 ├── sitemap.xml         # SEO: nur die Hauptseite (Rechtsseiten sind noindex)
 ├── tests/
-│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Kontakt-Baukasten, Fallback ohne GSAP)
+│   ├── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Kontakt-Baukasten, Fallback ohne GSAP, Deep Links, EN-Vollständigkeit)
+│   └── a11y.test.js    # Playwright + axe: Seite und alle Fallstudien, 1440/390, hell/dunkel
+├── tools/
+│   ├── capture/        # Screenshots der Apps aus Demo-Instanzen (README: Werkzeuge)
+│   └── metrics/        # Kennzahlen je Repo (Testfälle, Codezeilen) für die Fallstudien
 ├── assets/             # Bilder, Icons, PDF
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
 │   ├── fonts/          # selbst gehostete Schriften (woff2)
@@ -142,5 +146,7 @@ und dieselbe Reihenfolge**:
   `.htmlvalidate.json`; lokal prüfen mit `npx html-validate@11 "*.html"`
 - **DOM-Smoke-Tests** (jsdom, blocking) — `tests/dom.test.js`; lokal:
   `npm install --no-save jsdom && node tests/dom.test.js`
+- **Browser- und axe-Checks** (Playwright, blocking) — `tests/a11y.test.js`;
+  keine ernsten axe-Verstöße, kein seitliches Scrollen, keine Konsolenfehler
 - **Lychee Link-Check** (blocking) — LinkedIn/Xing sind ausgenommen
   (Bot-Blocking); alle anderen externen Links müssen erreichbar sein

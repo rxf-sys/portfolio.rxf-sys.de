@@ -7,8 +7,8 @@
    ============================================================ */
 window.PF_EN = {
 "skip": "Skip to content",
-"proj.homelab.title": "HomeLab · Proxmox VE",
-"proj.homelab.meta": "2022 to today · Personal · Infrastructure",
+"proj.homelab.title": "Platform · Proxmox cluster",
+"proj.homelab.meta": "2022 to today · 2 nodes + QDevice · 14 guests",
 "proj.homelab.desc": "My self-hosted lab: a Proxmox cluster of two nodes and a QDevice with 12 LXC containers and 2 VMs for Samba NAS, WireGuard VPN, Vaultwarden, Home Assistant, a backup server and my own apps. Vaultwarden replaces the cloud password manager, WireGuard opens a secure tunnel from anywhere.",
 "st.live": "Live",
 "proj.homelab.s0": "LXC containers",
@@ -22,8 +22,8 @@ window.PF_EN = {
 "projects.decisions": "Decisions",
 "projects.asof": "As of 11/2026",
 "projects.arch": "Architecture",
-"proj.vulpexa.title": "Vulpexa · RMM-Plattform",
-"proj.vulpexa.meta": "2026 · Self-hosted · rmm.rxf-sys.de",
+"proj.vulpexa.title": "Vulpexa · my own RMM",
+"proj.vulpexa.meta": "2026 · Go agent · outbound WSS · signed updates",
 "proj.vulpexa.desc": "Lean self-hosted RMM tool for my own servers and the family’s devices, modelled on NinjaOne. Monitoring, patching, scripts with live output and remote support via RustDesk. Runs in production; development is paused since the code became the base of a product in preparation.",
 "st.wip": "In progress",
 "st.remake": "Remake planned",
@@ -34,8 +34,8 @@ window.PF_EN = {
 "proj.vulpexa.d1": "Agents connect outbound via WebSocket: no open ports, no fixed IP.",
 "proj.vulpexa.d2": "Signed auto-update (ed25519), TOTP and an audit log for every access.",
 "proj.vulpexa.problem": "Look after five to fifteen devices without paying for an enterprise RMM.",
-"proj.orynthia.title": "Orynthia · Alltags-App",
-"proj.orynthia.meta": "2026 · Self-hosted · Open banking",
+"proj.orynthia.title": "Orynthia · Everyday + Finance",
+"proj.orynthia.meta": "v1 live · split into two apps planned",
 "proj.orynthia.desc": "A self-hosted all-rounder for everyday life: finances with open banking (PSD2), calendar, tasks, recipes, meal plan, lists, notes and travel. The modules work together: recipes go into the meal plan, the meal plan creates the shopping list. A remake is planned: Orynthia will be split into two standalone apps, Orynthia Everyday for daily life and Orynthia Finance for money matters. Today's version keeps running until both are in production.",
 "proj.orynthia.s0": "modules",
 "proj.orynthia.s1": "bank access",
@@ -45,7 +45,7 @@ window.PF_EN = {
 "proj.orynthia.d2": "JWT with refresh tokens and TOTP 2FA, refuses to start without valid secrets.",
 "proj.orynthia.problem": "Finances, appointments and household lived in five different apps.",
 "proj.admin.title": "Admin-Dashboard",
-"proj.admin.meta": "2026 · Self-hosted · v2 in progress",
+"proj.admin.meta": "v1 live · v2 in progress",
 "proj.admin.desc": "Live dashboard for the home server: Proxmox host and guests, UniFi network, Proxmox Backup Server, Cloudflare tunnel and DNS, plus an audit with twelve checks and a score. v2 is a rebuild with a plugin system: passkey or TOTP is mandatory, every route is denied by default, images are signed and rolled out by pull.",
 "proj.rmm.title": "RMM-Automatisierung",
 "proj.rmm.meta": "2026 · NinjaOne · Automation",
@@ -78,7 +78,7 @@ window.PF_EN = {
 "who.focus.m": "HomeLab since 2022, a cluster today",
 "hero.chip": "Open to a new role",
 "hero.title": "Hi, I’m Robin.<br />I keep <span class=\"hl\">infrastructure</span> running.",
-"hero.lede": "Junior system administrator, trained as an IT specialist. Linux, Proxmox, networking and automation: learned on the job, deepened in my own HomeLab.",
+"hero.lede": "Junior system administrator, trained as an IT specialist for application development. I run my own Proxmox cluster and build the software on it myself, from the Go agent to the restore from backup.",
 "hero.cta1": "Get in touch",
 "hero.cta2": "View projects",
 "fact.statusV": "Open to a new role",
@@ -121,6 +121,9 @@ window.PF_EN = {
 "skill.js.note": "From MagicMirror modules to React dashboards.",
 "skill.react.note": "Dashboards for my own self-hosted apps.",
 "skill.python.note": "REST APIs and WebSocket servers with tests and type checks.",
+"skill.ha.note": "My own integration for EnOcean radio relays with a self-written ESP3 driver, plus Alexa via my own Lambda.",
+"skill.fastify.note": "Core of admin dashboard v2: plugin SDK, zod contracts and a lock on every route until the role fits.",
+"skill.pw.note": "End-to-end tests with accessibility checks at 1440 and 390 px, light and dark; they also produce the screenshots on this site.",
 "skill.go.note": "The Vulpexa agent as one static binary for three platforms.",
 "skill.nest.note": "Backend of the Orynthia app with PostgreSQL and Redis.",
 "grp.auto": "Data and automation",
@@ -202,7 +205,99 @@ window.PF_EN = {
 "footer.copy": "© 2026 Robin Frank · All rights reserved",
 "footer.imprint": "Imprint",
 "footer.privacy": "Privacy",
-"footer.top": "Back to top"
+"footer.top": "Back to top",
+"an.swipe": "← swipe →",
+"about.p4": "I work with recorded architecture decisions, automated checks in CI and AI agents such as Claude Code. Architecture, review and operations are my responsibility.",
+"an.fin": "Finance · planned",
+"an.guests": "Guests",
+"an.hint": "Lit lamps are my projects. Pick one.",
+"an.n1": "Node 1",
+"an.n2": "Node 2",
+"an.nodes": "Nodes",
+"an.out": "outbound only",
+"an.pf": "Portfolio (this site)",
+"an.title": "Plant schematic",
+"an.tunnel": "Tunnel",
+"pd.adm.d0": "Plugins get no database access; the HTTP client checks targets and pins TLS.",
+"pd.adm.d1": "Sign-in only with a second factor: passkey or TOTP, server-side sessions.",
+"pd.adm.d2": "Deploy without inbound access: signed images, pull by systemd timer, automatic rollback.",
+"pd.adm.desc": "Live dashboard for the home server: Proxmox host and guests, PBS backups, Cloudflare tunnel and DNS, the UniFi network and an audit with twelve checks. v2 is a rebuild with a plugin system: passkey or TOTP is mandatory, every route is denied by default, images are signed and rolled out by pull.",
+"pd.adm.meta": "2026 · Self-hosted · v1 FastAPI · v2 Fastify",
+"pd.adm.note": "v1 runs in production. v2 is at phase 4.7 of 9: the uptime plugin is done, PVE, PBS, Cloudflare and UniFi follow.",
+"pd.adm.problem": "State of host, backups, tunnel and network at a glance, without opening four admin panels.",
+"pd.adm.s0": "architecture decisions",
+"pd.adm.s1": "threats in the model",
+"pd.adm.s2": "coverage gate",
+"pd.adm.s3": "inbound deploy accesses",
+"pd.adm.v2": "v2 in progress",
+"pd.hl.d0": "Second node plus QDevice: the cluster keeps quorum when one node goes down for maintenance.",
+"pd.hl.d1": "Backups in a dedicated PBS VM with a passed-through SSD, separate from the host.",
+"pd.hl.d2": "No open port: services run through Cloudflare Tunnel, remote access through WireGuard.",
+"pd.hl.desc": "My own platform: two Proxmox VE nodes and a Raspberry Pi as QDevice for quorum. It runs 12 containers and 2 VMs, including all my own apps, Home Assistant and a Proxmox Backup Server. There is no open port to the outside.",
+"pd.hl.i0": "/var deleted by accident, host unusable",
+"pd.hl.i1": "PVE reinstalled, network and storage back",
+"pd.hl.i2": "9 containers and 2 VMs restored from PBS",
+"pd.hl.i3": "148 snapshots kept, host config backup set up",
+"pd.hl.problem": "My own services instead of cloud subscriptions, and a place to practise operations under real conditions: updates, backups and outages too.",
+"pd.hl.s0": "nodes + QDevice",
+"pd.hl.s1": "guests",
+"pd.hl.s2": "snapshots kept after the restore",
+"pd.hl.s3": "audit checks passed",
+"pd.hl.shotk": "Incident · 21 May 2026",
+"pd.it.d0": "Readability first: no text below 14 px, tap targets from 44 px.",
+"pd.it.d1": "Price calculator instead of a price list: first hour in full, then 15-minute steps.",
+"pd.it.d2": "Everything self-hosted: fonts, GSAP and Lenis are local, so the privacy policy stays short.",
+"pd.it.desc": "Website of my small business for IT help for private customers: PCs and laptops, Wi-Fi and home network, smart home and remote support. Static without a build step, own design system \"Signal\", price calculator, German and English, strict CSP without third-party sources.",
+"pd.it.l0": "Website",
+"pd.it.meta": "2026 · Small business · Dormagen",
+"pd.it.problem": "Private customers need clear prices, large type and a simple way to send a request.",
+"pd.it.s0": "per hour, then 15-minute steps",
+"pd.it.s1": "external sources",
+"pd.it.s2": "minimum size of every tap target",
+"pd.or.banner": "Orynthia is being split into two standalone apps. Today's version keeps running until both successors are in production. None of this is finished.",
+"pd.or.c0": "v1 today",
+"pd.or.c0a": "10 modules in one app",
+"pd.or.c0c": "last change 13 Aug 2026",
+"pd.or.c1a": "Bank sync, contracts with deadlines, budgets, forecast",
+"pd.or.c1b": "Household with private accounts, passkeys, web push",
+"pd.or.c1c": "Code up to phase 3, not in production yet",
+"pd.or.c2a": "Calendar, tasks, lists, meal plan, recipes",
+"pd.or.c2b": "same stack as Finance",
+"pd.or.c2c": "no code yet",
+"pd.or.d0": "Two apps with separate databases, connected only through standards such as ICS and small token APIs.",
+"pd.or.d1": "Household instead of single user: Finance knows shared and private accounts.",
+"pd.or.d2": "Shared foundation: passkeys, web push, design tokens, CI and deploy template.",
+"pd.or.desc": "Orynthia started as an all-rounder for everyday life: finances with bank connection, calendar, tasks, recipes, meal plan, lists, notes and trips in one app. Finances and everyday life have different needs for security, data model and use, so they become two apps on a shared foundation.",
+"pd.or.dl": "Decisions for the remake",
+"pd.or.meta": "2026 · Self-hosted · Open banking",
+"pd.or.t0": "live since 2026",
+"pd.or.t1": "code up to phase 3",
+"pd.or.t2": "in my own household",
+"pd.or.t3": "after the architecture decision",
+"pd.or.t4": "archive after migration",
+"pd.sh.d0": "Own ESP3 driver instead of a library: CRC8, response checks and the allowed sender ID range stay under control.",
+"pd.sh.d1": "Wall switch presses are mirrored into the switch state, duplicate telegrams are filtered.",
+"pd.sh.d2": "Alexa via account linking: a small Lambda forwards commands to Home Assistant.",
+"pd.sh.desc": "My own Home Assistant integration for EnOcean radio relays. A self-written ESP3 driver talks to the USB 300 stick and sends exactly the telegrams OPUS relays expect, which the built-in integration does not. Alexa controls everything through my own skill on AWS Lambda, and a MagicMirror on a Raspberry Pi shows the state.",
+"pd.sh.meta": "2023 to today · Home Assistant · HACS v1.1.0",
+"pd.sh.problem": "The built-in EnOcean integration cannot switch my OPUS relays because it sends other telegram types.",
+"pd.sh.s0": "device profiles (EEP)",
+"pd.sh.s1": "tests",
+"pd.sh.s2": "own ESP3 driver",
+"pd.sh.s3": "blueprints",
+"pd.sh.title": "Smart home · EnOcean + Alexa",
+"pd.vx.desc": "Lean RMM for five to fifteen devices, modelled on NinjaOne: monitoring every 60 seconds, inventory, ntfy alerts, scripts with live output, patches for Windows, Linux and macOS, and remote support via RustDesk.",
+"pd.vx.meta": "2026 · Self-hosted · Go, FastAPI, React",
+"pd.vx.note": "Runs in production for my devices. Development has been frozen since October 2026 because the code is being developed further as the base of a product.",
+"pd.vx.s0": "automated test cases",
+"pd.vx.s1": "heartbeat interval",
+"pd.vx.s2": "agent targets",
+"proj.it.meta": "2026 · Small business · Website",
+"proj.it.title": "rxf-sys IT service",
+"proj.smart.meta": "EnOcean · Alexa · MagicMirror",
+"proj.smart.title": "Smart home",
+"st.dev": "In development",
+"st.plan": "Planned",
 };
 
 /* Variant C · Leitstand: skill graph, monitor wall with power-on, activity heatmap. */
@@ -278,6 +373,50 @@ window.PF_VARIANT = function (api) {
     ybtns.forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-year')); api.relayout(); }); });
     cells.forEach(function (c) { c.addEventListener('click', function () { pick(c.getAttribute('data-year')); }); });
     pick(2026);
+  }
+
+  /* ---------- Plant schematic in the platform case study: readout, keyboard ---------- */
+  function lampOf(e) { return e.target && e.target.closest ? e.target.closest('.an-svg .lp.own') : null; }
+  function readout(lamp) {
+    var read = document.getElementById('anRead');
+    if (!read) return;
+    var hint = read.firstElementChild;
+    var live = read.querySelector('.an-live');
+    if (!live) { live = document.createElement('span'); live.className = 'an-live'; live.hidden = true; read.appendChild(live); }
+    var label = lamp ? lamp.getAttribute('data-label') : '';
+    hint.hidden = !!label;
+    live.hidden = !label;
+    live.textContent = label ? label + '  ·  ' + (api.lang() === 'en' ? 'Enter opens the case study' : 'Enter öffnet die Fallstudie') : '';
+  }
+  document.addEventListener('mouseover', function (e) { var l = lampOf(e); if (l) readout(l); });
+  document.addEventListener('mouseout', function (e) { if (lampOf(e)) readout(null); });
+  document.addEventListener('focusin', function (e) { var l = lampOf(e); if (l) readout(l); });
+  document.addEventListener('focusout', function (e) { if (lampOf(e)) readout(null); });
+  document.addEventListener('keydown', function (e) {
+    var l = lampOf(e);
+    if (l && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); l.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+  });
+
+  /* ---------- Shareable case studies: #projekt-<id> opens the dialog ---------- */
+  var PREFIX = '#projekt-';
+  function setHash(hash) {
+    if (!window.history || !window.history.replaceState) return;
+    window.history.replaceState(null, '', hash || window.location.pathname + window.location.search);
+  }
+  document.addEventListener('pf:projopen', function (e) {
+    var id = e.detail && e.detail.id;
+    if (id) setHash(PREFIX + id);
+    // Narrow screens start the schematic at the cluster, not at the internet box
+    var sc = document.querySelector('.pd-body .an-scroll');
+    if (sc && sc.scrollWidth > sc.clientWidth) sc.scrollLeft = Math.min(sc.scrollWidth - sc.clientWidth, sc.scrollWidth * 0.36);
+  });
+  document.addEventListener('pf:projclose', function () {
+    if (window.location.hash.indexOf(PREFIX) === 0) setHash('');
+  });
+  var wanted = window.location.hash.indexOf(PREFIX) === 0 ? window.location.hash.slice(PREFIX.length) : '';
+  if (wanted && /^[a-z0-9-]+$/.test(wanted) && document.getElementById('tpl-proj-' + wanted)) {
+    var trigger = document.querySelector('.wall [data-open-project="' + wanted + '"]');
+    api.openProject(wanted, trigger);
   }
 };
 
@@ -372,7 +511,7 @@ window.PF_VARIANT = function (api) {
     html.setAttribute('lang', l);
     if (langBtn) {
       langBtn.textContent = l === 'en' ? 'DE' : 'EN';
-      langBtn.setAttribute('aria-label', l === 'en' ? 'Auf Deutsch umschalten' : 'Switch to English');
+      langBtn.setAttribute('aria-label', l === 'en' ? 'DE, auf Deutsch umschalten' : 'EN, switch to English');
     }
     emit('pf:lang');
   }
@@ -605,6 +744,7 @@ window.PF_VARIANT = function (api) {
   function closeProject() {
     if (!pd || pd.hidden) return;
     pd.classList.remove('open');
+    emit('pf:projclose');
     var finish = function () {
       pd.hidden = true;
       pdBody.textContent = '';

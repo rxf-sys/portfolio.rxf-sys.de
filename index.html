@@ -39,7 +39,7 @@
 <script>(function(){try{var t=localStorage.getItem('pf2-theme');if(t!=='dark'&&t!=='light')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
 
 <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/index.css?v=2026-11-25" />
+<link rel="stylesheet" href="/index.css?v=2026-11-25-2" />
 <script src="/assets/js/boot.js?v=2026-11-07"></script>
 <script type="application/ld+json">
 {
@@ -62,7 +62,7 @@
     "https://www.xing.com/profile/Robin_Frank097779"
   ],
   "alumniOf": { "@type": "EducationalOrganization", "name": "BBS Gerolstein" },
-  "knowsAbout": ["Linux","Proxmox VE","Netzwerktechnik","Docker","WireGuard","Securepoint UTM","Firewall","IT-Sicherheit","Endpoint Security","NinjaOne","Java","JavaScript","TypeScript","React","Python","FastAPI","Go","PHP","Groovy","HTML5","CSS3","SQL","MongoDB","PostgreSQL","Git","PowerShell","Bash"],
+  "knowsAbout": ["Linux","Proxmox VE","Proxmox Backup Server","Home Assistant","Fastify","Playwright","Netzwerktechnik","Docker","WireGuard","Securepoint UTM","Firewall","IT-Sicherheit","Endpoint Security","NinjaOne","Java","JavaScript","TypeScript","React","Python","FastAPI","Go","PHP","Groovy","HTML5","CSS3","SQL","MongoDB","PostgreSQL","Git","PowerShell","Bash"],
   "description": "Junior IT-Systemadministrator und Fachinformatiker für Anwendungsentwicklung mit Expertise in Systemadministration, Netzwerktechnik und Automatisierung."
 }
 </script>
@@ -77,7 +77,7 @@
     <a href="#about" data-section="about"><span class="nav-num">01</span><span data-i18n="nav.about">Über mich</span></a><a href="#skills" data-section="skills"><span class="nav-num">02</span><span data-i18n="nav.skills">Skills</span></a><a href="#projects" data-section="projects"><span class="nav-num">03</span><span data-i18n="nav.projects">Projekte</span></a><a href="#certificates" data-section="certificates"><span class="nav-num">04</span><span data-i18n="nav.certs">Zertifikate</span></a><a href="#experience" data-section="experience"><span class="nav-num">05</span><span data-i18n="nav.cv">Werdegang</span></a>
     <a class="btn btn-primary nav-cta" href="#contact" data-i18n="nav.contact">Kontakt</a>
   </nav>
-  <button type="button" class="lang-toggle" id="langBtn" aria-label="Switch to English">EN</button>
+  <button type="button" class="lang-toggle" id="langBtn" aria-label="EN, switch to English">EN</button>
   <a class="topbar-cta" href="#contact" data-i18n="nav.contact">Kontakt</a>
   <button type="button" class="theme-toggle" id="themeBtn" aria-label="Farbschema wechseln"><i class="fas fa-moon" aria-hidden="true"></i></button>
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="topbarNav" aria-label="Menü öffnen"><span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span></button>
@@ -95,7 +95,7 @@
           <span class="mono">Dormagen <time id="localTime">--:--:--</time></span>
         </p>
         <h1 class="hero-title" id="heroTitle" data-intro data-i18n-html="hero.title">Hi, ich bin Robin.<br />Ich halte <span class="hl">Infrastruktur</span> am Laufen.</h1>
-        <p class="hero-lede" data-intro data-i18n="hero.lede">Junior-Systemadministrator mit Ausbildung als Fachinformatiker. Linux, Proxmox, Netzwerke und Automatisierung: im Beruf gelernt, im eigenen HomeLab vertieft.</p>
+        <p class="hero-lede" data-intro data-i18n="hero.lede">Junior-Systemadministrator mit Ausbildung als Fachinformatiker für Anwendungsentwicklung. Ich betreibe einen eigenen Proxmox-Cluster und baue die Software darauf selbst: vom Go-Agent bis zum Restore aus dem Backup.</p>
         <div class="hero-cta" data-intro>
           <a href="#contact" class="btn btn-primary"><span data-i18n="hero.cta1">Kontakt aufnehmen</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn-ghost" href="#projects" data-i18n="hero.cta2">Projekte ansehen</a>
@@ -147,6 +147,7 @@
           <p data-i18n="about.p1">Ich bin ausgebildeter Fachinformatiker für Anwendungsentwicklung und habe zuletzt als Junior IT-Systemadministrator bei Fusion IT in Langenfeld Kunden-Infrastrukturen betreut. Meine Stärken: Administration von IT-Infrastrukturen, Netzwerktechnik und die Automatisierung wiederkehrender Aufgaben.</p>
           <p data-i18n="about.p2">Den Sprung von der Anwendungsentwicklung in die Administration habe ich bewusst gewählt. Mich interessiert, wie Systeme stabil, sicher und beobachtbar bleiben, wenn echte Last darauf liegt.</p>
           <p data-i18n="about.p3">In meiner Freizeit betreibe ich einen eigenen Proxmox-Cluster aus zwei Knoten: Samba-NAS, WireGuard-VPN, Vaultwarden, Home Assistant, einen Backup-Server und meine eigenen Apps. Jeder Dienst ist ein Experiment, das Linux, Virtualisierung und Networking weiter vertieft.</p>
+          <p data-i18n="about.p4">Ich arbeite mit festgehaltenen Architekturentscheidungen, automatischen Prüfungen in der CI und KI-Agenten wie Claude Code. Architektur, Review und Betrieb verantworte ich selbst.</p>
         </div>
         <aside class="spec reveal" aria-label="Eckdaten">
           <div class="spec-bar"><span data-i18n="facts.title">Eckdaten</span><span class="spec-led" aria-hidden="true"></span></div>
@@ -167,7 +168,7 @@
       <div class="sgraph reveal">
         <div class="sg-panel">
           <div class="sg-top mono"><span class="sg-lg g-sys"><i></i><span data-i18n="grp.sys">System</span></span><span class="sg-lg g-net"><i></i><span data-i18n="grp.net">Netzwerk</span></span><span class="sg-lg g-dev"><i></i><span data-i18n="grp.dev">Entwicklung</span></span><span class="sg-lg g-auto"><i></i><span data-i18n="grp.auto">Daten und Automatisierung</span></span></div>
-          <svg class="sg-svg" viewBox="0 0 760 520" role="group" aria-label="Skill-Graph"><line class="sg-edge" data-a="proxmox" data-b="linux" x1="192.0" y1="66.5" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="docker" data-b="linux" x1="232.9" y1="185.1" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="docker" data-b="proxmox" x1="232.9" y1="185.1" x2="192.0" y2="66.5"/><line class="sg-edge" data-a="wg" data-b="linux" x1="535.8" y1="174.3" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="dns" data-b="linux" x1="549.4" y1="40.9" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="tunnel" data-b="docker" x1="444.1" y1="87.1" x2="232.9" y2="185.1"/><line class="sg-edge" data-a="fw" data-b="dns" x1="660.0" y1="126.8" x2="549.4" y2="40.9"/><line class="sg-edge" data-a="ninja" data-b="ps" x1="350.7" y1="231.5" x2="535.2" y2="343.9"/><line class="sg-edge" data-a="ninja" data-b="bash" x1="350.7" y1="231.5" x2="490.8" y2="272.8"/><line class="sg-edge" data-a="bash" data-b="linux" x1="490.8" y1="272.8" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="react" data-b="js" x1="181.6" y1="292.4" x2="100.6" y2="403.0"/><line class="sg-edge" data-a="nest" data-b="js" x1="279.0" y1="406.6" x2="100.6" y2="403.0"/><line class="sg-edge" data-a="nest" data-b="sql" x1="279.0" y1="406.6" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="python" data-b="sql" x1="301.3" y1="343.0" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="go" data-b="git" x1="176.8" y1="454.9" x2="407.7" y2="394.4"/><line class="sg-edge" data-a="python" data-b="docker" x1="301.3" y1="343.0" x2="232.9" y2="185.1"/><line class="sg-edge" data-a="react" data-b="git" x1="181.6" y1="292.4" x2="407.7" y2="394.4"/><line class="sg-edge" data-a="java" data-b="sql" x1="304.0" y1="486.0" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="tunnel" data-b="wg" x1="444.1" y1="87.1" x2="535.8" y2="174.3"/><g class="sg-node g-sys" data-skill="linux" transform="translate(349.3 137.0)" tabindex="0" role="button" aria-label="Linux (Debian, Ubuntu)"><circle r="20.0"/><text y="35.0">Linux</text></g><g class="sg-node g-sys" data-skill="proxmox" transform="translate(192.0 66.5)" tabindex="0" role="button" aria-label="Proxmox VE"><circle r="13.4"/><text y="28.4">Proxmox VE</text></g><g class="sg-node g-sys" data-skill="docker" transform="translate(232.9 185.1)" tabindex="0" role="button" aria-label="Docker und LXC"><circle r="17.8"/><text y="32.8">Docker + LXC</text></g><g class="sg-node g-sys" data-skill="ninja" transform="translate(350.7 231.5)" tabindex="0" role="button" aria-label="NinjaOne RMM"><circle r="13.4"/><text y="28.4">NinjaOne RMM</text></g><g class="sg-node g-net" data-skill="wg" transform="translate(535.8 174.3)" tabindex="0" role="button" aria-label="WireGuard und VPN"><circle r="13.4"/><text y="28.4">WireGuard + VPN</text></g><g class="sg-node g-net" data-skill="dns" transform="translate(549.4 40.9)" tabindex="0" role="button" aria-label="DNS und DHCP"><circle r="13.4"/><text y="28.4">DNS + DHCP</text></g><g class="sg-node g-net" data-skill="fw" transform="translate(660.0 126.8)" tabindex="0" role="button" aria-label="Firewall und Routing"><circle r="11.2"/><text y="26.2">Firewall + Routing</text></g><g class="sg-node g-net" data-skill="tunnel" transform="translate(444.1 87.1)" tabindex="0" role="button" aria-label="Caddy und Cloudflare Tunnel"><circle r="13.4"/><text y="28.4">Caddy + Cloudflare Tunnel</text></g><g class="sg-node g-dev" data-skill="java" transform="translate(304.0 486.0)" tabindex="0" role="button" aria-label="Java und Groovy"><circle r="11.2"/><text y="26.2">Java + Groovy</text></g><g class="sg-node g-dev" data-skill="js" transform="translate(100.6 403.0)" tabindex="0" role="button" aria-label="JavaScript und TypeScript"><circle r="13.4"/><text y="28.4">JavaScript + TypeScript</text></g><g class="sg-node g-dev" data-skill="react" transform="translate(181.6 292.4)" tabindex="0" role="button" aria-label="React"><circle r="13.4"/><text y="28.4">React</text></g><g class="sg-node g-dev" data-skill="python" transform="translate(301.3 343.0)" tabindex="0" role="button" aria-label="Python und FastAPI"><circle r="13.4"/><text y="28.4">Python + FastAPI</text></g><g class="sg-node g-dev" data-skill="go" transform="translate(176.8 454.9)" tabindex="0" role="button" aria-label="Go"><circle r="11.2"/><text y="26.2">Go</text></g><g class="sg-node g-dev" data-skill="nest" transform="translate(279.0 406.6)" tabindex="0" role="button" aria-label="NestJS und Prisma"><circle r="13.4"/><text y="28.4">NestJS + Prisma</text></g><g class="sg-node g-auto" data-skill="bash" transform="translate(490.8 272.8)" tabindex="0" role="button" aria-label="Bash"><circle r="13.4"/><text y="28.4">Bash</text></g><g class="sg-node g-auto" data-skill="ps" transform="translate(535.2 343.9)" tabindex="0" role="button" aria-label="PowerShell"><circle r="11.2"/><text y="26.2">PowerShell</text></g><g class="sg-node g-auto" data-skill="sql" transform="translate(444.9 444.8)" tabindex="0" role="button" aria-label="SQL (PostgreSQL, SQLite)"><circle r="15.6"/><text y="30.6">SQL</text></g><g class="sg-node g-auto" data-skill="git" transform="translate(407.7 394.4)" tabindex="0" role="button" aria-label="Git und CI"><circle r="13.4"/><text y="28.4">Git + CI</text></g></svg>
+          <svg class="sg-svg" viewBox="0 0 760 520" role="group" aria-label="Skill-Graph"><line class="sg-edge" data-a="proxmox" data-b="linux" x1="192.0" y1="66.5" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="docker" data-b="linux" x1="232.9" y1="185.1" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="docker" data-b="proxmox" x1="232.9" y1="185.1" x2="192.0" y2="66.5"/><line class="sg-edge" data-a="wg" data-b="linux" x1="535.8" y1="174.3" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="dns" data-b="linux" x1="549.4" y1="40.9" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="tunnel" data-b="docker" x1="444.1" y1="87.1" x2="232.9" y2="185.1"/><line class="sg-edge" data-a="fw" data-b="dns" x1="660.0" y1="126.8" x2="549.4" y2="40.9"/><line class="sg-edge" data-a="ninja" data-b="ps" x1="350.7" y1="231.5" x2="535.2" y2="343.9"/><line class="sg-edge" data-a="ninja" data-b="bash" x1="350.7" y1="231.5" x2="490.8" y2="272.8"/><line class="sg-edge" data-a="bash" data-b="linux" x1="490.8" y1="272.8" x2="349.3" y2="137.0"/><line class="sg-edge" data-a="react" data-b="js" x1="181.6" y1="292.4" x2="100.6" y2="403.0"/><line class="sg-edge" data-a="nest" data-b="js" x1="279.0" y1="406.6" x2="100.6" y2="403.0"/><line class="sg-edge" data-a="nest" data-b="sql" x1="279.0" y1="406.6" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="python" data-b="sql" x1="301.3" y1="343.0" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="go" data-b="git" x1="176.8" y1="454.9" x2="407.7" y2="394.4"/><line class="sg-edge" data-a="python" data-b="docker" x1="301.3" y1="343.0" x2="232.9" y2="185.1"/><line class="sg-edge" data-a="react" data-b="git" x1="181.6" y1="292.4" x2="407.7" y2="394.4"/><line class="sg-edge" data-a="java" data-b="sql" x1="304.0" y1="486.0" x2="444.9" y2="444.8"/><line class="sg-edge" data-a="tunnel" data-b="wg" x1="444.1" y1="87.1" x2="535.8" y2="174.3"/><line class="sg-edge" data-a="ha" data-b="docker" x1="80.0" y1="200.0" x2="232.9" y2="185.1"/><line class="sg-edge" data-a="ha" data-b="python" x1="80.0" y1="200.0" x2="301.3" y2="343.0"/><line class="sg-edge" data-a="fastify" data-b="js" x1="75.0" y1="470.0" x2="100.6" y2="403.0"/><line class="sg-edge" data-a="pw" data-b="git" x1="640.0" y1="430.0" x2="407.7" y2="394.4"/><g class="sg-node g-sys" data-skill="linux" transform="translate(349.3 137.0)" tabindex="0" role="button" aria-label="Linux (Debian, Ubuntu)"><circle r="20.0"/><text y="35.0">Linux</text></g><g class="sg-node g-sys" data-skill="proxmox" transform="translate(192.0 66.5)" tabindex="0" role="button" aria-label="Proxmox VE"><circle r="13.4"/><text y="28.4">Proxmox VE</text></g><g class="sg-node g-sys" data-skill="docker" transform="translate(232.9 185.1)" tabindex="0" role="button" aria-label="Docker + LXC"><circle r="17.8"/><text y="32.8">Docker + LXC</text></g><g class="sg-node g-sys" data-skill="ninja" transform="translate(350.7 231.5)" tabindex="0" role="button" aria-label="NinjaOne RMM"><circle r="13.4"/><text y="28.4">NinjaOne RMM</text></g><g class="sg-node g-net" data-skill="wg" transform="translate(535.8 174.3)" tabindex="0" role="button" aria-label="WireGuard + VPN"><circle r="13.4"/><text y="28.4">WireGuard + VPN</text></g><g class="sg-node g-net" data-skill="dns" transform="translate(549.4 40.9)" tabindex="0" role="button" aria-label="DNS + DHCP"><circle r="13.4"/><text y="28.4">DNS + DHCP</text></g><g class="sg-node g-net" data-skill="fw" transform="translate(660.0 126.8)" tabindex="0" role="button" aria-label="Firewall + Routing"><circle r="11.2"/><text y="26.2">Firewall + Routing</text></g><g class="sg-node g-net" data-skill="tunnel" transform="translate(444.1 87.1)" tabindex="0" role="button" aria-label="Caddy + Cloudflare Tunnel"><circle r="13.4"/><text y="28.4">Caddy + Cloudflare Tunnel</text></g><g class="sg-node g-dev" data-skill="java" transform="translate(304.0 486.0)" tabindex="0" role="button" aria-label="Java + Groovy"><circle r="11.2"/><text y="26.2">Java + Groovy</text></g><g class="sg-node g-dev" data-skill="js" transform="translate(100.6 403.0)" tabindex="0" role="button" aria-label="JavaScript + TypeScript"><circle r="13.4"/><text y="28.4">JavaScript + TypeScript</text></g><g class="sg-node g-dev" data-skill="react" transform="translate(181.6 292.4)" tabindex="0" role="button" aria-label="React"><circle r="13.4"/><text y="28.4">React</text></g><g class="sg-node g-dev" data-skill="python" transform="translate(301.3 343.0)" tabindex="0" role="button" aria-label="Python + FastAPI"><circle r="13.4"/><text y="28.4">Python + FastAPI</text></g><g class="sg-node g-dev" data-skill="go" transform="translate(176.8 454.9)" tabindex="0" role="button" aria-label="Go"><circle r="11.2"/><text y="26.2">Go</text></g><g class="sg-node g-dev" data-skill="nest" transform="translate(279.0 406.6)" tabindex="0" role="button" aria-label="NestJS + Prisma"><circle r="13.4"/><text y="28.4">NestJS + Prisma</text></g><g class="sg-node g-auto" data-skill="bash" transform="translate(490.8 272.8)" tabindex="0" role="button" aria-label="Bash"><circle r="13.4"/><text y="28.4">Bash</text></g><g class="sg-node g-auto" data-skill="ps" transform="translate(535.2 343.9)" tabindex="0" role="button" aria-label="PowerShell"><circle r="11.2"/><text y="26.2">PowerShell</text></g><g class="sg-node g-auto" data-skill="sql" transform="translate(444.9 444.8)" tabindex="0" role="button" aria-label="SQL (PostgreSQL, SQLite)"><circle r="15.6"/><text y="30.6">SQL</text></g><g class="sg-node g-auto" data-skill="git" transform="translate(407.7 394.4)" tabindex="0" role="button" aria-label="Git + CI"><circle r="13.4"/><text y="28.4">Git + CI</text></g><g class="sg-node g-auto" data-skill="ha" transform="translate(80.0 200.0)" tabindex="0" role="button" aria-label="Home Assistant"><circle r="13.4"/><text y="28.4">Home Assistant</text></g><g class="sg-node g-dev" data-skill="fastify" transform="translate(75.0 470.0)" tabindex="0" role="button" aria-label="Fastify + Node"><circle r="11.2"/><text y="26.2">Fastify + Node</text></g><g class="sg-node g-auto" data-skill="pw" transform="translate(640.0 430.0)" tabindex="0" role="button" aria-label="Playwright + axe"><circle r="11.2"/><text y="26.2">Playwright + axe</text></g></svg>
         </div>
         <ol class="sg-cards"><li class="sg-card" data-skill="linux" data-group="sys">
             <p class="sg-card-k mono"><span data-i18n="grp.sys">System</span></p>
@@ -178,7 +179,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Proxmox VE, Docker und LXC, WireGuard und VPN, DNS und DHCP, Bash</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Admin-Dashboard</span><span class="used-chip">Portfolio-Website</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Admin-Dashboard</span><span class="used-chip">Portfolio-Website</span></p>
           </li><li class="sg-card" data-skill="proxmox" data-group="sys">
             <p class="sg-card-k mono"><span data-i18n="grp.sys">System</span></p>
             <h3>Proxmox VE</h3>
@@ -188,17 +189,17 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Docker und LXC</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span></p>
           </li><li class="sg-card" data-skill="docker" data-group="sys">
             <p class="sg-card-k mono"><span data-i18n="grp.sys">System</span></p>
             <h3>Docker und LXC</h3>
             <p data-i18n="skill.docker.note">Jede eigene App läuft als Compose-Stack.</p>
             <dl class="sg-rel mono">
               <div><dt data-i18n="graph.needs">baut auf</dt><dd>Linux, Proxmox VE</dd></div>
-              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Caddy und Cloudflare Tunnel, Python und FastAPI</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Caddy und Cloudflare Tunnel, Python und FastAPI, Home Assistant</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Orynthia · Alltags-App</span><span class="used-chip">Admin-Dashboard</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Orynthia · Everyday + Finance</span><span class="used-chip">Admin-Dashboard</span></p>
           </li><li class="sg-card" data-skill="ninja" data-group="sys">
             <p class="sg-card-k mono"><span data-i18n="grp.sys">System</span></p>
             <h3>NinjaOne RMM</h3>
@@ -218,7 +219,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Caddy und Cloudflare Tunnel</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span></p>
           </li><li class="sg-card" data-skill="dns" data-group="net">
             <p class="sg-card-k mono"><span data-i18n="grp.net">Netzwerk</span></p>
             <h3>DNS und DHCP</h3>
@@ -228,7 +229,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Firewall und Routing</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span></p>
           </li><li class="sg-card" data-skill="fw" data-group="net">
             <p class="sg-card-k mono"><span data-i18n="grp.net">Netzwerk</span></p>
             <h3>Firewall und Routing</h3>
@@ -248,7 +249,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2025</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">Vulpexa · RMM-Plattform</span></p>
+            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">Vulpexa · eigenes RMM</span></p>
           </li><li class="sg-card" data-skill="java" data-group="dev">
             <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
             <h3>Java und Groovy</h3>
@@ -265,10 +266,10 @@
             <p data-i18n="skill.js.note">Vom MagicMirror-Modul bis zum React-Dashboard.</p>
             <dl class="sg-rel mono">
               <div><dt data-i18n="graph.needs">baut auf</dt><dd>Basis</dd></div>
-              <div><dt data-i18n="graph.feeds">trägt</dt><dd>React, NestJS und Prisma</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>React, NestJS und Prisma, Fastify und Node</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2020</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">MagicMirror</span><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Orynthia · Alltags-App</span></p>
+            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">Smart Home</span><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Orynthia · Everyday + Finance</span></p>
           </li><li class="sg-card" data-skill="react" data-group="dev">
             <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
             <h3>React</h3>
@@ -278,17 +279,17 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2025</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Orynthia · Alltags-App</span><span class="used-chip">Admin-Dashboard</span></p>
+            <p class="proc-used"><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Orynthia · Everyday + Finance</span><span class="used-chip">Admin-Dashboard</span></p>
           </li><li class="sg-card" data-skill="python" data-group="dev">
             <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
             <h3>Python und FastAPI</h3>
             <p data-i18n="skill.python.note">REST-APIs und WebSocket-Server mit Tests und Typprüfung.</p>
             <dl class="sg-rel mono">
               <div><dt data-i18n="graph.needs">baut auf</dt><dd>SQL, Docker und LXC</dd></div>
-              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Home Assistant</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Admin-Dashboard</span></p>
+            <p class="proc-used"><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Admin-Dashboard</span></p>
           </li><li class="sg-card" data-skill="go" data-group="dev">
             <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
             <h3>Go</h3>
@@ -298,7 +299,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Vulpexa · RMM-Plattform</span></p>
+            <p class="proc-used"><span class="used-chip">Vulpexa · eigenes RMM</span></p>
           </li><li class="sg-card" data-skill="nest" data-group="dev">
             <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
             <h3>NestJS und Prisma</h3>
@@ -308,7 +309,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Orynthia · Alltags-App</span></p>
+            <p class="proc-used"><span class="used-chip">Orynthia · Everyday + Finance</span></p>
           </li><li class="sg-card" data-skill="bash" data-group="auto">
             <p class="sg-card-k mono"><span data-i18n="grp.auto">Daten und Automatisierung</span></p>
             <h3>Bash</h3>
@@ -318,7 +319,7 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>NinjaOne RMM</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">HomeLab · Proxmox VE</span><span class="used-chip">RMM-Automatisierung</span><span class="used-chip">Vulpexa · RMM-Plattform</span></p>
+            <p class="proc-used"><span class="used-chip">Plattform · Proxmox-Cluster</span><span class="used-chip">RMM-Automatisierung</span><span class="used-chip">Vulpexa · eigenes RMM</span></p>
           </li><li class="sg-card" data-skill="ps" data-group="auto">
             <p class="sg-card-k mono"><span data-i18n="grp.auto">Daten und Automatisierung</span></p>
             <h3>PowerShell</h3>
@@ -338,17 +339,47 @@
               <div><dt data-i18n="graph.feeds">trägt</dt><dd>NestJS und Prisma, Python und FastAPI, Java und Groovy</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Orynthia · Alltags-App</span><span class="used-chip">Vulpexa · RMM-Plattform</span></p>
+            <p class="proc-used"><span class="used-chip">Orynthia · Everyday + Finance</span><span class="used-chip">Vulpexa · eigenes RMM</span></p>
           </li><li class="sg-card" data-skill="git" data-group="auto">
             <p class="sg-card-k mono"><span data-i18n="grp.auto">Daten und Automatisierung</span></p>
             <h3>Git und CI</h3>
             <p data-i18n="skill.git.note">CI-Checks bei jedem Push, Deploy per Webhook oder Self-hosted Runner.</p>
             <dl class="sg-rel mono">
               <div><dt data-i18n="graph.needs">baut auf</dt><dd>Basis</dd></div>
-              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Go, React</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Go, React, Playwright und axe</dd></div>
               <div><dt data-i18n="skills.since">seit</dt><dd>2022</dd></div>
             </dl>
-            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">Vulpexa · RMM-Plattform</span><span class="used-chip">Orynthia · Alltags-App</span><span class="used-chip">Admin-Dashboard</span></p>
+            <p class="proc-used"><span class="used-chip">Portfolio-Website</span><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Orynthia · Everyday + Finance</span><span class="used-chip">Admin-Dashboard</span></p>
+          </li><li class="sg-card" data-skill="ha" data-group="auto">
+            <p class="sg-card-k mono"><span data-i18n="grp.auto">Daten und Automatisierung</span></p>
+            <h3>Home Assistant</h3>
+            <p data-i18n="skill.ha.note">Eigene Integration für EnOcean-Funkrelais mit selbst geschriebenem ESP3-Treiber, dazu Alexa über eine eigene Lambda.</p>
+            <dl class="sg-rel mono">
+              <div><dt data-i18n="graph.needs">baut auf</dt><dd>Python und FastAPI, Docker und LXC</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
+              <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
+            </dl>
+            <p class="proc-used"><span class="used-chip">Smart Home</span></p>
+          </li><li class="sg-card" data-skill="fastify" data-group="dev">
+            <p class="sg-card-k mono"><span data-i18n="grp.dev">Entwicklung</span></p>
+            <h3>Fastify und Node</h3>
+            <p data-i18n="skill.fastify.note">Kern des Admin-Dashboard v2: Plugin-SDK, zod-Verträge und eine Sperre pro Route, bis die Rolle passt.</p>
+            <dl class="sg-rel mono">
+              <div><dt data-i18n="graph.needs">baut auf</dt><dd>JavaScript und TypeScript</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
+              <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
+            </dl>
+            <p class="proc-used"><span class="used-chip">Admin-Dashboard</span></p>
+          </li><li class="sg-card" data-skill="pw" data-group="auto">
+            <p class="sg-card-k mono"><span data-i18n="grp.auto">Daten und Automatisierung</span></p>
+            <h3>Playwright und axe</h3>
+            <p data-i18n="skill.pw.note">End-to-End-Tests mit Barrierefreiheitsprüfung bei 1440 und 390 px, hell und dunkel; damit entstehen auch die Screenshots dieser Seite.</p>
+            <dl class="sg-rel mono">
+              <div><dt data-i18n="graph.needs">baut auf</dt><dd>Git und CI</dd></div>
+              <div><dt data-i18n="graph.feeds">trägt</dt><dd>Basis</dd></div>
+              <div><dt data-i18n="skills.since">seit</dt><dd>2026</dd></div>
+            </dl>
+            <p class="proc-used"><span class="used-chip">Vulpexa · eigenes RMM</span><span class="used-chip">Admin-Dashboard</span><span class="used-chip">Portfolio-Website</span></p>
           </li></ol>
       </div>
     </div>
@@ -370,8 +401,8 @@
               <span class="project-status st-live" data-i18n="st.live">Live</span>
             </span>
             <span class="scr-label">
-              <span class="scr-title" data-project-title data-i18n="proj.homelab.title">HomeLab · Proxmox VE</span>
-              <span class="scr-meta mono" data-i18n="proj.homelab.meta">2022 bis heute · Privat · Infrastruktur</span>
+              <span class="scr-title" data-project-title data-i18n="proj.homelab.title">Plattform · Proxmox-Cluster</span>
+              <span class="scr-meta mono" data-i18n="proj.homelab.meta">2022 bis heute · 2 Knoten + QDevice · 14 Gäste</span>
             </span>
           </button>
         </li><li class="screen is-feature" data-project="vulpexa">
@@ -383,8 +414,8 @@
               <span class="project-status st-live" data-i18n="st.live">Live</span>
             </span>
             <span class="scr-label">
-              <span class="scr-title" data-project-title data-i18n="proj.vulpexa.title">Vulpexa · RMM-Plattform</span>
-              <span class="scr-meta mono" data-i18n="proj.vulpexa.meta">2026 · Self-hosted · rmm.rxf-sys.de</span>
+              <span class="scr-title" data-project-title data-i18n="proj.vulpexa.title">Vulpexa · eigenes RMM</span>
+              <span class="scr-meta mono" data-i18n="proj.vulpexa.meta">2026 · Go-Agent · WSS ausgehend · signierte Updates</span>
             </span>
           </button>
         </li><li class="screen is-feature" data-project="orynthia">
@@ -393,11 +424,11 @@
               <span class="scr-cover cover-orynthia" aria-hidden="true"></span>
               <span class="scr-scan" aria-hidden="true"></span>
               <span class="scr-ch mono">CH 03</span>
-              <span class="project-status st-wip" data-i18n="st.remake">Remake geplant</span>
+              <span class="project-status st-remake" data-i18n="st.remake">Remake geplant</span>
             </span>
             <span class="scr-label">
-              <span class="scr-title" data-project-title data-i18n="proj.orynthia.title">Orynthia · Alltags-App</span>
-              <span class="scr-meta mono" data-i18n="proj.orynthia.meta">2026 · Self-hosted · Open Banking</span>
+              <span class="scr-title" data-project-title data-i18n="proj.orynthia.title">Orynthia · Everyday + Finance</span>
+              <span class="scr-meta mono" data-i18n="proj.orynthia.meta">v1 live · Aufteilung in zwei Apps geplant</span>
             </span>
           </button>
         </li><li class="screen" data-project="admin">
@@ -406,11 +437,37 @@
               <span class="scr-glyph" aria-hidden="true"><i class="fas fa-gauge-high"></i></span>
               <span class="scr-scan" aria-hidden="true"></span>
               <span class="scr-ch mono">CH 04</span>
-              <span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span>
+              <span class="project-status st-live" data-i18n="st.live">Live</span>
             </span>
             <span class="scr-label">
               <span class="scr-title" data-project-title data-i18n="proj.admin.title">Admin-Dashboard</span>
-              <span class="scr-meta mono" data-i18n="proj.admin.meta">2026 · Self-hosted · v2 in Arbeit</span>
+              <span class="scr-meta mono" data-i18n="proj.admin.meta">v1 live · v2 in Arbeit</span>
+            </span>
+          </button>
+        </li><li class="screen" data-project="smarthome">
+          <button type="button" class="scr-btn" data-open-project="smarthome">
+            <span class="scr-glass">
+              <span class="scr-glyph" aria-hidden="true"><i class="fas fa-house-signal"></i></span>
+              <span class="scr-scan" aria-hidden="true"></span>
+              <span class="scr-ch mono">CH 05</span>
+              <span class="project-status st-live" data-i18n="st.live">Live</span>
+            </span>
+            <span class="scr-label">
+              <span class="scr-title" data-project-title data-i18n="proj.smart.title">Smart Home</span>
+              <span class="scr-meta mono" data-i18n="proj.smart.meta">EnOcean · Alexa · MagicMirror</span>
+            </span>
+          </button>
+        </li><li class="screen" data-project="itservice">
+          <button type="button" class="scr-btn" data-open-project="itservice">
+            <span class="scr-glass">
+              <span class="scr-glyph" aria-hidden="true"><i class="fas fa-screwdriver-wrench"></i></span>
+              <span class="scr-scan" aria-hidden="true"></span>
+              <span class="scr-ch mono">CH 06</span>
+              <span class="project-status st-live" data-i18n="st.live">Live</span>
+            </span>
+            <span class="scr-label">
+              <span class="scr-title" data-project-title data-i18n="proj.it.title">rxf-sys IT-Service</span>
+              <span class="scr-meta mono" data-i18n="proj.it.meta">2026 · Kleingewerbe · Website</span>
             </span>
           </button>
         </li><li class="screen" data-project="rmm">
@@ -418,25 +475,11 @@
             <span class="scr-glass">
               <span class="scr-glyph" aria-hidden="true"><i class="fas fa-robot"></i></span>
               <span class="scr-scan" aria-hidden="true"></span>
-              <span class="scr-ch mono">CH 05</span>
-
+              <span class="scr-ch mono">CH 07</span>
             </span>
             <span class="scr-label">
               <span class="scr-title" data-project-title data-i18n="proj.rmm.title">RMM-Automatisierung</span>
               <span class="scr-meta mono" data-i18n="proj.rmm.meta">2026 · NinjaOne · Automation</span>
-            </span>
-          </button>
-        </li><li class="screen" data-project="magicmirror">
-          <button type="button" class="scr-btn" data-open-project="magicmirror">
-            <span class="scr-glass">
-              <span class="scr-glyph" aria-hidden="true"><i class="fas fa-wand-magic-sparkles"></i></span>
-              <span class="scr-scan" aria-hidden="true"></span>
-              <span class="scr-ch mono">CH 06</span>
-
-            </span>
-            <span class="scr-label">
-              <span class="scr-title" data-project-title data-i18n="proj.magicmirror.title">MagicMirror</span>
-              <span class="scr-meta mono" data-i18n="proj.magicmirror.meta">2023 · Smart Home</span>
             </span>
           </button>
         </li><li class="screen" data-project="portfolio">
@@ -444,7 +487,7 @@
             <span class="scr-glass">
               <span class="scr-glyph" aria-hidden="true"><i class="fas fa-globe"></i></span>
               <span class="scr-scan" aria-hidden="true"></span>
-              <span class="scr-ch mono">CH 07</span>
+              <span class="scr-ch mono">CH 08</span>
               <span class="project-status st-live" data-i18n="st.live">Live</span>
             </span>
             <span class="scr-label">
@@ -457,7 +500,7 @@
             <span class="scr-glass">
               <span class="scr-glyph" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
               <span class="scr-scan" aria-hidden="true"></span>
-              <span class="scr-ch mono">CH 08</span>
+              <span class="scr-ch mono">CH 09</span>
               <span class="project-status st-passed" data-i18n="st.passed">Bestanden</span>
             </span>
             <span class="scr-label">
@@ -615,75 +658,179 @@
   <img id="certImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
 </div>
 <template id="tpl-proj-homelab">
-      <div class="pd-cover cover-homelab" aria-hidden="true"></div>
+      <figure class="anlage">
+        <figcaption class="an-top">
+          <span class="an-t" data-i18n="an.title">Anlagenschema</span>
+          <span><span data-i18n="an.nodes">Knoten</span> <b>2 + QDevice</b></span>
+          <span><span data-i18n="an.guests">Gäste</span> <b>14</b></span>
+          <span><span data-i18n="an.tunnel">Tunnel</span> <b data-i18n="an.out">nur ausgehend</b></span>
+          <span class="an-swipe" aria-hidden="true" data-i18n="an.swipe">← wischen →</span>
+          <span class="an-read" id="anRead" aria-live="polite"><span data-i18n="an.hint">Leuchtende Lampen sind meine Projekte. Wähle eine aus.</span></span>
+        </figcaption>
+        <div class="an-scroll" tabindex="0">
+          <svg class="an-svg" viewBox="0 0 1100 300" role="group" aria-label="Anlagenschema: Internet, Cloudflare Tunnel, Proxmox-Cluster mit zwei Knoten und QDevice">
+            <path class="pipe" d="M144 150 H416"/>
+            <path class="pipe-in" d="M144 150 H416"/>
+            <circle class="dot" r="3.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M144 150 H416"/></circle>
+            <circle class="dot" r="3.5"><animateMotion dur="2.6s" begin="0.87s" repeatCount="indefinite" path="M144 150 H416"/></circle>
+            <circle class="dot" r="3.5"><animateMotion dur="2.6s" begin="1.73s" repeatCount="indefinite" path="M144 150 H416"/></circle>
+            <rect class="n" x="16" y="126" width="128" height="48" rx="10"/>
+            <text class="t" x="80" y="155" text-anchor="middle">Internet</text>
+            <rect class="n" x="196" y="114" width="170" height="72" rx="10"/>
+            <text class="t" x="281" y="145" text-anchor="middle">Cloudflare Tunnel</text>
+            <text class="s" x="281" y="165" text-anchor="middle" data-i18n="an.out">nur ausgehend</text>
+            <rect class="cl" x="416" y="14" width="668" height="272" rx="14"/>
+            <text class="lbl" x="434" y="36">rxf-sys-cluster · Proxmox VE 9.2</text>
+            <rect class="n" x="434" y="50" width="380" height="222" rx="10"/>
+            <text class="t" x="450" y="74" data-i18n="an.n1">Knoten 1</text>
+            <text class="s" x="450" y="92">EliteDesk 800 G5 · 32 GB</text>
+            <g class="lp own" tabindex="0" role="button" data-open-project="admin" data-label="CH 04 · Admin-Dashboard"><rect class="hit" x="444" y="102" width="176" height="26" rx="6"/><circle cx="458" cy="115" r="6"/><text x="472" y="119">Admin-Dashboard</text></g>
+            <g class="lp own" tabindex="0" role="button" data-open-project="vulpexa" data-label="CH 02 · Vulpexa RMM"><rect class="hit" x="444" y="134" width="176" height="26" rx="6"/><circle cx="458" cy="147" r="6"/><text x="472" y="151">Vulpexa · RMM</text></g>
+            <g class="lp own" tabindex="0" role="button" data-open-project="smarthome" data-label="CH 05 · Home Assistant + EnOcean"><rect class="hit" x="444" y="166" width="176" height="26" rx="6"/><circle cx="458" cy="179" r="6"/><text x="472" y="183">Home Assistant</text></g>
+            <g class="lp own" tabindex="0" role="button" data-open-project="smarthome" data-label="CH 05 · MagicMirror"><rect class="hit" x="444" y="198" width="176" height="26" rx="6"/><circle cx="458" cy="211" r="6"/><text x="472" y="215">MagicMirror</text></g>
+            <g class="lp"><circle cx="458" cy="243" r="6"/><text x="472" y="247">Backup Server (PBS)</text></g>
+            <g class="lp"><circle cx="644" cy="115" r="6"/><text x="658" y="119">Vaultwarden</text></g>
+            <g class="lp"><circle cx="644" cy="147" r="6"/><text x="658" y="151">Uptime Kuma</text></g>
+            <g class="lp"><circle cx="644" cy="179" r="6"/><text x="658" y="183">Immich · Jellyfin</text></g>
+            <g class="lp"><circle cx="644" cy="211" r="6"/><text x="658" y="215">Samba-NAS</text></g>
+            <g class="lp"><circle cx="644" cy="243" r="6"/><text x="658" y="247">cloudflared</text></g>
+            <path class="lnk" d="M814 130 H834"/>
+            <rect class="n" x="834" y="50" width="232" height="166" rx="10"/>
+            <text class="t" x="850" y="74" data-i18n="an.n2">Knoten 2</text>
+            <text class="s" x="850" y="92">ProDesk 600 G5 · 16 GB</text>
+            <g class="lp own" tabindex="0" role="button" data-open-project="portfolio" data-label="CH 08 · Portfolio"><rect class="hit" x="844" y="102" width="212" height="26" rx="6"/><circle cx="858" cy="115" r="6"/><text x="872" y="119" data-i18n="an.pf">Portfolio (diese Seite)</text></g>
+            <g class="lp own" tabindex="0" role="button" data-open-project="itservice" data-label="CH 06 · rxf-sys IT-Service"><rect class="hit" x="844" y="130" width="212" height="26" rx="6"/><circle cx="858" cy="143" r="6"/><text x="872" y="147">rxf-sys IT-Service</text></g>
+            <g class="lp own remake" tabindex="0" role="button" data-open-project="orynthia" data-label="CH 03 · Orynthia v1, Remake geplant"><rect class="hit" x="844" y="158" width="212" height="26" rx="6"/><circle cx="858" cy="171" r="6"/><text x="872" y="175">Orynthia v1</text></g>
+            <g class="lp plan"><circle cx="858" cy="199" r="6"/><text x="872" y="203" data-i18n="an.fin">Finance · geplant</text></g>
+            <path class="lnk" d="M950 216 V228"/>
+            <rect class="n" x="834" y="228" width="232" height="44" rx="10"/>
+            <text class="t" x="850" y="255">QDevice · Pi 4</text>
+            <text class="q" x="1052" y="255" text-anchor="end">Quorum 3/3</text>
+          </svg>
+        </div>
+      </figure>
       <div class="pd-head">
         <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
-        <h3 class="pd-title" data-i18n="proj.homelab.title">HomeLab · Proxmox VE</h3>
-        <p class="project-meta mono" data-i18n="proj.homelab.meta">2022 bis heute · Privat · Infrastruktur</p>
+        <h3 class="pd-title" data-i18n="proj.homelab.title">Plattform · Proxmox-Cluster</h3>
+        <p class="project-meta mono" data-i18n="proj.homelab.meta">2022 bis heute · 2 Knoten + QDevice · 14 Gäste</p>
       </div>
-      <p class="project-desc" data-i18n="proj.homelab.desc">Mein selbst gehostetes Labor: ein Proxmox-Cluster aus zwei Knoten und einem QDevice mit 12 LXC-Containern und 2 VMs für Samba-NAS, WireGuard-VPN, Vaultwarden, Home Assistant, einen Backup-Server und meine eigenen Apps. Vaultwarden ersetzt den Cloud-Passwort-Manager, WireGuard öffnet einen sicheren Tunnel von unterwegs.</p>
-      <dl class="pd-stats"><div><dt>12</dt><dd data-i18n="proj.homelab.s0">LXC-Container</dd></div><div><dt>2</dt><dd data-i18n="proj.homelab.s1">VMs</dd></div><div><dt>2022</dt><dd data-i18n="proj.homelab.s2">in Betrieb seit</dd></div></dl>
+      <p class="project-desc" data-i18n="pd.hl.desc">Meine eigene Plattform: zwei Proxmox-VE-Knoten und ein Raspberry Pi als QDevice für das Quorum. Darauf laufen 12 Container und 2 VMs, darunter alle meine eigenen Apps, Home Assistant und ein Proxmox Backup Server. Von außen gibt es keinen offenen Port.</p>
+      <dl class="pd-stats four"><div><dt>2 + 1</dt><dd data-i18n="pd.hl.s0">Knoten + QDevice</dd></div><div><dt>14</dt><dd data-i18n="pd.hl.s1">Gäste</dd></div><div><dt>148</dt><dd data-i18n="pd.hl.s2">Snapshots nach dem Restore erhalten</dd></div><div><dt>39</dt><dd data-i18n="pd.hl.s3">bestandene Audit-Prüfungen</dd></div></dl>
+      <div><h4 class="pd-label mono" data-i18n="pd.hl.shotk">Ernstfall · 21.05.2026</h4><div class="pd-incident"><div class="bad"><b>01</b><span data-i18n="pd.hl.i0">/var versehentlich gelöscht, Host unbenutzbar</span></div><div><b>02</b><span data-i18n="pd.hl.i1">PVE neu installiert, Netz und Storage zurück</span></div><div><b>03</b><span data-i18n="pd.hl.i2">9 Container und 2 VMs aus dem PBS</span></div><div><b>04</b><span data-i18n="pd.hl.i3">148 Snapshots erhalten, Host-Config-Backup eingerichtet</span></div></div></div>
       <div class="pd-case">
-          <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.homelab.problem">Eigene Dienste statt Cloud-Abos und ein Ort, an dem ich gefahrlos lernen kann.</p></div>
-          <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.homelab.d0">Zwei Knoten plus QDevice, Dienste als LXC statt VMs: Das Cluster bleibt bei Wartung beschlussfähig, jeder Dienst braucht wenig Overhead.</li><li data-i18n="proj.homelab.d1">Zugriff von außen nur über WireGuard und Cloudflare Tunnel, keine offenen Ports.</li><li data-i18n="proj.homelab.d2">Snapshots vor jedem Experiment, damit ein Fehler nie das Netz lahmlegt.</li></ol></div>
-        </div>
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="pd.hl.problem">Eigene Dienste statt Cloud-Abos und ein Ort, an dem ich Betrieb unter echten Bedingungen übe: Updates, Backups und auch Ausfälle.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="pd.hl.d0">Zweiter Knoten plus QDevice: Das Cluster bleibt beschlussfähig, wenn ein Knoten zur Wartung herunterfährt.</li><li data-i18n="pd.hl.d1">Backups in einem eigenen PBS als VM mit durchgereichter SSD, getrennt vom Host.</li><li data-i18n="pd.hl.d2">Kein offener Port: Dienste laufen über Cloudflare Tunnel, Fernzugriff über WireGuard.</li></ol></div>
+      </div>
       <figure class="pd-arch">
-          <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
-          <div class="pd-arch-scroll"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur HomeLab · Proxmox VE"><path class="ar-edge" d="M208 108C225 108 225 34 242 34"/><path class="ar-edge" d="M208 108C225 108 225 182 242 182"/><path class="ar-edge" d="M438 34C455 34 455 108 472 108"/><path class="ar-edge" d="M438 182C455 182 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Internet</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(242 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">WireGuard</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Proxmox-Cluster</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vulpexa · Orynthia · Portfolio</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vaultwarden · Samba · PBS</text></g></svg></div>
-        </figure>
-      <ul class="tags"><li class="tag">Proxmox VE</li><li class="tag">Cluster + QDevice</li><li class="tag">Debian</li><li class="tag">LXC</li><li class="tag">WireGuard</li><li class="tag">Vaultwarden</li><li class="tag">Samba</li></ul>
-
+        <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
+        <div class="pd-arch-scroll" tabindex="0"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Plattform"><path class="ar-edge" d="M208 108C225 108 225 34 242 34"/><path class="ar-edge" d="M208 108C225 108 225 182 242 182"/><path class="ar-edge" d="M438 34C455 34 455 108 472 108"/><path class="ar-edge" d="M438 182C455 182 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Internet</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(242 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">WireGuard</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Cluster · 2 Knoten + QDevice</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Eigene Apps · HA</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Dienste · PBS-Backup</text></g></svg></div>
+      </figure>
+      <ul class="tags"><li class="tag">Proxmox VE 9</li><li class="tag">Cluster + QDevice</li><li class="tag">PBS</li><li class="tag">LXC</li><li class="tag">Cloudflare Tunnel</li><li class="tag">WireGuard</li></ul>
     </template><template id="tpl-proj-vulpexa">
-      <div class="pd-cover cover-vulpexa" aria-hidden="true"></div>
+      <div class="pd-shot pd-shot-img" aria-hidden="true"><picture class="shot-light"><source media="(max-width: 720px)" srcset="/assets/images/projects/vulpexa-overview-light-phone.webp" /><img src="/assets/images/projects/vulpexa-overview-light-desk.webp" srcset="/assets/images/projects/vulpexa-overview-light-desk.webp 1x, /assets/images/projects/vulpexa-overview-light-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture><picture class="shot-dark"><source media="(max-width: 720px)" srcset="/assets/images/projects/vulpexa-overview-dark-phone.webp" /><img src="/assets/images/projects/vulpexa-overview-dark-desk.webp" srcset="/assets/images/projects/vulpexa-overview-dark-desk.webp 1x, /assets/images/projects/vulpexa-overview-dark-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture></div>
       <div class="pd-head">
         <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
-        <h3 class="pd-title" data-i18n="proj.vulpexa.title">Vulpexa · RMM-Plattform</h3>
-        <p class="project-meta mono" data-i18n="proj.vulpexa.meta">2026 · Self-hosted · rmm.rxf-sys.de</p>
+        <h3 class="pd-title" data-i18n="proj.vulpexa.title">Vulpexa · eigenes RMM</h3>
+        <p class="project-meta mono" data-i18n="pd.vx.meta">2026 · Self-hosted · Go, FastAPI, React</p>
       </div>
-      <p class="project-desc" data-i18n="proj.vulpexa.desc">Schlankes, selbst gehostetes RMM-Tool für die eigenen Server und die Geräte der Familie, nach dem Vorbild von NinjaOne. Monitoring, Patches, Skripte mit Live-Output und Fernwartung über RustDesk. Läuft produktiv; die Entwicklung ruht, seit der Code Grundlage eines Produkts in Vorbereitung ist.</p>
-      <dl class="pd-stats"><div><dt>60 s</dt><dd data-i18n="proj.vulpexa.s0">Heartbeat</dd></div><div><dt>3</dt><dd data-i18n="proj.vulpexa.s1">Plattformen</dd></div><div><dt>0</dt><dd data-i18n="proj.vulpexa.s2">offene Ports pro Gerät</dd></div></dl>
+      <p class="pd-note" data-i18n="pd.vx.note">Läuft produktiv für meine Geräte. Die Entwicklung ist seit Oktober 2026 eingefroren, weil der Code als Grundlage eines Produkts weiterentwickelt wird.</p>
+      <p class="project-desc" data-i18n="pd.vx.desc">Schlankes RMM für fünf bis fünfzehn Geräte nach dem Vorbild von NinjaOne: Monitoring im 60-Sekunden-Takt, Inventar, Alarme per ntfy, Skripte mit Live-Ausgabe, Patches für Windows, Linux und macOS und Fernwartung über RustDesk.</p>
+      <dl class="pd-stats four"><div><dt>1.223</dt><dd data-i18n="pd.vx.s0">automatisierte Testfälle</dd></div><div><dt>60 s</dt><dd data-i18n="pd.vx.s1">Heartbeat-Takt</dd></div><div><dt>5</dt><dd data-i18n="pd.vx.s2">Agent-Targets</dd></div><div><dt>0</dt><dd data-i18n="proj.vulpexa.s2">offene Ports pro Gerät</dd></div></dl>
       <div class="pd-case">
-          <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.vulpexa.problem">Fünf bis fünfzehn Geräte betreuen, ohne ein Enterprise-RMM zu bezahlen.</p></div>
-          <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.vulpexa.d0">Agent in Go als eine statische Binary für Windows, Linux und macOS.</li><li data-i18n="proj.vulpexa.d1">Agents verbinden sich ausgehend per WebSocket: keine offenen Ports, keine feste IP.</li><li data-i18n="proj.vulpexa.d2">Signiertes Auto-Update (ed25519), TOTP und ein Audit-Log für jeden Zugriff.</li></ol></div>
-        </div>
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.vulpexa.problem">Fünf bis fünfzehn Geräte betreuen, ohne ein Enterprise-RMM zu bezahlen.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.vulpexa.d0">Agent in Go als eine statische Binary für Windows, Linux und macOS.</li><li data-i18n="proj.vulpexa.d1">Agents verbinden sich ausgehend per WebSocket: keine offenen Ports, keine feste IP.</li><li data-i18n="proj.vulpexa.d2">Signiertes Auto-Update (ed25519), TOTP und ein Audit-Log für jeden Zugriff.</li></ol></div>
+      </div>
       <figure class="pd-arch">
-          <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
-          <div class="pd-arch-scroll"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Vulpexa · RMM-Plattform"><path class="ar-edge" d="M208 108C225 108 225 108 242 108"/><path class="ar-edge" d="M438 108C455 108 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><path class="ar-edge" d="M570 86L570 56"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Go-Agent · Win/Linux/macOS</text></g><g class="ar-node" transform="translate(242 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">FastAPI · WSS</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">SQLite</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">React-Dashboard</text></g><g class="ar-node" transform="translate(472 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">ntfy · RustDesk</text></g></svg></div>
-        </figure>
-      <ul class="tags"><li class="tag">FastAPI</li><li class="tag">React / TS</li><li class="tag">Go</li><li class="tag">SQLite</li><li class="tag">RustDesk</li></ul>
+        <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
+        <div class="pd-arch-scroll" tabindex="0"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Vulpexa"><path class="ar-edge" d="M208 108C225 108 225 108 242 108"/><path class="ar-edge" d="M438 108C455 108 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><path class="ar-edge" d="M570 86L570 56"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Go-Agent · Win/Linux/macOS</text></g><g class="ar-node" transform="translate(242 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">FastAPI · WSS</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">SQLite</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">React-Dashboard</text></g><g class="ar-node" transform="translate(472 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">ntfy · RustDesk</text></g></svg></div>
+      </figure>
+      <ul class="tags"><li class="tag">Go</li><li class="tag">FastAPI</li><li class="tag">React 19</li><li class="tag">SQLite</li><li class="tag">Playwright + axe</li><li class="tag">RustDesk</li></ul>
       <div class="project-links"><a href="https://github.com/rxf-sys/rmm.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a></div>
     </template><template id="tpl-proj-orynthia">
-      <div class="pd-cover cover-orynthia" aria-hidden="true"></div>
+      <div class="pd-banner"><b data-i18n="st.remake">Remake geplant</b><p data-i18n="pd.or.banner">Orynthia wird in zwei eigenständige Apps aufgeteilt. Die heutige Version läuft weiter, bis beide Nachfolger produktiv sind. Nichts davon ist abgeschlossen.</p></div>
+      <div class="pd-shot pd-shot-img" aria-hidden="true"><picture class="shot-light"><source media="(max-width: 720px)" srcset="/assets/images/projects/finance-dashboard-light-phone.webp" /><img src="/assets/images/projects/finance-dashboard-light-desk.webp" srcset="/assets/images/projects/finance-dashboard-light-desk.webp 1x, /assets/images/projects/finance-dashboard-light-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture><picture class="shot-dark"><source media="(max-width: 720px)" srcset="/assets/images/projects/finance-dashboard-dark-phone.webp" /><img src="/assets/images/projects/finance-dashboard-dark-desk.webp" srcset="/assets/images/projects/finance-dashboard-dark-desk.webp 1x, /assets/images/projects/finance-dashboard-dark-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture></div>
       <div class="pd-head">
-        <p class="pd-kicker mono"><span class="project-status st-wip" data-i18n="st.remake">Remake geplant</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
-        <h3 class="pd-title" data-i18n="proj.orynthia.title">Orynthia · Alltags-App</h3>
-        <p class="project-meta mono" data-i18n="proj.orynthia.meta">2026 · Self-hosted · Open Banking</p>
+        <p class="pd-kicker mono"><span class="project-status st-remake" data-i18n="st.remake">Remake geplant</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <h3 class="pd-title" data-i18n="proj.orynthia.title">Orynthia · Everyday + Finance</h3>
+        <p class="project-meta mono" data-i18n="pd.or.meta">2026 · Self-hosted · Open Banking</p>
       </div>
-      <p class="project-desc" data-i18n="proj.orynthia.desc">Self-hosted Allrounder für den digitalen Alltag: Finanzen mit Open Banking (PSD2), Kalender, Aufgaben, Rezepte, Wochenplan, Listen, Notizen und Reisen. Die Module greifen ineinander: Rezepte wandern in den Wochenplan, der Wochenplan erzeugt die Einkaufsliste. Ein Remake ist geplant: Orynthia wird in zwei eigenständige Apps aufgeteilt, Orynthia Everyday für den Alltag und Orynthia Finance für die Finanzen. Bis beide produktiv sind, läuft die heutige Version weiter.</p>
-      <dl class="pd-stats"><div><dt>10</dt><dd data-i18n="proj.orynthia.s0">Module</dd></div><div><dt>PSD2</dt><dd data-i18n="proj.orynthia.s1">Bankanbindung</dd></div><div><dt>2FA</dt><dd data-i18n="proj.orynthia.s2">TOTP</dd></div></dl>
+      <p class="project-desc" data-i18n="pd.or.desc">Orynthia begann als Allrounder für den Alltag: Finanzen mit Bankanbindung, Kalender, Aufgaben, Rezepte, Wochenplan, Listen, Notizen und Reisen in einer App. Finanzen und Alltag stellen aber andere Anforderungen an Sicherheit, Datenmodell und Nutzung. Deshalb entstehen daraus zwei Apps auf einer gemeinsamen Grundlage.</p>
+      <div class="pd-tri">
+        <div><h4><span data-i18n="pd.or.c0">v1 heute</span> <span class="project-status st-live" data-i18n="st.live">Live</span></h4><ul><li data-i18n="pd.or.c0a">10 Module in einer App</li><li>NestJS, Prisma, React 18</li><li data-i18n="pd.or.c0c">letzte Änderung 13.08.2026</li></ul></div>
+        <div><h4>Finance <span class="project-status st-wip" data-i18n="st.dev">In Entwicklung</span></h4><ul><li data-i18n="pd.or.c1a">Bank-Sync, Verträge mit Fristen, Budgets, Prognose</li><li data-i18n="pd.or.c1b">Haushalt mit privaten Konten, Passkeys, Web Push</li><li data-i18n="pd.or.c1c">Code bis Phase 3, noch nicht produktiv</li></ul></div>
+        <div><h4>Everyday <span class="project-status st-plan" data-i18n="st.plan">Geplant</span></h4><ul><li data-i18n="pd.or.c2a">Kalender, Aufgaben, Listen, Wochenplan, Rezepte</li><li data-i18n="pd.or.c2b">gleicher Stack wie Finance</li><li data-i18n="pd.or.c2c">noch kein Code</li></ul></div>
+      </div>
+      <ol class="pd-tl">
+        <li class="done"><b>v1</b><span data-i18n="pd.or.t0">live seit 2026</span></li>
+        <li class="now"><b>Finance</b><span data-i18n="pd.or.t1">Code bis Phase 3</span></li>
+        <li><b>Finance Beta</b><span data-i18n="pd.or.t2">im eigenen Haushalt</span></li>
+        <li><b>Everyday MVP</b><span data-i18n="pd.or.t3">nach Architekturentscheidung</span></li>
+        <li><b>v1</b><span data-i18n="pd.or.t4">Archiv nach Migration</span></li>
+      </ol>
       <div class="pd-case">
-          <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.orynthia.problem">Finanzen, Termine und Haushalt lagen in fünf verschiedenen Apps.</p></div>
-          <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.orynthia.d0">Monorepo mit NestJS-API und React-Frontend, Prisma als ORM.</li><li data-i18n="proj.orynthia.d1">Bankanbindung über Enable Banking (PSD2), sensible Daten AES-256-verschlüsselt.</li><li data-i18n="proj.orynthia.d2">JWT mit Refresh-Tokens und TOTP-2FA, Start nur mit gültigen Secrets.</li></ol></div>
-        </div>
-      <figure class="pd-arch">
-          <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
-          <div class="pd-arch-scroll"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Orynthia · Alltags-App"><path class="ar-edge" d="M208 108C225 108 225 108 242 108"/><path class="ar-edge" d="M438 108C455 108 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><path class="ar-edge" d="M570 86L570 56"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">React-SPA</text></g><g class="ar-node" transform="translate(242 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">NGINX</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">NestJS-API</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">PostgreSQL</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Redis</text></g><g class="ar-node" transform="translate(472 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Enable Banking · PSD2</text></g></svg></div>
-        </figure>
-      <ul class="tags"><li class="tag">React / TS</li><li class="tag">NestJS</li><li class="tag">PostgreSQL</li><li class="tag">Redis</li><li class="tag">Prisma</li></ul>
-      <div class="project-links"><a href="https://github.com/rxf-sys/Orynthia" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a></div>
-    </template><template id="tpl-proj-admin">
-
-      <div class="pd-head">
-        <p class="pd-kicker mono"><span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
-        <h3 class="pd-title" data-i18n="proj.admin.title">Admin-Dashboard</h3>
-        <p class="project-meta mono" data-i18n="proj.admin.meta">2026 · Self-hosted · v2 in Arbeit</p>
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.orynthia.problem">Finanzen, Termine und Haushalt lagen in fünf verschiedenen Apps.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="pd.or.dl">Entscheidungen fürs Remake</h4><ol class="pd-decisions"><li data-i18n="pd.or.d0">Zwei Apps mit getrennten Datenbanken; Verbindung nur über Standards wie ICS und kleine Token-Schnittstellen.</li><li data-i18n="pd.or.d1">Haushalt statt Einzelnutzer: Finance kennt gemeinsame und private Konten.</li><li data-i18n="pd.or.d2">Gemeinsame Grundlage: Passkeys, Web Push, Design-Tokens, CI- und Deploy-Vorlage.</li></ol></div>
       </div>
-      <p class="project-desc" data-i18n="proj.admin.desc">Live-Dashboard für den Homeserver: Proxmox-Host und Gäste, UniFi-Netzwerk, Backups im Proxmox Backup Server, Cloudflare-Tunnel und DNS sowie ein Audit mit zwölf Prüfungen und Score. Die v2 ist ein Neubau mit Plugin-System: Passkey oder TOTP sind Pflicht, jede Route ist standardmäßig gesperrt, Images werden signiert und per Pull ausgerollt.</p>
-
-
-
-      <ul class="tags"><li class="tag">FastAPI</li><li class="tag">Fastify</li><li class="tag">React / TS</li><li class="tag">Passkeys</li><li class="tag">Caddy</li></ul>
-      <div class="project-links"><a href="https://github.com/rxf-sys/admin.rxf-sys.de/tree/v2" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source (v2)</a></div>
+      <figure class="pd-arch">
+        <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
+        <div class="pd-arch-scroll" tabindex="0"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Aufteilung von Orynthia"><path class="ar-edge" d="M208 108C225 108 225 34 242 34"/><path class="ar-edge" d="M208 108C225 108 225 182 242 182"/><path class="ar-edge" d="M438 34C455 34 455 108 472 108"/><path class="ar-edge" d="M438 182C455 182 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Orynthia v1</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Orynthia Finance</text></g><g class="ar-node ar-plan" transform="translate(242 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Orynthia Everyday</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Gemeinsame Grundlage</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Passkeys · Web Push</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Tokens · CI-Vorlage</text></g></svg></div>
+      </figure>
+      <ul class="tags"><li class="tag">FastAPI</li><li class="tag">React 19</li><li class="tag">PostgreSQL</li><li class="tag">Enable Banking</li><li class="tag">Passkeys</li><li class="tag">Web Push</li></ul>
+      <div class="project-links"><a href="https://github.com/rxf-sys/Orynthia" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source v1</a><a href="https://github.com/rxf-sys/finance-app" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source Finance</a></div>
+    </template><template id="tpl-proj-admin">
+      <div class="pd-shot pd-shot-img" aria-hidden="true"><picture class="shot-light"><img src="/assets/images/projects/admin-dashboard-light-desk.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture><picture class="shot-dark"><img src="/assets/images/projects/admin-dashboard-dark-desk.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture></div>
+      <div class="pd-head">
+        <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="project-status st-wip" data-i18n="pd.adm.v2">v2 in Arbeit</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <h3 class="pd-title" data-i18n="proj.admin.title">Admin-Dashboard</h3>
+        <p class="project-meta mono" data-i18n="pd.adm.meta">2026 · Self-hosted · v1 FastAPI · v2 Fastify</p>
+      </div>
+      <p class="project-desc" data-i18n="pd.adm.desc">Live-Dashboard für den Homeserver: Proxmox-Host und Gäste, Backups im PBS, Cloudflare-Tunnel und DNS, das UniFi-Netz und ein Audit mit zwölf Prüfungen. Die v2 ist ein Neubau mit Plugin-System: Passkey oder TOTP sind Pflicht, jede Route ist standardmäßig gesperrt, Images werden signiert und per Pull ausgerollt.</p>
+      <p class="pd-note" data-i18n="pd.adm.note">v1 läuft produktiv. v2 steht bei Phase 4.7 von 9: Das Uptime-Plugin ist fertig, PVE, PBS, Cloudflare und UniFi folgen.</p>
+      <dl class="pd-stats four"><div><dt>9</dt><dd data-i18n="pd.adm.s0">Architekturentscheidungen</dd></div><div><dt>16</dt><dd data-i18n="pd.adm.s1">Bedrohungen im Modell</dd></div><div><dt>80 %</dt><dd data-i18n="pd.adm.s2">Coverage-Gate</dd></div><div><dt>0</dt><dd data-i18n="pd.adm.s3">eingehende Deploy-Zugänge</dd></div></dl>
+      <div class="pd-case">
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="pd.adm.problem">Zustand von Host, Backups, Tunnel und Netz auf einen Blick, ohne vier Oberflächen zu öffnen.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="pd.adm.d0">Plugins bekommen keinen Datenbankzugriff; der HTTP-Client prüft Ziele und pinnt TLS.</li><li data-i18n="pd.adm.d1">Anmeldung nur mit zweitem Faktor: Passkey oder TOTP, Sitzungen serverseitig.</li><li data-i18n="pd.adm.d2">Deploy ohne eingehenden Zugang: signierte Images, Pull per systemd-Timer, automatischer Rollback.</li></ol></div>
+      </div>
+      <figure class="pd-arch">
+        <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
+        <div class="pd-arch-scroll" tabindex="0"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Admin-Dashboard v2"><path class="ar-edge" d="M208 108C225 108 225 108 242 108"/><path class="ar-edge" d="M438 108C455 108 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><path class="ar-edge" d="M570 86L570 56"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">React 19 · TanStack</text></g><g class="ar-node" transform="translate(242 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Caddy · CSP</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Fastify-Kern</text></g><g class="ar-node" transform="translate(472 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Passkey · TOTP · RBAC</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">SQLite · Drizzle</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Plugins · PVE PBS CF UniFi</text></g></svg></div>
+      </figure>
+      <ul class="tags"><li class="tag">Fastify</li><li class="tag">TypeScript</li><li class="tag">React 19</li><li class="tag">SQLite</li><li class="tag">Passkeys</li><li class="tag">cosign</li></ul>
+      <div class="project-links"><a href="https://github.com/rxf-sys/admin.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a></div>
+    </template><template id="tpl-proj-smarthome">
+      <div class="pd-shot pd-shot-svg" aria-hidden="true"><img src="/assets/images/projects/enocean-sr4.svg" alt="" width="900" height="560" loading="lazy" /></div>
+      <div class="pd-head">
+        <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <h3 class="pd-title" data-i18n="pd.sh.title">Smart Home · EnOcean + Alexa</h3>
+        <p class="project-meta mono" data-i18n="pd.sh.meta">2023 bis heute · Home Assistant · HACS v1.1.0</p>
+      </div>
+      <p class="project-desc" data-i18n="pd.sh.desc">Eigene Home-Assistant-Integration für EnOcean-Funkrelais. Ein selbst geschriebener ESP3-Treiber spricht mit dem USB-300-Stick und sendet genau die Telegramme, die OPUS-Relais erwarten und die die eingebaute Integration nicht liefert. Alexa steuert alles über einen eigenen Skill mit AWS Lambda, ein MagicMirror auf dem Raspberry Pi zeigt den Zustand an.</p>
+      <dl class="pd-stats four"><div><dt>3</dt><dd data-i18n="pd.sh.s0">Geräteprofile (EEP)</dd></div><div><dt>18</dt><dd data-i18n="pd.sh.s1">Tests</dd></div><div><dt>CRC8</dt><dd data-i18n="pd.sh.s2">eigener ESP3-Treiber</dd></div><div><dt>4</dt><dd data-i18n="pd.sh.s3">Blueprints</dd></div></dl>
+      <div class="pd-case">
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="pd.sh.problem">Die eingebaute EnOcean-Integration schaltet meine OPUS-Relais nicht, weil sie andere Telegrammtypen sendet.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="pd.sh.d0">Eigener ESP3-Treiber statt Bibliothek: CRC8, Antwortprüfung und der erlaubte Sender-ID-Bereich bleiben unter Kontrolle.</li><li data-i18n="pd.sh.d1">Tastendrücke an der Wand werden in den Schaltzustand gespiegelt, doppelte Telegramme gefiltert.</li><li data-i18n="pd.sh.d2">Alexa per Account Linking: Eine kleine Lambda reicht Befehle an Home Assistant weiter.</li></ol></div>
+      </div>
+      <figure class="pd-arch">
+        <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
+        <div class="pd-arch-scroll" tabindex="0"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur Smart Home"><path class="ar-edge" d="M208 108C225 108 225 108 242 108"/><path class="ar-edge" d="M438 108C455 108 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><path class="ar-edge" d="M340 86L340 56"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Taster · Relais · Sensoren</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Funk · 868 MHz</text></g><g class="ar-node" transform="translate(242 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">USB 300 · ESP3-Treiber</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Home Assistant</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Alexa-Skill · Lambda</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98" y="26">Dashboards · MagicMirror</text></g></svg></div>
+      </figure>
+      <ul class="tags"><li class="tag">Python</li><li class="tag">Home Assistant</li><li class="tag">EnOcean ESP3</li><li class="tag">AWS Lambda</li><li class="tag">Raspberry Pi</li></ul>
+      <div class="project-links"><a href="https://github.com/rxf-sys/EnOcean" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a></div>
+    </template><template id="tpl-proj-itservice">
+      <div class="pd-shot pd-shot-img" aria-hidden="true"><picture class="shot-light"><source media="(max-width: 720px)" srcset="/assets/images/projects/www-home-light-phone.webp" /><img src="/assets/images/projects/www-home-light-desk.webp" srcset="/assets/images/projects/www-home-light-desk.webp 1x, /assets/images/projects/www-home-light-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture><picture class="shot-dark"><source media="(max-width: 720px)" srcset="/assets/images/projects/www-home-dark-phone.webp" /><img src="/assets/images/projects/www-home-dark-desk.webp" srcset="/assets/images/projects/www-home-dark-desk.webp 1x, /assets/images/projects/www-home-dark-desk@2x.webp 2x" alt="" width="1440" height="900" loading="lazy" decoding="async" /></picture></div>
+      <div class="pd-head">
+        <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <h3 class="pd-title" data-i18n="proj.it.title">rxf-sys IT-Service</h3>
+        <p class="project-meta mono" data-i18n="pd.it.meta">2026 · Kleingewerbe · Dormagen</p>
+      </div>
+      <p class="project-desc" data-i18n="pd.it.desc">Website meines Kleingewerbes für IT-Hilfe bei Privatkunden: PC und Laptop, WLAN und Heimnetz, Smart Home und Fernwartung. Statisch ohne Build-Schritt, eigenes Designsystem „Signal“, Preisrechner, Deutsch und Englisch, strenge CSP ohne Fremdquellen.</p>
+      <dl class="pd-stats"><div><dt>39 €</dt><dd data-i18n="pd.it.s0">pro Stunde, danach 15-Minuten-Schritte</dd></div><div><dt>0</dt><dd data-i18n="pd.it.s1">externe Quellen</dd></div><div><dt>44 px</dt><dd data-i18n="pd.it.s2">Mindestgröße jeder Tippfläche</dd></div></dl>
+      <div class="pd-case">
+        <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="pd.it.problem">Privatkunden brauchen klare Preise, große Schrift und einen einfachen Weg zur Anfrage.</p></div>
+        <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="pd.it.d0">Lesbarkeit zuerst: keine Schrift unter 14 px, Tippflächen ab 44 px.</li><li data-i18n="pd.it.d1">Preisrechner statt Preisliste: erste Stunde voll, danach 15-Minuten-Schritte.</li><li data-i18n="pd.it.d2">Alles selbst gehostet: Schriften, GSAP und Lenis liegen lokal, die Datenschutzerklärung bleibt kurz.</li></ol></div>
+      </div>
+      <ul class="tags"><li class="tag">HTML5 / CSS3</li><li class="tag">GSAP</li><li class="tag">Lenis</li><li class="tag">Caddy</li><li class="tag">Designsystem Signal</li></ul>
+      <div class="project-links"><a href="https://rxf-sys.de/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe" aria-hidden="true"></i> <span data-i18n="pd.it.l0">Website</span></a><a href="https://github.com/rxf-sys/www.rxf-sys.de" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source</a></div>
     </template><template id="tpl-proj-rmm">
 
       <div class="pd-head">
@@ -696,19 +843,6 @@
 
 
       <ul class="tags"><li class="tag">PowerShell</li><li class="tag">Bash</li><li class="tag">NinjaOne</li></ul>
-
-    </template><template id="tpl-proj-magicmirror">
-
-      <div class="pd-head">
-        <p class="pd-kicker mono"> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
-        <h3 class="pd-title" data-i18n="proj.magicmirror.title">MagicMirror</h3>
-        <p class="project-meta mono" data-i18n="proj.magicmirror.meta">2023 · Smart Home</p>
-      </div>
-      <p class="project-desc" data-i18n="proj.magicmirror.desc">Selbst gebauter MagicMirror auf einem Raspberry Pi 4 mit zwei eigens entwickelten Modulen für personalisierte Anzeigen und Smart-Home-Integration.</p>
-
-
-
-      <ul class="tags"><li class="tag">JavaScript</li><li class="tag">Raspberry Pi</li></ul>
 
     </template><template id="tpl-proj-portfolio">
 
@@ -742,6 +876,6 @@
 <script src="/assets/vendor/SplitText.min.js?v=3.13.0"></script>
 <script src="/assets/vendor/Flip.min.js?v=3.13.0"></script>
 <script src="/assets/vendor/lenis.min.js?v=1.3.11"></script>
-<script src="/index.js?v=2026-11-25"></script>
+<script src="/index.js?v=2026-11-25-2"></script>
 </body>
 </html>
