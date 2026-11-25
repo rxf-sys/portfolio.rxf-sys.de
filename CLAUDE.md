@@ -150,3 +150,11 @@ und dieselbe Reihenfolge**:
   keine ernsten axe-Verstöße, kein seitliches Scrollen, keine Konsolenfehler
 - **Lychee Link-Check** (blocking) — LinkedIn/Xing sind ausgenommen
   (Bot-Blocking); alle anderen externen Links müssen erreichbar sein
+
+## Skills (Cloud-Sessions)
+
+`.claude/hooks/install-skills.sh` installiert beim Start jeder Cloud-Session die
+Design-Skills aus drei Quellen, festgenagelt auf geprüfte Commits: `taste-skill`
+(Art Direction, copy-lint, Layout-Check), `impeccable` (Kritik, Politur) und
+`emil-design-eng`/`break-ui` (Feinschliff, Stresstest). Lizenzen: MIT bzw.
+Apache-2.0. Neue Versionen erst prüfen, dann den Commit-Hash ersetzen.
