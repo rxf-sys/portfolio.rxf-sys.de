@@ -89,7 +89,7 @@ python3 -m http.server 8000
 ## Tests & CI
 
 GitHub Actions ([`ci.yml`](.github/workflows/ci.yml)) prüft bei jedem
-Push/PR auf `main` — alle Jobs sind blocking:
+Push/PR auf `dev` und `prod` — alle Jobs sind blocking:
 
 | Check | Lokal ausführen |
 | --- | --- |
@@ -101,8 +101,8 @@ Push/PR auf `main` — alle Jobs sind blocking:
 ## Deployment
 
 ```
-git push origin main → GitHub-Webhook → adnanh/webhook (LXC) → deploy.sh
-→ git reset --hard origin/main → Caddy liefert automatisch neu aus
+dev (Entwicklung) → Merge nach prod → GitHub-Webhook → adnanh/webhook (LXC)
+→ deploy.sh → git reset --hard origin/prod → Caddy liefert automatisch neu aus
 ```
 
 Änderungen am [`infrastructure/Caddyfile`](infrastructure/Caddyfile) werden

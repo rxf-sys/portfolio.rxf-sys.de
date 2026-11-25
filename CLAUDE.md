@@ -99,13 +99,16 @@ und dieselbe Reihenfolge**:
 
 ## Deployment
 
-`git push origin main` → GitHub-Webhook → adnanh/webhook auf LXC → `deploy.sh`
-→ `git fetch && git reset --hard origin/main` → Caddy liefert automatisch neu aus.
+Entwickelt wird auf `dev`, ausgeliefert wird `prod`:
+`git push origin prod` (bzw. Merge von `dev` nach `prod`) → GitHub-Webhook → adnanh/webhook
+auf LXC → `deploy.sh` → `git fetch && git reset --hard origin/prod` → Caddy liefert automatisch neu aus.
 
 ### Einmaliges Setup auf dem LXC
 
 1. `deploy.sh` nach `/opt/portfolio/deploy.sh` kopieren: `chmod +x /opt/portfolio/deploy.sh`
-2. In `webhook.json` den Platzhalter `HIER_WEBHOOK_SECRET_EINSETZEN` ersetzen
+2. In `webhook.json` den Platzhalter `HIER_WEBHOOK_SECRET_EINSETZEN` ersetzen; der Branch-Filter
+   steht auf `refs/heads/prod`. Auf dem LXC liegt die Datei als `/etc/webhook.conf`
+   (siehe `webhook.service`)
 3. GitHub → Settings → Webhooks → URL: `https://portfolio.rxf-sys.de/hooks/deploy-portfolio`
 
 ## Wichtige Konventionen
@@ -141,7 +144,7 @@ und dieselbe Reihenfolge**:
 
 ## CI
 
-`.github/workflows/ci.yml` bei jedem Push/PR auf `main`:
+`.github/workflows/ci.yml` bei jedem Push/PR auf `dev` und `prod`:
 
 - **HTML-Validierung** (html-validate@11, blocking) — Konfiguration in
   `.htmlvalidate.json`; lokal prüfen mit `npx html-validate@11 "*.html"`
