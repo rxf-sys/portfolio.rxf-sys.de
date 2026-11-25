@@ -114,8 +114,9 @@ und dieselbe Reihenfolge**:
   HTML/CSS/JS-Dateien; npm-Tooling nur für CI-Checks (html-validate, jsdom-Tests)
 - **Security-Header** werden **ausschließlich im `infrastructure/Caddyfile`** gesetzt
 - **`_headers`** wird von Caddy **nicht gelesen** (Cloudflare Pages Format, inaktiv)
-- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/_headers`, `/CLAUDE.md`,
-  `/README.md`) werden von Caddy mit 404 blockiert
+- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/.claude/`, `/tools/`, `/tests/`,
+  `/_headers`, `/CLAUDE.md`, `/README.md`) werden von Caddy mit 404 blockiert; Änderungen am
+  Caddyfile greifen erst nach einem Caddy-Reload auf dem LXC
 - **CSP**: kein `unsafe-eval`, kein `unsafe-inline` für Scripts. Das einzige
   Inline-Script ist das Theme-Init im `<head>` aller drei HTML-Dateien (verhindert
   Theme-Flash); es ist per **SHA-256-Hash** in der CSP im Caddyfile freigegeben.

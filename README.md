@@ -117,8 +117,9 @@ git push origin main → GitHub-Webhook → adnanh/webhook (LXC) → deploy.sh
   zusätzliches CDN, keine CSP-Änderung nötig
 - HSTS, `X-Content-Type-Options`, `X-Frame-Options`, Referrer- und
   Permissions-Policy — zentral im Caddyfile
-- Repo-Metadaten (`/infrastructure/`, `/.git/`, `/.github/`, `/CLAUDE.md`,
-  `/README.md`) werden vom Webserver mit 404 blockiert
+- Repo-Metadaten (`/infrastructure/`, `/.git/`, `/.github/`, `/.claude/`,
+  `/tools/`, `/tests/`, `/_headers`, `/CLAUDE.md`, `/README.md`) werden vom
+  Webserver mit 404 blockiert
 
 ## Lizenz
 

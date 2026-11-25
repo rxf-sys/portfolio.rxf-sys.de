@@ -279,7 +279,7 @@ window.PF_EN = {
 "pd.sh.d1": "Wall switch presses are mirrored into the switch state, duplicate telegrams are filtered.",
 "pd.sh.d2": "Alexa via account linking: a small Lambda forwards commands to Home Assistant.",
 "pd.sh.desc": "My own Home Assistant integration for EnOcean radio relays. A self-written ESP3 driver talks to the USB 300 stick and sends exactly the telegrams OPUS relays expect, which the built-in integration does not. Alexa controls everything through my own skill on AWS Lambda, and a MagicMirror on a Raspberry Pi shows the state.",
-"pd.sh.meta": "2023 to today · Home Assistant · HACS v1.1.0",
+"pd.sh.meta": "2023 to today · Home Assistant · HACS v1.2.0",
 "pd.sh.problem": "The built-in EnOcean integration cannot switch my OPUS relays because it sends other telegram types.",
 "pd.sh.s0": "device profiles (EEP)",
 "pd.sh.s1": "tests",
