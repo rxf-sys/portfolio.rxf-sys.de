@@ -79,7 +79,11 @@ und dieselbe Reihenfolge**:
 ├── robots.txt          # SEO: alles erlaubt, verweist auf sitemap.xml
 ├── sitemap.xml         # SEO: nur die Hauptseite (Rechtsseiten sind noindex)
 ├── tests/
-│   └── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Kontakt-Baukasten, Fallback ohne GSAP)
+│   ├── dom.test.js     # jsdom-Smoke-Tests (Theme, i18n, Dialoge, Graph, Heatmap, Kontakt-Baukasten, Fallback ohne GSAP, Deep Links, EN-Vollständigkeit)
+│   └── a11y.test.js    # Playwright + axe: Seite und alle Fallstudien, 1440/390, hell/dunkel
+├── tools/
+│   ├── capture/        # Screenshots der Apps aus Demo-Instanzen (README: Werkzeuge)
+│   └── metrics/        # Kennzahlen je Repo (Testfälle, Codezeilen) für die Fallstudien
 ├── assets/             # Bilder, Icons, PDF
 │   ├── js/boot.js      # synchrones Gate im <head> (setzt html.js)
 │   ├── fonts/          # selbst gehostete Schriften (woff2)
@@ -95,13 +99,16 @@ und dieselbe Reihenfolge**:
 
 ## Deployment
 
-`git push origin main` → GitHub-Webhook → adnanh/webhook auf LXC → `deploy.sh`
-→ `git fetch && git reset --hard origin/main` → Caddy liefert automatisch neu aus.
+Entwickelt wird auf `dev`, ausgeliefert wird `prod`:
+`git push origin prod` (bzw. Merge von `dev` nach `prod`) → GitHub-Webhook → adnanh/webhook
+auf LXC → `deploy.sh` → `git fetch && git reset --hard origin/prod` → Caddy liefert automatisch neu aus.
 
 ### Einmaliges Setup auf dem LXC
 
 1. `deploy.sh` nach `/opt/portfolio/deploy.sh` kopieren: `chmod +x /opt/portfolio/deploy.sh`
-2. In `webhook.json` den Platzhalter `HIER_WEBHOOK_SECRET_EINSETZEN` ersetzen
+2. In `webhook.json` den Platzhalter `HIER_WEBHOOK_SECRET_EINSETZEN` ersetzen; der Branch-Filter
+   steht auf `refs/heads/prod`. Auf dem LXC liegt die Datei als `/etc/webhook.conf`
+   (siehe `webhook.service`)
 3. GitHub → Settings → Webhooks → URL: `https://portfolio.rxf-sys.de/hooks/deploy-portfolio`
 
 ## Wichtige Konventionen
@@ -110,8 +117,9 @@ und dieselbe Reihenfolge**:
   HTML/CSS/JS-Dateien; npm-Tooling nur für CI-Checks (html-validate, jsdom-Tests)
 - **Security-Header** werden **ausschließlich im `infrastructure/Caddyfile`** gesetzt
 - **`_headers`** wird von Caddy **nicht gelesen** (Cloudflare Pages Format, inaktiv)
-- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/_headers`, `/CLAUDE.md`,
-  `/README.md`) werden von Caddy mit 404 blockiert
+- **Interne Pfade** (`/infrastructure/`, `/.git/`, `/.github/`, `/.claude/`, `/tools/`, `/tests/`,
+  `/_headers`, `/CLAUDE.md`, `/README.md`) werden von Caddy mit 404 blockiert; Änderungen am
+  Caddyfile greifen erst nach einem Caddy-Reload auf dem LXC
 - **CSP**: kein `unsafe-eval`, kein `unsafe-inline` für Scripts. Das einzige
   Inline-Script ist das Theme-Init im `<head>` aller drei HTML-Dateien (verhindert
   Theme-Flash); es ist per **SHA-256-Hash** in der CSP im Caddyfile freigegeben.
@@ -136,11 +144,21 @@ und dieselbe Reihenfolge**:
 
 ## CI
 
-`.github/workflows/ci.yml` bei jedem Push/PR auf `main`:
+`.github/workflows/ci.yml` bei jedem Push/PR auf `dev` und `prod`:
 
 - **HTML-Validierung** (html-validate@11, blocking) — Konfiguration in
   `.htmlvalidate.json`; lokal prüfen mit `npx html-validate@11 "*.html"`
 - **DOM-Smoke-Tests** (jsdom, blocking) — `tests/dom.test.js`; lokal:
   `npm install --no-save jsdom && node tests/dom.test.js`
+- **Browser- und axe-Checks** (Playwright, blocking) — `tests/a11y.test.js`;
+  keine ernsten axe-Verstöße, kein seitliches Scrollen, keine Konsolenfehler
 - **Lychee Link-Check** (blocking) — LinkedIn/Xing sind ausgenommen
   (Bot-Blocking); alle anderen externen Links müssen erreichbar sein
+
+## Skills (Cloud-Sessions)
+
+`.claude/hooks/install-skills.sh` installiert beim Start jeder Cloud-Session die
+Design-Skills aus drei Quellen, festgenagelt auf geprüfte Commits: `taste-skill`
+(Art Direction, copy-lint, Layout-Check), `impeccable` (Kritik, Politur) und
+`emil-design-eng`/`break-ui` (Feinschliff, Stresstest). Lizenzen: MIT bzw.
+Apache-2.0. Neue Versionen erst prüfen, dann den Commit-Hash ersetzen.
