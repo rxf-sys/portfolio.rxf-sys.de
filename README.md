@@ -1,5 +1,7 @@
 # portfolio.rxf-sys.de
 
+> **Status:** Live · Konzept „Leitstand“ v4 · **Stand:** 25.11.2026
+
 Persönliche Portfolio-Website von [Robin Frank](https://github.com/rxf-sys):
 statisches HTML/CSS/JS **ohne Build-Schritt**, self-hosted auf dem eigenen
 HomeLab (Proxmox-LXC) hinter einem Cloudflare Tunnel, ausgeliefert von Caddy.

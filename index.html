@@ -39,7 +39,7 @@
 <script>(function(){try{var t=localStorage.getItem('pf2-theme');if(t!=='dark'&&t!=='light')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
 
 <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/index.css?v=2026-11-10" />
+<link rel="stylesheet" href="/index.css?v=2026-11-25" />
 <script src="/assets/js/boot.js?v=2026-11-07"></script>
 <script type="application/ld+json">
 {
@@ -125,7 +125,7 @@
         </div><div class="fact">
           <dt class="fact-k" data-i18n="who.focus.k">Fokus</dt>
           <dd class="fact-v" data-i18n="who.focus.v">Linux, Proxmox, Netzwerke und Automatisierung</dd>
-          <dd class="fact-m" data-i18n="who.focus.m">Eigenes HomeLab seit 2022</dd>
+          <dd class="fact-m" data-i18n="who.focus.m">HomeLab seit 2022, heute ein Cluster</dd>
         </div>
       </dl>
     </div>
@@ -146,11 +146,11 @@
         <div class="about-text reveal" data-stagger>
           <p data-i18n="about.p1">Ich bin ausgebildeter Fachinformatiker für Anwendungsentwicklung und habe zuletzt als Junior IT-Systemadministrator bei Fusion IT in Langenfeld Kunden-Infrastrukturen betreut. Meine Stärken: Administration von IT-Infrastrukturen, Netzwerktechnik und die Automatisierung wiederkehrender Aufgaben.</p>
           <p data-i18n="about.p2">Den Sprung von der Anwendungsentwicklung in die Administration habe ich bewusst gewählt. Mich interessiert, wie Systeme stabil, sicher und beobachtbar bleiben, wenn echte Last darauf liegt.</p>
-          <p data-i18n="about.p3">In meiner Freizeit betreibe ich ein eigenes HomeLab auf Proxmox VE: Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer und meine eigenen Apps. Jeder Container ist ein Experiment, das Linux, Virtualisierung und Networking weiter vertieft.</p>
+          <p data-i18n="about.p3">In meiner Freizeit betreibe ich einen eigenen Proxmox-Cluster aus zwei Knoten: Samba-NAS, WireGuard-VPN, Vaultwarden, Home Assistant, einen Backup-Server und meine eigenen Apps. Jeder Dienst ist ein Experiment, das Linux, Virtualisierung und Networking weiter vertieft.</p>
         </div>
         <aside class="spec reveal" aria-label="Eckdaten">
           <div class="spec-bar"><span data-i18n="facts.title">Eckdaten</span><span class="spec-led" aria-hidden="true"></span></div>
-          <dl class="spec-list" data-stagger><div class="spec-row"><dt data-i18n="fact.status">Status</dt><dd data-i18n="fact.statusV">Offen für eine neue Stelle</dd></div><div class="spec-row"><dt data-i18n="fact.degree">Abschluss</dt><dd data-i18n="fact.degreeV">Fachinformatiker AE · 2025</dd></div><div class="spec-row"><dt data-i18n="fact.last">Zuletzt</dt><dd data-i18n="fact.lastV">Junior IT-Sysadmin · Fusion IT</dd></div><div class="spec-row"><dt data-i18n="fact.lab">HomeLab</dt><dd data-i18n="fact.labV">Proxmox VE · 10 LXC und 2 VM</dd></div><div class="spec-row"><dt data-i18n="fact.lang">Sprachen</dt><dd>DE · EN · FR · RU</dd></div><div class="spec-row"><dt data-i18n="fact.loc">Standort</dt><dd>Dormagen, NRW</dd></div></dl>
+          <dl class="spec-list" data-stagger><div class="spec-row"><dt data-i18n="fact.status">Status</dt><dd data-i18n="fact.statusV">Offen für eine neue Stelle</dd></div><div class="spec-row"><dt data-i18n="fact.degree">Abschluss</dt><dd data-i18n="fact.degreeV">Fachinformatiker AE · 2025</dd></div><div class="spec-row"><dt data-i18n="fact.last">Zuletzt</dt><dd data-i18n="fact.lastV">Junior IT-Sysadmin · Fusion IT</dd></div><div class="spec-row"><dt data-i18n="fact.lab">HomeLab</dt><dd data-i18n="fact.labV">Proxmox-Cluster · 12 LXC und 2 VM</dd></div><div class="spec-row"><dt data-i18n="fact.lang">Sprachen</dt><dd>DE · EN · FR · RU</dd></div><div class="spec-row"><dt data-i18n="fact.loc">Standort</dt><dd>Dormagen, NRW</dd></div></dl>
         </aside>
       </div>
     </div>
@@ -380,7 +380,7 @@
               <span class="scr-cover cover-vulpexa" aria-hidden="true"></span>
               <span class="scr-scan" aria-hidden="true"></span>
               <span class="scr-ch mono">CH 02</span>
-              <span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span>
+              <span class="project-status st-live" data-i18n="st.live">Live</span>
             </span>
             <span class="scr-label">
               <span class="scr-title" data-project-title data-i18n="proj.vulpexa.title">Vulpexa · RMM-Plattform</span>
@@ -393,7 +393,7 @@
               <span class="scr-cover cover-orynthia" aria-hidden="true"></span>
               <span class="scr-scan" aria-hidden="true"></span>
               <span class="scr-ch mono">CH 03</span>
-              <span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span>
+              <span class="project-status st-wip" data-i18n="st.remake">Remake geplant</span>
             </span>
             <span class="scr-label">
               <span class="scr-title" data-project-title data-i18n="proj.orynthia.title">Orynthia · Alltags-App</span>
@@ -621,26 +621,26 @@
         <h3 class="pd-title" data-i18n="proj.homelab.title">HomeLab · Proxmox VE</h3>
         <p class="project-meta mono" data-i18n="proj.homelab.meta">2022 bis heute · Privat · Infrastruktur</p>
       </div>
-      <p class="project-desc" data-i18n="proj.homelab.desc">Mein selbst gehostetes Labor: ein Proxmox-VE-Knoten mit zehn LXC-Containern für Samba-NAS, WireGuard-VPN, Vaultwarden, Portainer und meine eigenen Apps. Vaultwarden ersetzt den Cloud-Passwort-Manager, WireGuard öffnet einen sicheren Tunnel von unterwegs.</p>
-      <dl class="pd-stats"><div><dt>10</dt><dd data-i18n="proj.homelab.s0">LXC-Container</dd></div><div><dt>2</dt><dd data-i18n="proj.homelab.s1">VMs</dd></div><div><dt>2022</dt><dd data-i18n="proj.homelab.s2">in Betrieb seit</dd></div></dl>
+      <p class="project-desc" data-i18n="proj.homelab.desc">Mein selbst gehostetes Labor: ein Proxmox-Cluster aus zwei Knoten und einem QDevice mit 12 LXC-Containern und 2 VMs für Samba-NAS, WireGuard-VPN, Vaultwarden, Home Assistant, einen Backup-Server und meine eigenen Apps. Vaultwarden ersetzt den Cloud-Passwort-Manager, WireGuard öffnet einen sicheren Tunnel von unterwegs.</p>
+      <dl class="pd-stats"><div><dt>12</dt><dd data-i18n="proj.homelab.s0">LXC-Container</dd></div><div><dt>2</dt><dd data-i18n="proj.homelab.s1">VMs</dd></div><div><dt>2022</dt><dd data-i18n="proj.homelab.s2">in Betrieb seit</dd></div></dl>
       <div class="pd-case">
           <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.homelab.problem">Eigene Dienste statt Cloud-Abos und ein Ort, an dem ich gefahrlos lernen kann.</p></div>
-          <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.homelab.d0">Ein Proxmox-Knoten, Dienste als LXC statt VMs: weniger Overhead pro Dienst.</li><li data-i18n="proj.homelab.d1">Zugriff von außen nur über WireGuard und Cloudflare Tunnel, keine offenen Ports.</li><li data-i18n="proj.homelab.d2">Snapshots vor jedem Experiment, damit ein Fehler nie das Netz lahmlegt.</li></ol></div>
+          <div><h4 class="pd-label mono" data-i18n="projects.decisions">Entscheidungen</h4><ol class="pd-decisions"><li data-i18n="proj.homelab.d0">Zwei Knoten plus QDevice, Dienste als LXC statt VMs: Das Cluster bleibt bei Wartung beschlussfähig, jeder Dienst braucht wenig Overhead.</li><li data-i18n="proj.homelab.d1">Zugriff von außen nur über WireGuard und Cloudflare Tunnel, keine offenen Ports.</li><li data-i18n="proj.homelab.d2">Snapshots vor jedem Experiment, damit ein Fehler nie das Netz lahmlegt.</li></ol></div>
         </div>
       <figure class="pd-arch">
           <figcaption class="pd-label mono" data-i18n="projects.arch">Architektur</figcaption>
-          <div class="pd-arch-scroll"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur HomeLab · Proxmox VE"><path class="ar-edge" d="M208 108C225 108 225 34 242 34"/><path class="ar-edge" d="M208 108C225 108 225 182 242 182"/><path class="ar-edge" d="M438 34C455 34 455 108 472 108"/><path class="ar-edge" d="M438 182C455 182 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Internet</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(242 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">WireGuard</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Proxmox VE</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vulpexa · Orynthia · Portfolio</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vaultwarden · Samba · Portainer</text></g></svg></div>
+          <div class="pd-arch-scroll"><svg class="arch-svg" viewBox="0 0 910 216" width="910" height="216" role="img" aria-label="Architektur HomeLab · Proxmox VE"><path class="ar-edge" d="M208 108C225 108 225 34 242 34"/><path class="ar-edge" d="M208 108C225 108 225 182 242 182"/><path class="ar-edge" d="M438 34C455 34 455 108 472 108"/><path class="ar-edge" d="M438 182C455 182 455 108 472 108"/><path class="ar-edge" d="M668 108C685 108 685 34 702 34"/><path class="ar-edge" d="M668 108C685 108 685 182 702 182"/><g class="ar-node" transform="translate(12 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Internet</text></g><g class="ar-node" transform="translate(242 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Cloudflare Tunnel</text></g><g class="ar-node" transform="translate(242 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">WireGuard</text></g><g class="ar-node" transform="translate(472 86)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Proxmox-Cluster</text></g><g class="ar-node" transform="translate(702 12)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vulpexa · Orynthia · Portfolio</text></g><g class="ar-node" transform="translate(702 160)"><rect width="196" height="44" rx="8"/><text x="98.0" y="26.0">Vaultwarden · Samba · PBS</text></g></svg></div>
         </figure>
-      <ul class="tags"><li class="tag">Proxmox VE</li><li class="tag">Debian</li><li class="tag">LXC</li><li class="tag">WireGuard</li><li class="tag">Vaultwarden</li><li class="tag">Samba</li></ul>
+      <ul class="tags"><li class="tag">Proxmox VE</li><li class="tag">Cluster + QDevice</li><li class="tag">Debian</li><li class="tag">LXC</li><li class="tag">WireGuard</li><li class="tag">Vaultwarden</li><li class="tag">Samba</li></ul>
 
     </template><template id="tpl-proj-vulpexa">
       <div class="pd-cover cover-vulpexa" aria-hidden="true"></div>
       <div class="pd-head">
-        <p class="pd-kicker mono"><span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <p class="pd-kicker mono"><span class="project-status st-live" data-i18n="st.live">Live</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
         <h3 class="pd-title" data-i18n="proj.vulpexa.title">Vulpexa · RMM-Plattform</h3>
         <p class="project-meta mono" data-i18n="proj.vulpexa.meta">2026 · Self-hosted · rmm.rxf-sys.de</p>
       </div>
-      <p class="project-desc" data-i18n="proj.vulpexa.desc">Schlankes, selbst gehostetes RMM-Tool für die eigenen Server und die Geräte der Familie, nach dem Vorbild von NinjaOne. Monitoring, Patches, Skripte mit Live-Output und Fernwartung über RustDesk.</p>
+      <p class="project-desc" data-i18n="proj.vulpexa.desc">Schlankes, selbst gehostetes RMM-Tool für die eigenen Server und die Geräte der Familie, nach dem Vorbild von NinjaOne. Monitoring, Patches, Skripte mit Live-Output und Fernwartung über RustDesk. Läuft produktiv; die Entwicklung ruht, seit der Code Grundlage eines Produkts in Vorbereitung ist.</p>
       <dl class="pd-stats"><div><dt>60 s</dt><dd data-i18n="proj.vulpexa.s0">Heartbeat</dd></div><div><dt>3</dt><dd data-i18n="proj.vulpexa.s1">Plattformen</dd></div><div><dt>0</dt><dd data-i18n="proj.vulpexa.s2">offene Ports pro Gerät</dd></div></dl>
       <div class="pd-case">
           <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.vulpexa.problem">Fünf bis fünfzehn Geräte betreuen, ohne ein Enterprise-RMM zu bezahlen.</p></div>
@@ -655,11 +655,11 @@
     </template><template id="tpl-proj-orynthia">
       <div class="pd-cover cover-orynthia" aria-hidden="true"></div>
       <div class="pd-head">
-        <p class="pd-kicker mono"><span class="project-status st-wip" data-i18n="st.wip">In Arbeit</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
+        <p class="pd-kicker mono"><span class="project-status st-wip" data-i18n="st.remake">Remake geplant</span> <span class="pd-asof" data-i18n="projects.asof">Stand 11/2026</span></p>
         <h3 class="pd-title" data-i18n="proj.orynthia.title">Orynthia · Alltags-App</h3>
         <p class="project-meta mono" data-i18n="proj.orynthia.meta">2026 · Self-hosted · Open Banking</p>
       </div>
-      <p class="project-desc" data-i18n="proj.orynthia.desc">Self-hosted Allrounder für den digitalen Alltag: Finanzen mit Open Banking (PSD2), Kalender, Aufgaben, Rezepte, Wochenplan, Listen, Notizen und Reisen. Die Module greifen ineinander: Rezepte wandern in den Wochenplan, der Wochenplan erzeugt die Einkaufsliste.</p>
+      <p class="project-desc" data-i18n="proj.orynthia.desc">Self-hosted Allrounder für den digitalen Alltag: Finanzen mit Open Banking (PSD2), Kalender, Aufgaben, Rezepte, Wochenplan, Listen, Notizen und Reisen. Die Module greifen ineinander: Rezepte wandern in den Wochenplan, der Wochenplan erzeugt die Einkaufsliste. Ein Remake ist geplant: Orynthia wird in zwei eigenständige Apps aufgeteilt, Orynthia Everyday für den Alltag und Orynthia Finance für die Finanzen. Bis beide produktiv sind, läuft die heutige Version weiter.</p>
       <dl class="pd-stats"><div><dt>10</dt><dd data-i18n="proj.orynthia.s0">Module</dd></div><div><dt>PSD2</dt><dd data-i18n="proj.orynthia.s1">Bankanbindung</dd></div><div><dt>2FA</dt><dd data-i18n="proj.orynthia.s2">TOTP</dd></div></dl>
       <div class="pd-case">
           <div><h4 class="pd-label mono" data-i18n="projects.problem">Ausgangslage</h4><p data-i18n="proj.orynthia.problem">Finanzen, Termine und Haushalt lagen in fünf verschiedenen Apps.</p></div>
@@ -678,11 +678,11 @@
         <h3 class="pd-title" data-i18n="proj.admin.title">Admin-Dashboard</h3>
         <p class="project-meta mono" data-i18n="proj.admin.meta">2026 · Self-hosted · v2 in Arbeit</p>
       </div>
-      <p class="project-desc" data-i18n="proj.admin.desc">Live-Dashboard für den Homeserver: Proxmox-Host und Gäste, UniFi-Netzwerk, Backups im Proxmox Backup Server, Cloudflare-Tunnel und DNS sowie ein Audit mit zwölf Prüfungen und Score. Die v2 bringt Rollen, API-Tokens, TOTP und ntfy-Push.</p>
+      <p class="project-desc" data-i18n="proj.admin.desc">Live-Dashboard für den Homeserver: Proxmox-Host und Gäste, UniFi-Netzwerk, Backups im Proxmox Backup Server, Cloudflare-Tunnel und DNS sowie ein Audit mit zwölf Prüfungen und Score. Die v2 ist ein Neubau mit Plugin-System: Passkey oder TOTP sind Pflicht, jede Route ist standardmäßig gesperrt, Images werden signiert und per Pull ausgerollt.</p>
 
 
 
-      <ul class="tags"><li class="tag">FastAPI</li><li class="tag">React / TS</li><li class="tag">Docker</li><li class="tag">Caddy</li></ul>
+      <ul class="tags"><li class="tag">FastAPI</li><li class="tag">Fastify</li><li class="tag">React / TS</li><li class="tag">Passkeys</li><li class="tag">Caddy</li></ul>
       <div class="project-links"><a href="https://github.com/rxf-sys/admin.rxf-sys.de/tree/v2" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Source (v2)</a></div>
     </template><template id="tpl-proj-rmm">
 
@@ -742,6 +742,6 @@
 <script src="/assets/vendor/SplitText.min.js?v=3.13.0"></script>
 <script src="/assets/vendor/Flip.min.js?v=3.13.0"></script>
 <script src="/assets/vendor/lenis.min.js?v=1.3.11"></script>
-<script src="/index.js?v=2026-11-10"></script>
+<script src="/index.js?v=2026-11-25"></script>
 </body>
 </html>
